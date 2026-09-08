@@ -210,6 +210,8 @@
   .previa .boletim div, .previa .palpites div { margin-top: 5px; font-size: 14px; line-height: 1.4; }
   .previa .palpites { margin-top: 14px; padding-top: 11px; border-top: 1px solid rgba(28,28,28,.3); }
   .previa .palpites .rot { color: var(--cinza); }
+  .previa .palpite { margin-top: 10px; }
+  .previa .palpite .jogo { display: block; font-size: 11.5px; color: var(--cinza); letter-spacing: .02em; margin-bottom: 1px; }
   .previa b { font-family: "Anton", sans-serif; font-weight: 400; font-size: 15px; }
 
   .duelo {
@@ -691,7 +693,10 @@ async function renderLiga(league, rosters, nomes, state, transacoes) {
           ${(pv.boletim || []).length ? `<div class="boletim"><div class="rot">No boletim médico</div>
             ${pv.boletim.map(b => `<div><b>${esc(b.time)}</b> — ${esc(b.jogadores.join(", "))}</div>`).join("")}</div>` : ""}
           ${(pv.palpites || []).length ? `<div class="palpites"><div class="rot">Palpites do porco</div>
-            ${pv.palpites.map(g => `<div><b>${esc(g.favorito)}</b> — ${esc(g.porque)}</div>`).join("")}</div>` : ""}
+            ${pv.palpites.map(g => `<div class="palpite">
+              <span class="jogo">${esc(g.confronto)}</span>
+              <b>${esc(g.favorito)}</b> — ${esc(g.porque)}
+            </div>`).join("")}</div>` : ""}
         </article>`;
       }
     }
