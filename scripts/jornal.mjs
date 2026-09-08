@@ -163,7 +163,8 @@ function montaNomes(users, rosters) {
     const u = users.find((x) => x.user_id === r.owner_id) || {};
     n[r.roster_id] = {
       manager: u.display_name || `Roster ${r.roster_id}`,
-      time: u.metadata?.team_name || u.display_name || `Time ${r.roster_id}`,
+      // O Sleeper devolve nome de time com espaço sobrando nas pontas.
+      time: (u.metadata?.team_name || "").trim() || u.display_name || `Time ${r.roster_id}`,
     };
   }
   return n;
@@ -383,7 +384,7 @@ function montaContexto({ rodada, matchups, nomes, players, campanha, h2h, donoDe
       vencedor: lado(j.vencedor),
       perdedor: lado(j.perdedor),
       margem: r2(j.margem),
-      retrospecto_anterior: `${nomes[j.vencedor].manager} ${hist[ua] || 0} × ${hist[ub] || 0} ${nomes[j.perdedor].manager} (temporadas anteriores)`,
+      retrospecto_anterior: `${nomes[j.vencedor].time} ${hist[ua] || 0} × ${hist[ub] || 0} ${nomes[j.perdedor].time} (temporadas anteriores)`,
       movimentacoes: envolvidos.map((t) => ({
         tipo: t.type,
         manager: nomes[(t.roster_ids || [])[0]]?.manager || "?",
@@ -398,6 +399,7 @@ function montaContexto({ rodada, matchups, nomes, players, campanha, h2h, donoDe
     playoffs: rodada.playoffs,
     premios: rodada.premios.map((p) => ({
       premio: ROTULO[p.tipo] || p.tipo,
+      time: nomes[p.roster].time,
       manager: nomes[p.roster].manager,
       detalhe: p.texto,
     })),
@@ -405,6 +407,7 @@ function montaContexto({ rodada, matchups, nomes, players, campanha, h2h, donoDe
       .sort((a, b) => a.posicao - b.posicao)
       .map((c) => ({
         posicao: c.posicao,
+        time: nomes[c.roster].time,
         manager: nomes[c.roster].manager,
         campanha: `${c.v}–${c.d}`,
         pontos_feitos: r2(c.pf),
@@ -435,7 +438,7 @@ const SCHEMA = {
         },
         vitima: {
           type: "string",
-          description: "Nome do manager escolhido como vítima da semana.",
+          description: "Nome do TIME escolhido como vítima da semana.",
         },
       },
     },
@@ -457,7 +460,7 @@ const SCHEMA = {
               additionalProperties: false,
               required: ["manager", "texto"],
               properties: {
-                manager: { type: "string" },
+                manager: { type: "string", description: "Nome do TIME que recebe o veredito." },
                 texto: { type: "string", description: "Veredito curto, uma ou duas frases." },
               },
             },
@@ -478,6 +481,8 @@ Você escreve duas coisas nesta edição.
 1. A COLUNA DO SEU PURURUCA — o colunista fixo. É um porco velho e rabugento de boteco: sarcástico, cansado, odeia todos os dez igualmente, fala como quem já viu essa liga fazer besteira demais. Ele comenta a rodada inteira, entrega os prêmios com deboche, cutuca a tabela e escolhe uma vítima da semana. Nunca elogia sem estragar o elogio na frase seguinte.
 
 2. A ANÁLISE DOS CONFRONTOS — feita pelo comentarista convidado da semana, que é ${convidado.nome}. Incorpore o personagem: ${convidado.persona} Escreva cada confronto na voz dele, em português, mesmo sendo um personagem estrangeiro. Ele não é o Seu Pururuca e não deve soar como ele.
+
+Chame cada participante pelo NOME DO TIME, não pelo usuário do Sleeper: escreva "o Custelinha perdeu", nunca "o DanielBrankito perdeu". O campo "manager" existe só para você saber quem é quem; quem aparece no texto é o time. Nos vereditos, o campo "manager" recebe o nome do time.
 
 Em cada confronto, use os dados que receber: o placar e a margem, o herói e o vilão de cada lado, os pontos deixados no banco com o nome de quem ficou sentado, o retrospecto entre os dois, a posição na tabela, a sequência e as movimentações da semana. Cite números e nomes de jogador — é o que dá graça. Não invente nada que não esteja nos dados: sem lance, sem lesão, sem declaração que você não recebeu.`;
 }

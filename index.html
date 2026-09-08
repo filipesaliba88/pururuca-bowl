@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hall da Vergonha</title>
+<title>Pururuca Bowl — o jornal da vergonha alheia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
 <style>
   :root {
     --grama: #0F3D2E;
@@ -31,36 +31,44 @@
     line-height: 1.45;
   }
   a { color: inherit; }
-  .display { font-family: "Archivo Black", "Archivo", sans-serif; font-weight: 400; letter-spacing: -.01em; }
+  /* Anton é a voz do tabloide: manchete, cabeçalho, nome próprio. */
+  .display { font-family: "Anton", "Archivo Black", "Archivo", sans-serif; font-weight: 400; letter-spacing: -.01em; }
 
-  header {
-    padding: 28px 20px 20px;
-    border-bottom: 3px solid var(--cal);
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  header .cabeca { flex: 1; min-width: 0; }
-  header .avatar {
-    flex: none; width: clamp(66px, 19vw, 116px); aspect-ratio: 1;
-    object-fit: cover; border-radius: 50%; border: 3px solid var(--amarelo);
+  /* Cabeçalho de primeira página */
+  header { padding: 14px 16px 0; border-bottom: 3px solid var(--cal); }
+  .expediente-topo {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    color: rgba(243,239,228,.55);
   }
   header h1 {
-    margin: 0;
-    font-size: clamp(38px, 11vw, 96px);
-    line-height: .92;
-    text-transform: uppercase;
+    margin: 6px 0 4px;
+    font-size: clamp(40px, 13vw, 104px);
+    line-height: .86; letter-spacing: -.02em; text-transform: uppercase;
   }
-  header h1 span { display: block; color: var(--amarelo); }
-  header p { margin: 12px 0 0; color: rgba(243,239,228,.75); max-width: 60ch; }
-  .status { margin-top: 6px; font-size: 14px; color: var(--amarelo); }
+  .slogan {
+    display: flex; align-items: center; gap: 10px; padding-bottom: 10px;
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(243,239,228,.6);
+  }
+  .slogan::before, .slogan::after { content: ""; flex: 1; height: 1px; background: rgba(243,239,228,.35); }
+  header p { margin: 0 0 6px; color: rgba(243,239,228,.75); max-width: 60ch; font-size: 14px; }
+  .status { margin: 0; padding-bottom: 10px; font-size: 13px; color: var(--amarelo); }
 
+  /* Tarja de edição, logo abaixo do menu */
+  .tarja {
+    background: var(--vermelho); color: var(--cal);
+    padding: 6px 16px; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+  }
+
+  /* Quebra em duas linhas em vez de rolar para o lado: nada de aba escondida. */
   nav {
-    display: flex; gap: 0; overflow-x: auto;
+    display: flex; flex-wrap: wrap; gap: 0;
     border-bottom: 3px solid var(--cal);
     background: var(--grama-escura);
     position: sticky; top: 0; z-index: 2;
   }
   nav button {
-    flex: 1 0 auto; padding: 12px 16px;
+    flex: 1 1 auto; min-width: 33.333%; padding: 11px 8px; text-align: center;
     background: none; border: 0; border-right: 1px solid rgba(243,239,228,.2);
     color: var(--cal); font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap;
   }
@@ -77,31 +85,27 @@
   .rodada-sel select, .sel-linha select { font: inherit; padding: 8px 12px; background: var(--cal); color: var(--asfalto); border: 0; font-weight: 700; max-width: 100%; }
 
   .premio {
-    display: grid; grid-template-columns: 104px 1fr; gap: 14px;
+    display: grid; grid-template-columns: 74px 1fr; gap: 12px;
     background: var(--cal); color: var(--asfalto);
-    margin-bottom: 4px;
+    padding: 11px 13px; margin-bottom: 4px;
   }
-  .premio .selo {
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
-    padding: 10px 8px;
-    font-family: "Archivo Black"; font-size: 11px; line-height: 1.15; text-align: center; text-transform: uppercase;
-    overflow-wrap: anywhere; background: var(--amarelo);
+  /* Os prêmios do draft não têm ilustração própria; ocupam a largura toda. */
+  .premio.sem-retrato { grid-template-columns: 1fr; }
+  .premio .retrato-premio { width: 74px; height: 74px; object-fit: cover; border: 2px solid var(--asfalto); }
+  .premio .etiqueta {
+    display: inline-block; background: var(--amarelo); color: var(--asfalto);
+    font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 3px 7px;
   }
-  .premio .selo img {
-    width: 62px; height: 62px; object-fit: cover;
-    border-radius: 50%; border: 2px solid var(--asfalto);
-  }
-  .premio.vermelho .selo { background: var(--vermelho); color: var(--cal); }
-  .premio .corpo { padding: 12px 14px 12px 0; }
-  .premio .quem { font-size: 22px; font-family: "Archivo Black"; line-height: 1.05; }
-  .premio .porque { margin: 4px 0 0; color: var(--cinza); font-size: 15px; }
+  .premio.vermelho .etiqueta { background: var(--vermelho); color: var(--cal); }
+  .premio .quem { font-family: "Anton", sans-serif; font-size: 24px; line-height: 1; text-transform: uppercase; margin-top: 6px; overflow-wrap: anywhere; }
+  .premio .porque { margin: 4px 0 0; color: var(--cinza); font-size: 14px; line-height: 1.4; }
 
   /* Jornal */
   .manchete {
     background: var(--cal); color: var(--asfalto);
     padding: 16px 18px; margin-bottom: 4px;
   }
-  .manchete h4 { margin: 0; font-family: "Archivo Black"; font-size: clamp(22px, 5.5vw, 34px); line-height: 1; text-transform: uppercase; }
+  .manchete h4 { margin: 0; font-family: "Anton", sans-serif; font-weight: 400; font-size: clamp(23px, 6vw, 34px); line-height: 1.02; text-transform: uppercase; }
   .manchete p { margin: 8px 0 0; color: var(--cinza); font-size: 15px; }
 
   /* Faixa ilustrada usada no topo de uma seção */
@@ -137,31 +141,78 @@
     background: var(--asfalto); color: var(--amarelo);
     padding: 10px 14px; margin-bottom: 4px; font-size: 14px; font-weight: 700;
   }
-  .coluna {
-    display: grid; grid-template-columns: 104px 1fr; gap: 16px;
-    background: var(--cal); color: var(--asfalto);
-    padding: 16px 18px; margin-bottom: 4px;
+  /* A coluna, em página de jornal: manchete, linha fina, abertura em corpo
+     maior, capitular, e olhos quebrando o texto a cada dois parágrafos. */
+  .coluna { background: var(--cal); color: var(--asfalto); padding: 16px 18px 18px; margin-bottom: 4px; }
+  .coluna h4 {
+    margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: clamp(27px, 8vw, 40px); line-height: .94; letter-spacing: -.01em;
+    text-transform: uppercase; text-wrap: balance;
   }
-  .coluna img { width: 104px; height: 104px; object-fit: cover; border-radius: 50%; border: 3px solid var(--asfalto); }
-  .coluna h4 { margin: 0 0 8px; font-family: "Archivo Black"; font-size: clamp(19px, 4.5vw, 26px); line-height: 1.05; text-transform: uppercase; }
-  .coluna p { margin: 0 0 10px; font-size: 15px; }
-  .coluna .vitima { display: inline-block; background: var(--vermelho); color: var(--cal); padding: 4px 10px; font-weight: 700; font-size: 13px; }
-  @media (max-width: 520px) {
-    .coluna { grid-template-columns: 1fr; justify-items: center; text-align: left; }
-    .coluna .texto { width: 100%; }
+  .coluna .assinatura {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 11px; padding-top: 9px; border-top: 1px solid rgba(28,28,28,.3);
+    font-size: 11.5px; line-height: 1.3;
+  }
+  .coluna .assinatura img { width: 38px; height: 38px; object-fit: cover; flex: none; }
+  .coluna .assinatura b { display: block; text-transform: uppercase; letter-spacing: .06em; }
+  .coluna .assinatura span { color: var(--cinza); }
+  .coluna .lede { margin: 13px 0 0; font-size: 17px; line-height: 1.42; font-weight: 600; }
+  .coluna p { margin: 11px 0 0; font-size: 15px; line-height: 1.6; }
+  .coluna p.capitular::first-letter {
+    float: left; font-family: "Anton", sans-serif; font-size: 54px; line-height: .74;
+    padding: 4px 9px 0 0; color: var(--vermelho);
+  }
+  .coluna .olho {
+    margin: 15px 0 0; padding: 12px 0;
+    border-top: 3px double var(--asfalto); border-bottom: 3px double var(--asfalto);
+    font-family: "Anton", sans-serif; font-size: clamp(19px, 5vw, 25px); line-height: 1.1;
+    text-transform: uppercase; color: var(--vermelho);
+  }
+  .coluna .vitima {
+    display: inline-block; margin-top: 15px;
+    background: var(--vermelho); color: var(--cal);
+    padding: 5px 11px; font-weight: 800; font-size: 13px; letter-spacing: .04em;
   }
 
-  .confronto {
-    background: var(--cal); color: var(--asfalto);
-    padding: 16px 18px; margin-bottom: 4px;
+  .confronto { background: var(--cal); color: var(--asfalto); padding: 15px 18px 16px; margin-bottom: 4px; }
+  .confronto h4 { margin: 0; font-family: "Anton", sans-serif; font-weight: 400; font-size: 21px; line-height: 1.06; text-transform: uppercase; }
+  .confronto .resumo { margin: 9px 0 0; font-size: 15px; line-height: 1.55; }
+  .confronto .decisivo {
+    margin: 12px 0 0; padding: 9px 0;
+    border-top: 1px solid rgba(28,28,28,.3); border-bottom: 1px solid rgba(28,28,28,.3);
+    color: var(--cinza); font-size: 14.5px; line-height: 1.45;
   }
-  .confronto h4 { margin: 0; font-family: "Archivo Black"; font-size: 19px; line-height: 1.1; text-transform: uppercase; }
-  .confronto .resumo { margin: 10px 0 0; font-size: 15px; }
-  .confronto .decisivo { margin: 12px 0 0; padding-left: 12px; border-left: 4px solid var(--amarelo); color: var(--cinza); font-size: 15px; }
-  .confronto .vereditos { margin: 12px 0 0; display: grid; gap: 6px; font-size: 15px; }
-  .confronto .vereditos b { font-family: "Archivo Black"; font-weight: 400; }
+  .confronto .vereditos { margin: 11px 0 0; display: grid; gap: 7px; font-size: 14.5px; line-height: 1.45; }
+  .confronto .vereditos b { font-family: "Anton", sans-serif; font-weight: 400; font-size: 16px; letter-spacing: .01em; }
+
+  /* Classificação da vergonha: tabela de caderno de esportes */
+  .tabela-vergonha th { background: var(--asfalto); color: var(--cal); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+  .tabela-vergonha td { padding: 7px 6px; }
+  .tabela-vergonha .pos { font-family: "Anton", sans-serif; font-size: 17px; color: var(--cinza); width: 22px; }
+  .tabela-vergonha .tot { font-family: "Anton", sans-serif; font-size: 19px; }
+  .tabela-vergonha .time { display: flex; align-items: center; gap: 8px; }
+  .tabela-vergonha .time img { width: 24px; height: 24px; object-fit: cover; flex: none; border: 1px solid var(--asfalto); }
+  .tabela-vergonha .time span { font-weight: 800; line-height: 1.15; }
+  .tabela-vergonha .detalhe { display: none; margin-top: 2px; font-weight: 400; font-size: 11.5px; color: var(--cinza); }
+  /* Tela estreita não comporta sete colunas: a discriminação desce para
+     baixo do nome em vez de espremer ou truncar o nome do time. */
+  @media (max-width: 440px) {
+    .tabela-vergonha th.crime, .tabela-vergonha td.crime { display: none; }
+    .tabela-vergonha .detalhe { display: block; }
+    .tabela-vergonha td, .tabela-vergonha th { padding: 8px 5px; }
+  }
+  .nota-redacao {
+    background: var(--amarelo); color: var(--asfalto);
+    padding: 10px 13px; margin-top: 4px; font-size: 13.5px; line-height: 1.45;
+  }
+  .rodape-tabela { margin-top: 10px; font-size: 12.5px; line-height: 1.5; color: rgba(243,239,228,.65); }
 
   /* Tabelas */
+  /* As do draft têm coluna por posição e não cabem em tela de celular:
+     rolam dentro da própria caixa em vez de empurrar a página inteira. */
+  #draftTimes, #draftPicks { overflow-x: auto; }
+  #draftTimes table, #draftPicks table { min-width: 480px; }
   table { width: 100%; border-collapse: collapse; background: var(--cal); color: var(--asfalto); font-size: 15px; }
   th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(28,28,28,.15); }
   th { font-weight: 800; background: var(--amarelo); }
@@ -203,23 +254,24 @@
 </head>
 <body>
 <header>
-  <div class="cabeca">
-    <h1 class="display">Hall da<span>Vergonha</span></h1>
-    <p id="sub">Buscando a liga no Sleeper…</p>
-    <div class="status carregando" id="status">carregando rodadas</div>
+  <div class="expediente-topo">
+    <span id="edicao">Ano II</span>
+    <span>Terça, 10h</span>
   </div>
-  <img class="avatar" src="assets/pururuca-avatar.jpg" alt="Seu Pururuca, o colunista da liga">
+  <h1 class="display">Pururuca Bowl</h1>
+  <div class="slogan">O jornal da vergonha alheia</div>
+  <div class="status carregando" id="status">carregando rodadas</div>
 </header>
 
 <nav id="nav" aria-label="Seções">
   <button data-sec="draft" aria-current="true">Draft</button>
   <button data-sec="rodada">Rodada</button>
   <button data-sec="jornal">Jornal</button>
-  <button data-sec="vergonha">Ranking da vergonha</button>
-  <button data-sec="rival">Rivalidades</button>
+  <button data-sec="vergonha">Vergonha</button>
+  <button data-sec="rival">Rivais</button>
   <button data-sec="fichas">Fichas</button>
-  <a href="temporada-2025.html" style="flex:1 0 auto;padding:12px 16px;font-weight:700;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(243,239,228,.2)">2025</a>
 </nav>
+<a class="tarja" href="temporada-2025.html" style="display:block;text-decoration:none">Arquivo: a temporada de 2025 ›</a>
 
 <main>
   <section id="sec-draft">
@@ -253,7 +305,6 @@
 
   <section id="sec-vergonha" hidden>
     <h2 class="display">Ranking da vergonha</h2>
-    <p>Alface vale 2, Cadeirada 1, Vexame 2, Pé Frio 3. Quem lidera, lidera por mérito.</p>
     <div id="vergonha"></div>
   </section>
 
@@ -319,21 +370,20 @@ $("#nav").addEventListener("click", (e) => {
       getJSON(`/state/nfl`),
     ]);
 
-    const nomes = {}; // roster_id -> {manager, time}
-    for (const r of rosters) {
-      const u = users.find(x => x.user_id === r.owner_id) || {};
-      nomes[r.roster_id] = {
-        manager: u.display_name || `Roster ${r.roster_id}`,
-        time: (u.metadata && u.metadata.team_name) || u.display_name || `Time ${r.roster_id}`,
-      };
-    }
+    // Uma construção só: antes havia esta cópia e a de montaNomes, e as duas
+    // saíam de sincronia — foi assim que o escudo do time não chegou na tabela.
+    const nomes = montaNomes(users, rosters);
 
     window.__nomes = nomes;
     const playoffStart = (league.settings && league.settings.playoff_week_start) || 15;
     const semanaAtual = state.season === league.season ? state.week : playoffStart;
     const ultima = Math.min(semanaAtual, playoffStart - 1);
 
-    $("#sub").textContent = `${league.name} — temporada ${league.season}`;
+    // O nome da liga já está no cabeçalho; aqui vai só a edição.
+    // 2025 foi a primeira temporada no Sleeper, então é o Ano I.
+    const ROMANO = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+    const ano = ROMANO[Number(league.season) - 2025];
+    $("#edicao").textContent = ano ? `Ano ${ano} · temporada ${league.season}` : `Temporada ${league.season}`;
 
     // busca todas as rodadas em paralelo
     const semanas = [];
@@ -410,7 +460,16 @@ function montaNomes(users, rosters) {
   const n = {};
   for (const r of rosters) {
     const u = users.find(x => x.user_id === r.owner_id) || {};
-    n[r.roster_id] = { manager: u.display_name || `Roster ${r.roster_id}`, time: (u.metadata && u.metadata.team_name) || u.display_name || `Time ${r.roster_id}` };
+    // Escudo em cascata: imagem do time quando existe, senão o avatar do manager.
+    // Nem todo mundo põe imagem no time, então nunca dá para contar com uma só.
+    const escudo = (u.metadata && u.metadata.avatar)
+      || (u.avatar ? `https://sleepercdn.com/avatars/thumbs/${u.avatar}` : null);
+    n[r.roster_id] = {
+      manager: u.display_name || `Roster ${r.roster_id}`,
+      // O Sleeper devolve nome de time com espaço sobrando nas pontas.
+      time: ((u.metadata && u.metadata.team_name) || "").trim() || u.display_name || `Time ${r.roster_id}`,
+      escudo,
+    };
   }
   return n;
 }
@@ -493,7 +552,7 @@ function renderDraft(draft, picks, users, rosters, nomes) {
     premios.push({ rot: "Mr. Irrelevant", quem: donoDe(ult), txt: `Fechou o draft com ${nomeJ(ult)}. Alguém tinha que ser.` });
   }
   $("#draftPremios").innerHTML = premios.length
-    ? premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${p.rot}</div><div class="corpo"><div class="quem">${p.quem}</div><p class="porque">${p.txt}</p></div></article>`).join("")
+    ? premios.map(p => `<article class="premio sem-retrato ${p.ruim ? "vermelho" : ""}"><div class="corpo"><span class="etiqueta">${p.rot}</span><div class="quem">${p.quem}</div><p class="porque">${p.txt}</p></div></article>`).join("")
     : `<p class="vazio">Poucas escolhas ainda para julgar alguém. Aguarde.</p>`;
 
   // tabela por manager
@@ -519,8 +578,9 @@ function renderRodada(rodadas) {
     const r = rodadas.find(x => x.semana == sel.value);
     $("#premios").innerHTML = r.premios.map(p => `
       <article class="premio ${p.tipo === "vexame" || p.tipo === "pefrio" ? "vermelho" : ""}">
-        <div class="selo"><img src="${RETRATO[p.tipo]}" alt="" loading="lazy">${ROTULO[p.tipo]}</div>
+        <img class="retrato-premio" src="${RETRATO[p.tipo]}" alt="" loading="lazy">
         <div class="corpo">
+          <span class="etiqueta">${ROTULO[p.tipo]}</span>
           <div class="quem">${nomeDe(p.roster)}</div>
           <p class="porque">${p.texto}</p>
         </div>
@@ -529,7 +589,8 @@ function renderRodada(rodadas) {
   sel.addEventListener("change", desenha);
   desenha();
 
-  function nomeDe(roster) { return window.__nomes[roster].manager; }
+  // Jornal fala do time, não do usuário: "o Custelinha perdeu", não "DanielBrankito perdeu".
+  function nomeDe(roster) { return window.__nomes[roster].time; }
 }
 
 // Emblemas dos comentaristas convidados: um objeto por personagem, nunca um rosto.
@@ -627,17 +688,36 @@ async function renderJornal(rodadas, temporada) {
   desenha();
 }
 
+// Escolhe uma frase curta do meio da coluna para virar olho — o destaque entre
+// fios que quebra a parede de texto. Regra, não campo novo: vale para as edições
+// que já foram publicadas.
+function escolheOlho(paras) {
+  const frases = paras.slice(1).join(" ").split(/(?<=[.!?])\s+/).map(s => s.trim())
+    .filter(s => s.length >= 45 && s.length <= 105);
+  return frases.sort((a, b) => a.length - b.length)[0] || null;
+}
+
 function jornalEscrito(d) {
-  const paras = (t) => String(t || "").split(/\n{2,}/).filter(Boolean).map(x => `<p>${esc(x)}</p>`).join("");
-  return `<div class="expediente">Rodada ${d.semana} · ${d.temporada}${d.playoffs ? " · playoffs" : ""} · comentarista convidado: ${esc(d.comentarista)}</div>
-    <article class="manchete"><h4>${esc(d.manchete)}</h4></article>
+  const paras = String(d.coluna.texto || "").split(/\n{2,}/).map(s => s.trim()).filter(Boolean);
+  const olho = escolheOlho(paras);
+  const corpo = paras.map((p, i) => {
+    const bloco = `<p${i === 0 ? ' class="lede"' : i === 1 ? ' class="capitular"' : ""}>${esc(p)}</p>`;
+    // o olho entra depois do segundo parágrafo, onde o texto começaria a cansar
+    return i === 1 && olho ? `${bloco}<div class="olho">“${esc(olho)}”</div>` : bloco;
+  }).join("");
+
+  return `<div class="expediente">Rodada ${d.semana} · ${d.temporada}${d.playoffs ? " · playoffs" : ""} · convidado: ${esc(d.comentarista)}</div>
     <article class="coluna">
-      <img src="assets/pururuca-jornal.jpg" alt="Seu Pururuca no balcão do boteco">
-      <div class="texto">
-        <h4>${esc(d.coluna.titulo)}</h4>
-        ${paras(d.coluna.texto)}
-        ${d.coluna.vitima ? `<span class="vitima">Vítima da semana: ${esc(d.coluna.vitima)}</span>` : ""}
+      <h4>${esc(d.manchete)}</h4>
+      <div class="assinatura">
+        <img src="assets/pururuca-jornal.jpg" alt="Seu Pururuca no balcão do boteco">
+        <div>
+          <b>Coluna do Seu Pururuca</b>
+          <span>${esc(d.coluna.titulo)}</span>
+        </div>
       </div>
+      ${corpo}
+      ${d.coluna.vitima ? `<span class="vitima">Vítima da semana: ${esc(d.coluna.vitima)}</span>` : ""}
     </article>
     ${(d.confrontos || []).length ? `<div class="convidado">
       ${figuraDe(d.comentarista)}
@@ -672,12 +752,16 @@ function renderVergonha(rodadas, nomes) {
   for (const r of rodadas) for (const p of r.premios) if (PESO[p.tipo]) { tot[p.roster][p.tipo]++; tot[p.roster].pontos += PESO[p.tipo]; }
   const lista = Object.entries(tot).map(([id, t]) => ({ id, ...t })).sort((a, b) => b.pontos - a.pontos);
   if (!rodadas.length) { $("#vergonha").innerHTML = `<p class="vazio">Ainda ninguém passou vergonha. Vai passar.</p>`; return; }
-  $("#vergonha").innerHTML = `<table>
-    <thead><tr><th>#</th><th>Manager</th><th class="num">Alface</th><th class="num">Cadeirada</th><th class="num">Vexame</th><th class="num">Pé Frio</th><th class="num">Vergonha</th></tr></thead>
+  const lider = lista[0];
+  $("#vergonha").innerHTML = `<table class="tabela-vergonha">
+    <thead><tr><th></th><th>Time</th><th class="num crime">Cem</th><th class="num crime">Cho</th><th class="num crime">Vex</th><th class="num crime">Vár</th><th class="num">Pts</th></tr></thead>
     <tbody>${lista.map((t, i) => `<tr class="${i === 0 && t.pontos > 0 ? "lider" : ""}">
-      <td>${i + 1}</td><td><strong>${nomes[t.id].manager}</strong></td>
-      <td class="num">${t.alface}</td><td class="num">${t.cadeirada}</td><td class="num">${t.vexame}</td><td class="num">${t.pefrio}</td>
-      <td class="num"><strong>${t.pontos}</strong></td></tr>`).join("")}</tbody></table>`;
+      <td class="pos">${i + 1}</td>
+      <td><span class="time">${nomes[t.id].escudo ? `<img src="${nomes[t.id].escudo}" alt="" loading="lazy">` : ""}<span>${esc(nomes[t.id].time)}<span class="detalhe">${t.alface} cem · ${t.cadeirada} cho · ${t.vexame} vex · ${t.pefrio} vár</span></span></span></td>
+      <td class="num crime">${t.alface}</td><td class="num crime">${t.cadeirada}</td><td class="num crime">${t.vexame}</td><td class="num crime">${t.pefrio}</td>
+      <td class="num tot">${t.pontos}</td></tr>`).join("")}</tbody></table>
+    ${lider && lider.pontos > 0 ? `<div class="nota-redacao"><strong>Nota da redação:</strong> ${esc(nomes[lider.id].time)} lidera com ${lider.pontos} pontos de vergonha. Ninguém chega a esse número por acaso.</div>` : ""}
+    <p class="rodape-tabela"><strong>Como se pontua:</strong> ${ROTULO.alface} e ${ROTULO.vexame} valem 2. ${ROTULO.pefrio} vale 3, porque não pontuar é pior que perder feio. ${ROTULO.cadeirada} vale 1 — perder por pouco ainda é perder.</p>`;
 }
 
 function renderRival(historico, nomeUser) {
