@@ -50,6 +50,11 @@ jobs:
       - name: Instala o SDK da Anthropic
         run: npm install --no-save --no-audit --no-fund @anthropic-ai/sdk
 
+      - name: Atualiza o mapa de nomes que o site usa
+        env:
+          LEAGUE_ID: ${{ inputs.league_id }}
+        run: node scripts/jornal.mjs --jogadores
+
       - name: Edição especial do draft, se ele tiver fechado
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -73,12 +78,12 @@ jobs:
 
       - name: Commita a edição
         run: |
-          if [ -z "$(git status --porcelain data/jornal)" ]; then
+          if [ -z "$(git status --porcelain data)" ]; then
             echo "Nada novo para commitar."
             exit 0
           fi
           git config user.name "Seu Pururuca"
           git config user.email "actions@github.com"
-          git add data/jornal
-          git commit -m "Jornal: edição de $(date -u +%d/%m/%Y)"
+          git add data
+          git commit -m "Jornal: atualização de $(date -u +%d/%m/%Y)"
           git push

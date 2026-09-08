@@ -12,6 +12,7 @@
 //   SEMANA=3 node scripts/jornal.mjs     # força uma semana específica
 //   FORCE=1 node scripts/jornal.mjs      # regrava uma edição que já existe
 //   node scripts/jornal.mjs --draft      # edição especial do draft, só quando ele fecha
+//   node scripts/jornal.mjs --jogadores  # atualiza o mapa de nomes que o site usa
 
 import fs from "node:fs";
 import path from "node:path";
@@ -786,6 +787,45 @@ async function edicaoDoDraft(league, nomes) {
   await telegram(textoDraft(jornal));
 }
 
+// ---------- Mapa de nomes ----------
+// O site precisa mostrar nome de jogador nas movimentações, mas a lista do
+// Sleeper tem 5 MB e não pode ser baixada no navegador. Aqui, no servidor,
+// a gente recorta só quem está em algum elenco da liga: uns 200 registros.
+async function mapaDeJogadores(league) {
+  const [rosters, picks, players] = await Promise.all([
+    sleeper(`/league/${LEAGUE_ID}/rosters`),
+    sleeper(`/draft/${league.draft_id}/picks`).catch(() => []),
+    getJSON("https://api.sleeper.app/v1/players/nfl"),
+  ]);
+  const ids = new Set();
+  for (const r of rosters) for (const id of [...(r.players || []), ...(r.taxi || []), ...(r.reserve || [])]) ids.add(id);
+  // Enquanto o draft não fecha, roster.players vem vazio: as picks são a fonte.
+  for (const pk of picks || []) if (pk.player_id) ids.add(String(pk.player_id));
+
+  // Quem entrou ou saiu por transação também precisa de nome, mesmo já dispensado.
+  const ps = league.settings?.playoff_week_start || 15;
+  const semanas = await Promise.all(
+    Array.from({ length: ps + 3 }, (_, i) => sleeper(`/league/${LEAGUE_ID}/transactions/${i + 1}`).catch(() => [])),
+  );
+  for (const lote of semanas)
+    for (const tr of lote || [])
+      for (const id of [...Object.keys(tr.adds || {}), ...Object.keys(tr.drops || {})]) ids.add(id);
+
+  const mapa = {};
+  for (const id of ids) {
+    const p = players[id];
+    if (!p) continue;
+    mapa[id] = {
+      n: p.full_name || `${p.first_name || ""} ${p.last_name || ""}`.trim() || id,
+      p: p.position || "?",
+      t: p.team || "FA",
+    };
+  }
+  fs.mkdirSync("data", { recursive: true });
+  fs.writeFileSync("data/jogadores.json", JSON.stringify(mapa) + "\n");
+  console.log(`data/jogadores.json: ${Object.keys(mapa).length} jogadores.`);
+}
+
 async function main() {
   const [league, users, rosters] = await Promise.all([
     sleeper(`/league/${LEAGUE_ID}`),
@@ -794,6 +834,11 @@ async function main() {
   ]);
   const nomes = montaNomes(users, rosters);
   const donoDe = Object.fromEntries(rosters.map((r) => [r.roster_id, r.owner_id]));
+
+  if (process.argv.includes("--jogadores")) {
+    await mapaDeJogadores(league);
+    return;
+  }
 
   if (process.argv.includes("--draft")) {
     await edicaoDoDraft(league, nomes);

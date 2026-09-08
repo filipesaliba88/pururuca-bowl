@@ -67,7 +67,7 @@
     position: sticky; top: 0; z-index: 2;
   }
   nav button {
-    flex: 1 1 auto; min-width: 33.333%; padding: 11px 8px; text-align: center;
+    flex: 1 1 auto; min-width: 25%; padding: 11px 5px; text-align: center; font-size: 14px;
     background: none; border: 0; border-right: 1px solid rgba(243,239,228,.2);
     color: var(--cal); font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap;
   }
@@ -185,6 +185,41 @@
   .confronto .vereditos { margin: 11px 0 0; display: grid; gap: 7px; font-size: 14.5px; line-height: 1.45; }
   .confronto .vereditos b { font-family: "Anton", sans-serif; font-weight: 400; font-size: 16px; letter-spacing: .01em; }
 
+  /* A liga: classificação, próximo confronto, movimentações */
+  .tabela-liga .pos { font-family: "Anton", sans-serif; font-size: 17px; color: var(--cinza); width: 26px; }
+  .tabela-liga .time { display: flex; align-items: center; gap: 8px; }
+  .tabela-liga .time img { width: 24px; height: 24px; object-fit: cover; flex: none; border: 1px solid var(--asfalto); }
+  .tabela-liga .time span { font-weight: 800; line-height: 1.15; }
+  .tabela-liga tr.corte td { border-bottom: 3px solid var(--vermelho); }
+  .tabela-liga .detalhe { display: none; margin-top: 2px; font-weight: 400; font-size: 11.5px; color: var(--cinza); }
+  /* Cinco colunas não cabem em 375px: os pontos descem para baixo do nome
+     em vez de espremer ou truncar o nome do time. */
+  @media (max-width: 460px) {
+    .tabela-liga th.pontos, .tabela-liga td.pontos { display: none; }
+    .tabela-liga .detalhe { display: block; }
+    .tabela-liga td, .tabela-liga th { padding: 8px 5px; }
+  }
+  .legenda-corte { margin-top: 8px; font-size: 12.5px; color: var(--cinza); }
+  .legenda-corte b { color: var(--vermelho); }
+
+  .duelo {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px;
+    background: var(--cal); color: var(--asfalto); padding: 11px 13px; margin-bottom: 4px;
+  }
+  .duelo .lado { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .duelo .lado.dir { flex-direction: row-reverse; text-align: right; }
+  .duelo .lado img { width: 30px; height: 30px; object-fit: cover; flex: none; border: 1px solid var(--asfalto); }
+  .duelo .lado b { font-size: 14px; line-height: 1.15; }
+  .duelo .lado i { display: block; font-style: normal; font-size: 11.5px; color: var(--cinza); }
+  .duelo .x { font-family: "Anton", sans-serif; font-size: 15px; color: var(--cinza); }
+
+  .mov { background: var(--cal); color: var(--asfalto); padding: 10px 13px; margin-bottom: 4px; font-size: 14px; line-height: 1.45; }
+  .mov .tipo { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 2px 6px; background: var(--asfalto); color: var(--cal); }
+  .mov .tipo.trade { background: var(--vermelho); }
+  .mov .quem { font-weight: 800; }
+  .mov .entrou { color: #1C7C4A; font-weight: 700; }
+  .mov .saiu { color: var(--vermelho); }
+
   /* Classificação da vergonha: tabela de caderno de esportes */
   .tabela-vergonha th { background: var(--asfalto); color: var(--cal); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
   .tabela-vergonha td { padding: 7px 6px; }
@@ -265,6 +300,7 @@
 </header>
 
 <nav id="nav" aria-label="Seções">
+  <button data-sec="liga">Liga</button>
   <button data-sec="draft" aria-current="true">Draft</button>
   <button data-sec="rodada">Rodada</button>
   <button data-sec="jornal">Jornal</button>
@@ -275,6 +311,14 @@
 <a class="tarja" href="temporada-2025.html" style="display:block;text-decoration:none">Arquivo: a temporada de 2025 ›</a>
 
 <main>
+  <section id="sec-liga" hidden>
+    <h2 class="display">A liga</h2>
+    <div id="proxima"></div>
+    <h3>Classificação</h3>
+    <div id="classificacao"></div>
+    <h3>Movimentações</h3>
+    <div id="movs"></div>
+  </section>
   <section id="sec-draft">
     <h2 class="display">Draft</h2>
     <div class="ilustra">
@@ -436,6 +480,7 @@ function draftEncerrado() {
       $("#draftStatus").textContent = `Draft indisponível: ${e.message}`;
     }
 
+    renderLiga(league, rosters, nomes, state, transacoes);
     renderRodada(rodadas);
     renderJornal(rodadas, Number(league.season));
     renderVergonha(rodadas, nomes);
@@ -590,6 +635,87 @@ function renderDraft(draft, picks, users, rosters, nomes) {
   $("#draftPicks").innerHTML = ult.length ? `<table><thead><tr><th class="num">Pick</th><th>Rod.</th><th>Manager</th><th>Jogador</th><th>Pos</th></tr></thead>
     <tbody>${ult.map(pk => `<tr><td class="num">${pk.pick_no}</td><td>${pk.round}</td><td>${donoDe(pk)}</td><td>${nomeJ(pk)}</td><td>${pk.metadata?.position || ""} ${pk.metadata?.team || ""}</td></tr>`).join("")}</tbody></table>`
     : `<p class="vazio">Ainda sem picks.</p>`;
+}
+
+// ---------- A liga ----------
+// Classificação, o confronto que vem e o que aconteceu no mercado.
+// Tudo com dado que o site já baixa; o mapa de nomes vem de data/jogadores.json,
+// que a Action recorta no servidor porque a lista do Sleeper tem 5 MB.
+async function renderLiga(league, rosters, nomes, state, transacoes) {
+  const vagas = league.settings?.playoff_teams || 6;
+
+  // --- classificação ---
+  const tab = rosters.map(r => {
+    const s = r.settings || {};
+    return {
+      id: r.roster_id, v: s.wins || 0, d: s.losses || 0, e: s.ties || 0,
+      pf: (s.fpts || 0) + (s.fpts_decimal || 0) / 100,
+      pa: (s.fpts_against || 0) + (s.fpts_against_decimal || 0) / 100,
+    };
+  }).sort((a, b) => b.v - a.v || b.pf - a.pf);
+
+  const jogou = tab.some(c => c.v + c.d > 0);
+  $("#classificacao").innerHTML = !jogou
+    ? `<p class="vazio">A temporada ainda não começou. A tabela aparece depois da primeira rodada.</p>`
+    : `<table class="tabela-liga">
+        <thead><tr><th></th><th>Time</th><th class="num">V–D</th><th class="num pontos">Pró</th><th class="num pontos">Contra</th></tr></thead>
+        <tbody>${tab.map((c, i) => `<tr class="${i + 1 === vagas ? "corte" : ""}">
+          <td class="pos">${i + 1}</td>
+          <td><span class="time">${nomes[c.id].escudo ? `<img src="${nomes[c.id].escudo}" alt="" loading="lazy">` : ""}<span>${esc(nomes[c.id].time)}<span class="detalhe">${fmt(c.pf)} pró · ${fmt(c.pa)} contra</span></span></span></td>
+          <td class="num">${c.v}–${c.d}${c.e ? "–" + c.e : ""}</td>
+          <td class="num pontos">${fmt(c.pf)}</td>
+          <td class="num pontos">${fmt(c.pa)}</td></tr>`).join("")}</tbody></table>
+      <p class="legenda-corte">A linha <b>vermelha</b> é o corte: os ${vagas} primeiros vão aos playoffs, que começam na rodada ${league.settings?.playoff_week_start || 15}.${league.settings?.trade_deadline ? ` Trades até a rodada ${league.settings.trade_deadline}.` : ""}</p>`;
+
+  // --- o confronto que vem ---
+  const semana = state.season === league.season ? state.week : null;
+  const alvo = $("#proxima");
+  if (!semana) { alvo.innerHTML = ""; }
+  else {
+    const ms = await getJSON(`/league/${LEAGUE_ID}/matchups/${semana}`).catch(() => []);
+    const por = {};
+    for (const m of ms || []) if (m.matchup_id) (por[m.matchup_id] ||= []).push(m);
+    const duelos = Object.values(por).filter(x => x.length === 2);
+    const posDe = {}; tab.forEach((c, i) => posDe[c.id] = i + 1);
+    const lado = (m, dir) => {
+      const n = nomes[m.roster_id];
+      return `<div class="lado ${dir}">${n.escudo ? `<img src="${n.escudo}" alt="" loading="lazy">` : ""}
+        <div><b>${esc(n.time)}</b><i>${posDe[m.roster_id]}º${jogou ? ` · ${tab.find(c => c.id === m.roster_id).v}–${tab.find(c => c.id === m.roster_id).d}` : ""}</i></div></div>`;
+    };
+    alvo.innerHTML = duelos.length
+      ? `<div class="expediente">Rodada ${semana} · os confrontos</div>`
+        + duelos.map(([a, b]) => `<div class="duelo">${lado(a, "")}<span class="x">×</span>${lado(b, "dir")}</div>`).join("")
+      : `<p class="vazio">A tabela de jogos da rodada ${semana} ainda não saiu no Sleeper.</p>`;
+  }
+
+  // --- movimentações ---
+  let jogadores = {};
+  try {
+    const r = await fetch("data/jogadores.json", { cache: "no-cache" });
+    if (r.ok) jogadores = await r.json();
+  } catch { /* sem o mapa, mostramos sem nome */ }
+  const nomeJog = id => jogadores[id] ? `${jogadores[id].n} (${jogadores[id].p})` : `jogador ${id}`;
+
+  const todas = (transacoes || []).flat()
+    .filter(x => x && x.status === "complete")
+    .sort((a, b) => (b.status_updated || 0) - (a.status_updated || 0))
+    .slice(0, 12);
+
+  const ROTULO_MOV = { trade: "Trade", waiver: "Waiver", free_agent: "Free agent" };
+  $("#movs").innerHTML = todas.length
+    ? todas.map(tr => {
+        const quem = (tr.roster_ids || []).map(r => esc(nomes[r]?.time || "?")).join(" e ");
+        const entrou = Object.keys(tr.adds || {}).map(nomeJog);
+        const saiu = Object.keys(tr.drops || {}).map(nomeJog);
+        const lance = tr.settings?.waiver_bid;
+        return `<div class="mov">
+          <span class="tipo ${tr.type === "trade" ? "trade" : ""}">${ROTULO_MOV[tr.type] || tr.type}</span>
+          <span class="quem"> ${quem}</span>${lance ? ` · ${lance} de FAAB` : ""}
+          ${entrou.length ? `<div><span class="entrou">entrou:</span> ${entrou.map(esc).join(", ")}</div>` : ""}
+          ${saiu.length ? `<div><span class="saiu">saiu:</span> ${saiu.map(esc).join(", ")}</div>` : ""}
+        </div>`;
+      }).join("")
+    : `<p class="vazio">Nenhuma movimentação ainda. O mercado abre junto com a temporada.</p>`;
 }
 
 function renderRodada(rodadas) {
