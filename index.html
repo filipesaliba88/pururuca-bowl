@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hall da Vergonha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --grama: #0F3D2E;
+    --grama-escura: #0A2B20;
+    --cal: #F3EFE4;
+    --amarelo: #F5C518;
+    --vermelho: #D0342C;
+    --asfalto: #1C1C1C;
+    --cinza: #6B6B63;
+  }
+  * { box-sizing: border-box; }
+  html { background: #0F3D2E; background: var(--grama); }
+  body {
+    margin: 0;
+    font-family: "Archivo", system-ui, sans-serif;
+    font-variation-settings: "wdth" 100;
+    color: #F3EFE4;
+    color: var(--cal);
+    background-color: #0F3D2E;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(243,239,228,.12) calc(10% - 1px) 10%),
+      var(--grama);
+    line-height: 1.45;
+  }
+  a { color: inherit; }
+  .display { font-family: "Archivo Black", "Archivo", sans-serif; font-weight: 400; letter-spacing: -.01em; }
+
+  header {
+    padding: 28px 20px 20px;
+    border-bottom: 3px solid var(--cal);
+  }
+  header h1 {
+    margin: 0;
+    font-size: clamp(38px, 11vw, 96px);
+    line-height: .92;
+    text-transform: uppercase;
+  }
+  header h1 span { display: block; color: var(--amarelo); }
+  header p { margin: 12px 0 0; color: rgba(243,239,228,.75); max-width: 60ch; }
+  .status { margin-top: 6px; font-size: 14px; color: var(--amarelo); }
+
+  nav {
+    display: flex; gap: 0; overflow-x: auto;
+    border-bottom: 3px solid var(--cal);
+    background: var(--grama-escura);
+    position: sticky; top: 0; z-index: 2;
+  }
+  nav button {
+    flex: 1 0 auto; padding: 12px 16px;
+    background: none; border: 0; border-right: 1px solid rgba(243,239,228,.2);
+    color: var(--cal); font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap;
+  }
+  nav button[aria-current="true"] { background: var(--amarelo); color: var(--asfalto); }
+  nav button:focus-visible { outline: 3px solid var(--amarelo); outline-offset: -3px; }
+
+  main { padding: 20px; max-width: 980px; margin: 0 auto; }
+  section[hidden] { display: none; }
+  h2 { margin: 8px 0 16px; font-size: clamp(26px, 6vw, 40px); text-transform: uppercase; line-height: 1; }
+  h3 { margin: 24px 0 8px; font-size: 18px; }
+
+  /* Rodada / prêmios */
+  .rodada-sel { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .rodada-sel select { font: inherit; padding: 8px 12px; background: var(--cal); color: var(--asfalto); border: 0; font-weight: 700; }
+
+  .premio {
+    display: grid; grid-template-columns: 96px 1fr; gap: 14px;
+    background: var(--cal); color: var(--asfalto);
+    margin-bottom: 4px;
+  }
+  .premio .selo {
+    display: grid; place-items: center; padding: 12px 8px;
+    font-family: "Archivo Black"; font-size: 12px; line-height: 1.1; text-align: center; text-transform: uppercase;
+    background: var(--amarelo);
+  }
+  .premio.vermelho .selo { background: var(--vermelho); color: var(--cal); }
+  .premio .corpo { padding: 12px 14px 12px 0; }
+  .premio .quem { font-size: 22px; font-family: "Archivo Black"; line-height: 1.05; }
+  .premio .porque { margin: 4px 0 0; color: var(--cinza); font-size: 15px; }
+
+  /* Jornal */
+  .manchete {
+    background: var(--cal); color: var(--asfalto);
+    padding: 16px 18px; margin-bottom: 4px;
+  }
+  .manchete h4 { margin: 0; font-family: "Archivo Black"; font-size: clamp(22px, 5.5vw, 34px); line-height: 1; text-transform: uppercase; }
+  .manchete p { margin: 8px 0 0; color: var(--cinza); font-size: 15px; }
+
+  /* Tabelas */
+  table { width: 100%; border-collapse: collapse; background: var(--cal); color: var(--asfalto); font-size: 15px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(28,28,28,.15); }
+  th { font-weight: 800; background: var(--amarelo); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.lider td { background: #FFF6CF; }
+  tr.lanterna td { background: #FDE1DE; }
+
+  /* Rivalidade */
+  .rival {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px;
+    background: var(--cal); color: var(--asfalto); padding: 12px 14px; margin-bottom: 4px;
+  }
+  .rival .lado { font-weight: 800; }
+  .rival .lado.dir { text-align: right; }
+  .rival .placar { font-family: "Archivo Black"; font-size: 26px; padding: 0 10px; background: var(--asfalto); color: var(--amarelo); }
+  .rival .obs { grid-column: 1 / -1; color: var(--cinza); font-size: 14px; }
+
+  /* Ficha */
+  .ficha {
+    background: var(--cal); color: var(--asfalto); padding: 16px 18px; margin-bottom: 6px;
+  }
+  .ficha .nome { font-family: "Archivo Black"; font-size: 24px; line-height: 1; }
+  .ficha .time { color: var(--cinza); margin-top: 2px; }
+  .ficha dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px 16px; margin: 12px 0 0; }
+  .ficha dt { font-size: 13px; color: var(--cinza); }
+  .ficha dd { margin: 0; font-weight: 800; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .ficha .crimes { margin-top: 12px; font-size: 14px; }
+  .ficha .crimes span { display: inline-block; background: var(--asfalto); color: var(--amarelo); padding: 3px 8px; margin: 3px 4px 0 0; font-weight: 700; }
+
+  .aviso { background: var(--vermelho); color: var(--cal); padding: 16px 18px; font-weight: 700; }
+  .aviso code { display: block; margin-top: 8px; font-weight: 400; font-size: 13px; word-break: break-all; }
+  .vazio { color: rgba(243,239,228,.7); }
+  footer { padding: 24px 20px 40px; color: rgba(243,239,228,.55); font-size: 13px; text-align: center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .carregando { animation: pisca 1s steps(2) infinite; }
+    @keyframes pisca { to { opacity: .35; } }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1 class="display">Hall da<span>Vergonha</span></h1>
+  <p id="sub">Buscando a liga no Sleeper…</p>
+  <div class="status carregando" id="status">carregando rodadas</div>
+</header>
+
+<nav id="nav" aria-label="Seções">
+  <button data-sec="draft" aria-current="true">Draft</button>
+  <button data-sec="rodada">Rodada</button>
+  <button data-sec="jornal">Jornal</button>
+  <button data-sec="vergonha">Ranking da vergonha</button>
+  <button data-sec="rival">Rivalidades</button>
+  <button data-sec="fichas">Fichas</button>
+</nav>
+
+<main>
+  <section id="sec-draft">
+    <h2 class="display">Draft</h2>
+    <p id="draftStatus" class="vazio"></p>
+    <div id="draftPremios"></div>
+    <h3>Quem pegou o quê</h3>
+    <div id="draftTimes"></div>
+    <h3>Últimas escolhas</h3>
+    <div id="draftPicks"></div>
+  </section>
+  <section id="sec-rodada" hidden>
+    <div class="rodada-sel">
+      <h2 class="display" style="margin:0">Prêmios da rodada</h2>
+      <select id="selRodada" aria-label="Escolher rodada"></select>
+    </div>
+    <div id="premios"></div>
+  </section>
+
+  <section id="sec-jornal" hidden>
+    <h2 class="display">Jornal da liga</h2>
+    <div id="jornal"></div>
+  </section>
+
+  <section id="sec-vergonha" hidden>
+    <h2 class="display">Ranking da vergonha</h2>
+    <p>Alface vale 2, Cadeirada 1, Vexame 2, Pé Frio 3. Quem lidera, lidera por mérito.</p>
+    <div id="vergonha"></div>
+  </section>
+
+  <section id="sec-rival" hidden>
+    <h2 class="display">Termômetro de rivalidade</h2>
+    <div id="rival"></div>
+  </section>
+
+  <section id="sec-fichas" hidden>
+    <h2 class="display">Ficha criminal</h2>
+    <div id="fichas"></div>
+  </section>
+</main>
+
+<footer>Dados: API pública do Sleeper. Atualiza sozinho toda vez que a página abre.</footer>
+
+<script>
+const LEAGUE_ID = "1389719862191849472";
+const API = "https://api.sleeper.app/v1";
+
+const PESO = { alface: 2, cadeirada: 1, vexame: 2, pefrio: 3 };
+const ROTULO = { alface: "Mão de Alface", cadeirada: "Cadeirada", vexame: "Vexame", pefrio: "Pé Frio", canhao: "Canhão" };
+
+const $ = (s) => document.querySelector(s);
+const fmt = (n) => (Math.round(n * 100) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+async function getJSON(path) {
+  const r = await fetch(`${API}${path}`);
+  if (!r.ok) throw new Error(`${r.status} em ${path}`);
+  return r.json();
+}
+
+// ---------- Navegação ----------
+$("#nav").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll("#nav button").forEach(x => x.removeAttribute("aria-current"));
+  b.setAttribute("aria-current", "true");
+  document.querySelectorAll("main section").forEach(s => s.hidden = s.id !== `sec-${b.dataset.sec}`);
+});
+
+// ---------- Carga ----------
+(async function main() {
+  try {
+    const [league, users, rosters, state] = await Promise.all([
+      getJSON(`/league/${LEAGUE_ID}`),
+      getJSON(`/league/${LEAGUE_ID}/users`),
+      getJSON(`/league/${LEAGUE_ID}/rosters`),
+      getJSON(`/state/nfl`),
+    ]);
+
+    const nomes = {}; // roster_id -> {manager, time}
+    for (const r of rosters) {
+      const u = users.find(x => x.user_id === r.owner_id) || {};
+      nomes[r.roster_id] = {
+        manager: u.display_name || `Roster ${r.roster_id}`,
+        time: (u.metadata && u.metadata.team_name) || u.display_name || `Time ${r.roster_id}`,
+      };
+    }
+
+    window.__nomes = nomes;
+    const playoffStart = (league.settings && league.settings.playoff_week_start) || 15;
+    const semanaAtual = state.season === league.season ? state.week : playoffStart;
+    const ultima = Math.min(semanaAtual, playoffStart - 1);
+
+    $("#sub").textContent = `${league.name} — temporada ${league.season}`;
+
+    // busca todas as rodadas em paralelo
+    const semanas = [];
+    for (let w = 1; w <= ultima; w++) semanas.push(w);
+    const [matchups, transacoes] = await Promise.all([
+      Promise.all(semanas.map(w => getJSON(`/league/${LEAGUE_ID}/matchups/${w}`))),
+      Promise.all(semanas.map(w => getJSON(`/league/${LEAGUE_ID}/transactions/${w}`).catch(() => []))),
+    ]);
+
+    const rodadas = semanas
+      .map((w, i) => processaRodada(w, matchups[i], nomes))
+      .filter(r => r); // descarta rodadas sem pontuação
+
+    $("#status").classList.remove("carregando");
+    $("#status").textContent = rodadas.length
+      ? `${rodadas.length} rodada${rodadas.length > 1 ? "s" : ""} computada${rodadas.length > 1 ? "s" : ""}`
+      : "nenhuma rodada pontuada ainda";
+
+    // draft (só depende do league.draft_id)
+    try {
+      const [draft, picks] = await Promise.all([
+        getJSON(`/draft/${league.draft_id}`),
+        getJSON(`/draft/${league.draft_id}/picks`),
+      ]);
+      renderDraft(draft, picks, users, rosters, nomes);
+    } catch (e) {
+      $("#draftStatus").textContent = `Draft indisponível: ${e.message}`;
+    }
+
+    renderRodada(rodadas);
+    renderJornal(rodadas);
+    renderVergonha(rodadas, nomes);
+    renderRival(rodadas, nomes);
+    renderFichas(rodadas, rosters, nomes, transacoes);
+  } catch (err) {
+    $("#status").classList.remove("carregando");
+    $("#status").textContent = "não deu";
+    document.querySelector("main").innerHTML =
+      `<div class="aviso">Não consegui buscar a liga no Sleeper.
+       Se você abriu o arquivo direto do disco, tente hospedar (Vercel, GitHub Pages) ou abrir por um servidor local.
+       <code>${err.message}</code></div>`;
+  }
+})();
+
+// ---------- Cálculo ----------
+function processaRodada(semana, ms, nomes) {
+  if (!ms || !ms.length) return null;
+  const pontuou = ms.some(m => (m.points || 0) > 0);
+  if (!pontuou) return null;
+
+  const times = ms.map(m => {
+    const pp = m.players_points || {};
+    const starters = new Set(m.starters || []);
+    const banco = (m.players || []).filter(p => !starters.has(p)).reduce((s, p) => s + (pp[p] || 0), 0);
+    return { roster: m.roster_id, matchup: m.matchup_id, pontos: m.points || 0, banco };
+  });
+
+  // confrontos
+  const porMatchup = {};
+  for (const t of times) (porMatchup[t.matchup] ||= []).push(t);
+  const jogos = Object.values(porMatchup).filter(p => p.length === 2).map(([a, b]) => {
+    const [v, d] = a.pontos >= b.pontos ? [a, b] : [b, a];
+    return { vencedor: v.roster, perdedor: d.roster, pv: v.pontos, pd: d.pontos, margem: v.pontos - d.pontos };
+  });
+
+  // prêmios
+  const alface = [...times].sort((a, b) => b.banco - a.banco)[0];
+  const canhao = [...times].sort((a, b) => b.pontos - a.pontos)[0];
+  const pefrio = [...times].sort((a, b) => a.pontos - b.pontos)[0];
+  const cadeirada = [...jogos].sort((a, b) => a.margem - b.margem)[0];
+  const vexame = [...jogos].sort((a, b) => b.margem - a.margem)[0];
+
+  const premios = [];
+  premios.push({ tipo: "alface", roster: alface.roster, texto: `Deixou ${fmt(alface.banco)} pontos apodrecendo no banco.` });
+  if (cadeirada) premios.push({ tipo: "cadeirada", roster: cadeirada.perdedor, texto: `Perdeu por ${fmt(cadeirada.margem)} para ${nomes[cadeirada.vencedor].manager}. Ninguém merece.` });
+  if (vexame) premios.push({ tipo: "vexame", roster: vexame.perdedor, texto: `Levou ${fmt(vexame.pv)} a ${fmt(vexame.pd)} de ${nomes[vexame.vencedor].manager}. Placar de amistoso contra escolinha.` });
+  premios.push({ tipo: "pefrio", roster: pefrio.roster, texto: `Menor pontuação da rodada: ${fmt(pefrio.pontos)}. Estava jogando?` });
+  premios.push({ tipo: "canhao", roster: canhao.roster, texto: `Maior pontuação da rodada: ${fmt(canhao.pontos)}. O único prêmio bom daqui.` });
+
+  return { semana, times, jogos, premios, alface, canhao, pefrio, cadeirada, vexame };
+}
+
+// ---------- Render ----------
+function renderDraft(draft, picks, users, rosters, nomes) {
+  const totalPicks = (draft.settings?.rounds || 0) * (draft.settings?.teams || rosters.length);
+  const feitas = picks.length;
+  const rodadaAtual = Math.floor(feitas / (draft.settings?.teams || rosters.length)) + 1;
+  const status = { pre_draft: "ainda não começou", drafting: "em andamento", paused: "pausado", complete: "encerrado" }[draft.status] || draft.status;
+  $("#draftStatus").textContent = `Draft ${status}: ${feitas} de ${totalPicks} escolhas${draft.status === "drafting" ? ` — rodada ${rodadaAtual}` : ""}.`;
+
+  const donoDe = (pk) => {
+    if (pk.roster_id && nomes[pk.roster_id]) return nomes[pk.roster_id].manager;
+    const u = users.find(x => x.user_id === pk.picked_by); return u ? u.display_name : "?";
+  };
+  const nomeJ = (pk) => `${pk.metadata?.first_name || ""} ${pk.metadata?.last_name || ""}`.trim() || pk.player_id;
+
+  // por manager: contagem por posição e por time da NFL
+  const por = {};
+  for (const pk of picks) {
+    const d = donoDe(pk); const e = (por[d] ||= { pos: {}, nfl: {}, picks: [] });
+    const pos = pk.metadata?.position || "?"; const nfl = pk.metadata?.team || "FA";
+    e.pos[pos] = (e.pos[pos] || 0) + 1; e.nfl[nfl] = (e.nfl[nfl] || 0) + 1; e.picks.push(pk);
+  }
+
+  // prêmios do draft
+  const premios = [];
+  const topo = (pos) => Object.entries(por).map(([d, e]) => [d, e.pos[pos] || 0]).sort((a, b) => b[1] - a[1])[0];
+  for (const [pos, rot, txt] of [["RB", "Colecionador de RB", "RBs no plantel. Vai escalar todos?"], ["WR", "Rei dos WR", "WRs. Tem flex pra isso?"], ["QB", "Acumulador de QB", "QBs. Só um joga por vez, avisa alguém."]]) {
+    const t = topo(pos); if (t && t[1] >= 3) premios.push({ rot, quem: t[0], txt: `${t[1]} ${txt}` });
+  }
+  const cedo = (pos, rot) => {
+    const pk = picks.filter(p => p.metadata?.position === pos).sort((a, b) => a.pick_no - b.pick_no)[0];
+    if (pk && pk.round <= Math.max(6, Math.floor((draft.settings?.rounds || 15) * 0.6))) premios.push({ rot, quem: donoDe(pk), txt: `${nomeJ(pk)} na rodada ${pk.round}, pick ${pk.pick_no}. Havia jogadores de verdade disponíveis.`, ruim: true });
+  };
+  cedo("K", "Kicker precoce"); cedo("DEF", "Defesa precoce");
+  const torcedor = Object.entries(por).map(([d, e]) => { const [t, n] = Object.entries(e.nfl).sort((a, b) => b[1] - a[1])[0] || ["?", 0]; return [d, t, n]; }).sort((a, b) => b[2] - a[2])[0];
+  if (torcedor && torcedor[2] >= 3) premios.push({ rot: "Torcedor declarado", quem: torcedor[0], txt: `${torcedor[2]} jogadores do ${torcedor[1]}. Isso é fantasy, não fã-clube.` });
+  if (draft.status === "complete" && picks.length) {
+    const ult = [...picks].sort((a, b) => b.pick_no - a.pick_no)[0];
+    premios.push({ rot: "Mr. Irrelevant", quem: donoDe(ult), txt: `Fechou o draft com ${nomeJ(ult)}. Alguém tinha que ser.` });
+  }
+  $("#draftPremios").innerHTML = premios.length
+    ? premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${p.rot}</div><div class="corpo"><div class="quem">${p.quem}</div><p class="porque">${p.txt}</p></div></article>`).join("")
+    : `<p class="vazio">Poucas escolhas ainda para julgar alguém. Aguarde.</p>`;
+
+  // tabela por manager
+  const posicoes = ["QB", "RB", "WR", "TE", "K", "DEF"];
+  const linhas = Object.entries(por).sort((a, b) => b[1].picks.length - a[1].picks.length);
+  $("#draftTimes").innerHTML = linhas.length ? `<table><thead><tr><th>Manager</th>${posicoes.map(p => `<th class="num">${p}</th>`).join("")}<th class="num">Total</th></tr></thead>
+    <tbody>${linhas.map(([d, e]) => `<tr><td><strong>${d}</strong></td>${posicoes.map(p => `<td class="num">${e.pos[p] || 0}</td>`).join("")}<td class="num"><strong>${e.picks.length}</strong></td></tr>`).join("")}</tbody></table>`
+    : `<p class="vazio">Nenhuma escolha registrada.</p>`;
+
+  // últimas 15 picks
+  const ult = [...picks].sort((a, b) => b.pick_no - a.pick_no).slice(0, 15);
+  $("#draftPicks").innerHTML = ult.length ? `<table><thead><tr><th class="num">Pick</th><th>Rod.</th><th>Manager</th><th>Jogador</th><th>Pos</th></tr></thead>
+    <tbody>${ult.map(pk => `<tr><td class="num">${pk.pick_no}</td><td>${pk.round}</td><td>${donoDe(pk)}</td><td>${nomeJ(pk)}</td><td>${pk.metadata?.position || ""} ${pk.metadata?.team || ""}</td></tr>`).join("")}</tbody></table>`
+    : `<p class="vazio">Ainda sem picks.</p>`;
+}
+
+function renderRodada(rodadas) {
+  const sel = $("#selRodada");
+  if (!rodadas.length) { $("#premios").innerHTML = `<p class="vazio">Nada pontuado ainda. Volte depois da rodada 1.</p>`; sel.hidden = true; return; }
+  sel.innerHTML = rodadas.map(r => `<option value="${r.semana}">Rodada ${r.semana}</option>`).join("");
+  sel.value = rodadas[rodadas.length - 1].semana;
+  const desenha = () => {
+    const r = rodadas.find(x => x.semana == sel.value);
+    $("#premios").innerHTML = r.premios.map(p => `
+      <article class="premio ${p.tipo === "vexame" || p.tipo === "pefrio" ? "vermelho" : ""}">
+        <div class="selo">${ROTULO[p.tipo]}</div>
+        <div class="corpo">
+          <div class="quem">${nomeDe(p.roster)}</div>
+          <p class="porque">${p.texto}</p>
+        </div>
+      </article>`).join("");
+  };
+  sel.addEventListener("change", desenha);
+  desenha();
+
+  function nomeDe(roster) { return window.__nomes[roster].manager; }
+}
+
+function renderJornal(rodadas) {
+  if (!rodadas.length) { $("#jornal").innerHTML = `<p class="vazio">O jornal só sai depois da primeira rodada.</p>`; return; }
+  const N = window.__nomes;
+  const html = [...rodadas].reverse().map(r => {
+    const m = [];
+    if (r.vexame && r.vexame.margem >= 30) m.push({ t: `${N[r.vexame.perdedor].manager} toma ${fmt(r.vexame.margem)} de diferença e pede socorro`, s: `Massacre na rodada ${r.semana}. ${N[r.vexame.vencedor].manager} nem precisou escalar direito.` });
+    if (r.cadeirada && r.cadeirada.margem < 3) m.push({ t: `Por ${fmt(r.cadeirada.margem)}: ${N[r.cadeirada.perdedor].manager} perde e culpa o kicker`, s: `Fontes próximas confirmam que ele "ia trocar o WR3" mas esqueceu.` });
+    if (r.alface.banco >= 25) m.push({ t: `${N[r.alface.roster].manager} deixa ${fmt(r.alface.banco)} pontos no banco e diz que "foi estratégia"`, s: `Especialistas não encontraram a estratégia.` });
+    m.push({ t: `${N[r.canhao.roster].manager} faz ${fmt(r.canhao.pontos)} e já fala em título`, s: `A liga lembra que estamos na rodada ${r.semana}.` });
+    m.push({ t: `${N[r.pefrio.roster].manager} anota ${fmt(r.pefrio.pontos)} e investiga se o app estava aberto`, s: `Pior pontuação da semana. Sem comentários adicionais da assessoria.` });
+    return `<h3>Edição da rodada ${r.semana}</h3>` + m.map(x => `<article class="manchete"><h4>${x.t}</h4><p>${x.s}</p></article>`).join("");
+  }).join("");
+  $("#jornal").innerHTML = html;
+}
+
+function renderVergonha(rodadas, nomes) {
+  const tot = {};
+  for (const id in nomes) tot[id] = { alface: 0, cadeirada: 0, vexame: 0, pefrio: 0, pontos: 0 };
+  for (const r of rodadas) for (const p of r.premios) if (PESO[p.tipo]) { tot[p.roster][p.tipo]++; tot[p.roster].pontos += PESO[p.tipo]; }
+  const lista = Object.entries(tot).map(([id, t]) => ({ id, ...t })).sort((a, b) => b.pontos - a.pontos);
+  if (!rodadas.length) { $("#vergonha").innerHTML = `<p class="vazio">Ainda ninguém passou vergonha. Vai passar.</p>`; return; }
+  $("#vergonha").innerHTML = `<table>
+    <thead><tr><th>#</th><th>Manager</th><th class="num">Alface</th><th class="num">Cadeirada</th><th class="num">Vexame</th><th class="num">Pé Frio</th><th class="num">Vergonha</th></tr></thead>
+    <tbody>${lista.map((t, i) => `<tr class="${i === 0 && t.pontos > 0 ? "lider" : ""}">
+      <td>${i + 1}</td><td><strong>${nomes[t.id].manager}</strong></td>
+      <td class="num">${t.alface}</td><td class="num">${t.cadeirada}</td><td class="num">${t.vexame}</td><td class="num">${t.pefrio}</td>
+      <td class="num"><strong>${t.pontos}</strong></td></tr>`).join("")}</tbody></table>`;
+}
+
+function renderRival(rodadas, nomes) {
+  const h2h = {};
+  for (const r of rodadas) for (const j of r.jogos) {
+    const k = [j.vencedor, j.perdedor].sort((a, b) => a - b).join("-");
+    const e = (h2h[k] ||= { a: Math.min(j.vencedor, j.perdedor), b: Math.max(j.vencedor, j.perdedor), va: 0, vb: 0, margens: [] });
+    if (j.vencedor === e.a) e.va++; else e.vb++;
+    e.margens.push(j.margem);
+  }
+  const pares = Object.values(h2h).sort((x, y) => (y.va + y.vb) - (x.va + x.vb) || Math.abs(x.va - x.vb) - Math.abs(y.va - y.vb));
+  if (!pares.length) { $("#rival").innerHTML = `<p class="vazio">Sem confrontos ainda.</p>`; return; }
+  $("#rival").innerHTML = pares.map(p => {
+    const jogos = p.va + p.vb;
+    const obs = p.va === p.vb ? "Freguesia ainda em disputa." : `${nomes[p.va > p.vb ? p.a : p.b].manager} manda. Margem média: ${fmt(p.margens.reduce((s, m) => s + m, 0) / jogos)}.`;
+    return `<div class="rival">
+      <div class="lado">${nomes[p.a].manager}</div>
+      <div class="placar">${p.va}–${p.vb}</div>
+      <div class="lado dir">${nomes[p.b].manager}</div>
+      <div class="obs">${jogos} jogo${jogos > 1 ? "s" : ""}. ${obs}</div></div>`;
+  }).join("");
+}
+
+function renderFichas(rodadas, rosters, nomes, transacoes) {
+  const trades = {};
+  for (const semana of transacoes) for (const t of semana || []) if (t.type === "trade" && t.status === "complete") for (const rid of t.roster_ids || []) trades[rid] = (trades[rid] || 0) + 1;
+
+  const banco = {}; const crimes = {};
+  for (const r of rodadas) {
+    for (const t of r.times) banco[t.roster] = (banco[t.roster] || 0) + t.banco;
+    for (const p of r.premios) if (PESO[p.tipo]) (crimes[p.roster] ||= []).push(`${ROTULO[p.tipo]} R${r.semana}`);
+  }
+  const ordem = [...rosters].sort((a, b) => (b.settings.wins - a.settings.wins) || ((b.settings.fpts || 0) - (a.settings.fpts || 0)));
+  $("#fichas").innerHTML = ordem.map(r => {
+    const s = r.settings || {};
+    const pts = (s.fpts || 0) + (s.fpts_decimal || 0) / 100;
+    return `<article class="ficha">
+      <div class="nome">${nomes[r.roster_id].manager}</div>
+      <div class="time">${nomes[r.roster_id].time}</div>
+      <dl>
+        <div><dt>Campanha</dt><dd>${s.wins || 0}–${s.losses || 0}${s.ties ? "–" + s.ties : ""}</dd></div>
+        <div><dt>Pontos</dt><dd>${fmt(pts)}</dd></div>
+        <div><dt>No banco</dt><dd>${fmt(banco[r.roster_id] || 0)}</dd></div>
+        <div><dt>Trades</dt><dd>${trades[r.roster_id] || 0}</dd></div>
+      </dl>
+      <div class="crimes">${(crimes[r.roster_id] || []).length ? "Antecedentes: " + crimes[r.roster_id].map(c => `<span>${c}</span>`).join("") : "Ficha limpa. Por enquanto."}</div>
+    </article>`;
+  }).join("");
+}
+
+</script>
+</body>
+</html>
