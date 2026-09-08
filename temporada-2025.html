@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pururuca Bowl — Temporada 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root { --grama:#0F3D2E; --grama-escura:#0A2B20; --cal:#F3EFE4; --amarelo:#F5C518; --vermelho:#D0342C; --asfalto:#1C1C1C; --cinza:#6B6B63; }
+  * { box-sizing: border-box; }
+  html { background:#0F3D2E; background:var(--grama); }
+  body { margin:0; font-family:"Archivo",system-ui,sans-serif; color:#F3EFE4; color:var(--cal); line-height:1.45;
+    background-color:#0F3D2E;
+    background: repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(243,239,228,.12) calc(10% - 1px) 10%), var(--grama); }
+  a { color: inherit; }
+  .display { font-family:"Archivo Black","Archivo",sans-serif; font-weight:400; letter-spacing:-.01em; }
+  header { padding:28px 20px 20px; border-bottom:3px solid var(--cal); }
+  header h1 { margin:0; font-size:clamp(38px,11vw,96px); line-height:.92; text-transform:uppercase; }
+  header h1 span { display:block; color:var(--amarelo); }
+  header p { margin:12px 0 0; color:rgba(243,239,228,.75); }
+  .status { margin-top:6px; font-size:14px; color:var(--amarelo); }
+  .volta { display:inline-block; margin-top:14px; font-weight:700; }
+  main { padding:20px; max-width:980px; margin:0 auto; }
+  h2 { margin:32px 0 14px; font-size:clamp(26px,6vw,40px); text-transform:uppercase; line-height:1; }
+  h2:first-child { margin-top:8px; }
+  h3 { margin:20px 0 8px; font-size:18px; }
+  p.intro { color:rgba(243,239,228,.75); margin:0 0 12px; }
+
+  .podio { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .podio .lugar { background:var(--cal); color:var(--asfalto); padding:16px 18px; }
+  .podio .lugar.campeao { grid-column:1 / -1; background:var(--amarelo); }
+  .podio .lugar.lanterna { grid-column:1 / -1; background:var(--vermelho); color:var(--cal); }
+  .podio .rot { font-size:13px; font-weight:800; }
+  .podio .nome { font-family:"Archivo Black"; font-size:clamp(24px,7vw,44px); line-height:1; margin-top:4px; }
+  .podio .det { margin-top:6px; font-size:15px; opacity:.85; }
+
+  .premio { display:grid; grid-template-columns:104px 1fr; gap:14px; background:var(--cal); color:var(--asfalto); margin-bottom:4px; }
+  .premio .selo { display:grid; place-items:center; padding:12px 6px; font-family:"Archivo Black"; font-size:11px; line-height:1.15; text-align:center; text-transform:uppercase; overflow-wrap:anywhere; background:var(--amarelo); }
+  .premio.vermelho .selo { background:var(--vermelho); color:var(--cal); }
+  .premio .corpo { padding:12px 14px 12px 0; }
+  .premio .quem { font-size:22px; font-family:"Archivo Black"; line-height:1.05; }
+  .premio .porque { margin:4px 0 0; color:var(--cinza); font-size:15px; }
+
+  .tabela-wrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; background:var(--cal); color:var(--asfalto); font-size:15px; }
+  th, td { padding:10px 12px; text-align:left; border-bottom:1px solid rgba(28,28,28,.15); white-space:nowrap; }
+  th { font-weight:800; background:var(--amarelo); }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  tr.lider td { background:#FFF6CF; }
+  tr.lanterna td { background:#FDE1DE; }
+
+  .rival { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px; background:var(--cal); color:var(--asfalto); padding:12px 14px; margin-bottom:4px; }
+  .rival .lado { font-weight:800; } .rival .lado.dir { text-align:right; }
+  .rival .placar { font-family:"Archivo Black"; font-size:26px; padding:0 10px; background:var(--asfalto); color:var(--amarelo); }
+  .rival .obs { grid-column:1 / -1; color:var(--cinza); font-size:14px; }
+
+  .ficha { background:var(--cal); color:var(--asfalto); padding:16px 18px; margin-bottom:6px; }
+  .ficha .nome { font-family:"Archivo Black"; font-size:24px; line-height:1; }
+  .ficha .time { color:var(--cinza); margin-top:2px; }
+  .ficha dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:8px 16px; margin:12px 0 0; }
+  .ficha dt { font-size:13px; color:var(--cinza); } .ficha dd { margin:0; font-weight:800; font-size:18px; font-variant-numeric:tabular-nums; }
+  .ficha .crimes { margin-top:12px; font-size:14px; }
+  .ficha .crimes span { display:inline-block; background:var(--asfalto); color:var(--amarelo); padding:3px 8px; margin:3px 4px 0 0; font-weight:700; }
+
+  .memoria { background:var(--cal); color:var(--asfalto); padding:16px 18px; }
+  .memoria li { margin-bottom:6px; }
+  .aviso { background:var(--vermelho); color:var(--cal); padding:16px 18px; font-weight:700; }
+  .aviso code { display:block; margin-top:8px; font-weight:400; font-size:13px; word-break:break-all; }
+  .vazio { color:rgba(243,239,228,.7); }
+  footer { padding:24px 20px 40px; color:rgba(243,239,228,.55); font-size:13px; text-align:center; }
+  @media (prefers-reduced-motion:no-preference) { .carregando { animation:pisca 1s steps(2) infinite; } @keyframes pisca { to { opacity:.35; } } }
+</style>
+</head>
+<body>
+<header>
+  <h1 class="display">Temporada<span>2025</span></h1>
+  <p id="sub">Buscando a temporada no Sleeper…</p>
+  <div class="status carregando" id="status">carregando</div>
+  <a class="volta" href="./">← Voltar para o Hall da Vergonha</a>
+</header>
+
+<main id="main">
+  <h2 class="display">O pódio</h2>
+  <div id="podio" class="podio"></div>
+
+  <h2 class="display">Classificação final</h2>
+  <p class="intro">Temporada regular. "Sorte" é a diferença entre a posição na tabela e a posição por pontos: positivo ganhou mais do que mereceu.</p>
+  <div class="tabela-wrap" id="tabela"></div>
+
+  <h2 class="display">Prêmios do ano</h2>
+  <div id="premios"></div>
+
+  <h2 class="display">Recordes de 2025</h2>
+  <div class="tabela-wrap" id="recordes"></div>
+
+  <h2 class="display">Rivalidades do ano</h2>
+  <div id="rival"></div>
+
+  <h2 class="display">Movimentações</h2>
+  <div class="tabela-wrap" id="movs"></div>
+
+  <h2 class="display">Draft 2025</h2>
+  <div id="draft"></div>
+
+  <h2 class="display">Memória</h2>
+  <div id="memoria" class="memoria"></div>
+
+  <h2 class="display">Ficha por manager</h2>
+  <div id="fichas"></div>
+</main>
+
+<footer>Dados: API pública do Sleeper.</footer>
+
+<script>
+const LEAGUE_ID_ATUAL = "1389719862191849472";
+const TEMPORADA = "2025";
+
+// Preencha à mão. Se ficar vazio, a seção Memória some.
+const MEMORIA = {
+  punicao: "",           // ex.: "Lanterna teve que jogar de camisa do rival por um mês"
+  momentos: [],          // ex.: ["Fulano trocou o Mahomes por dois kickers", "..."]
+};
+
+const PESO = { alface: 2, cadeirada: 1, vexame: 2, pefrio: 3 };
+const ROTULO = { alface: "Mão de Alface", cadeirada: "Cadeirada", vexame: "Vexame", pefrio: "Pé Frio", canhao: "Canhão" };
+const API = "https://api.sleeper.app/v1";
+const $ = (s) => document.querySelector(s);
+const fmt = (n) => (Math.round(n * 100) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+async function getJSON(p) { const r = await fetch(`${API}${p}`); if (!r.ok) throw new Error(`${r.status} em ${p}`); return r.json(); }
+
+(async function main() {
+  try {
+    // acha a liga da temporada pedida seguindo a cadeia
+    let lg = await getJSON(`/league/${LEAGUE_ID_ATUAL}`); const vistos = new Set();
+    while (lg && lg.season !== TEMPORADA && lg.previous_league_id && !vistos.has(lg.previous_league_id)) {
+      vistos.add(lg.previous_league_id); lg = await getJSON(`/league/${lg.previous_league_id}`);
+    }
+    if (!lg || lg.season !== TEMPORADA) throw new Error(`Não achei a temporada ${TEMPORADA} na cadeia da liga.`);
+    const ID = lg.league_id;
+
+    const [users, rosters, wb] = await Promise.all([
+      getJSON(`/league/${ID}/users`), getJSON(`/league/${ID}/rosters`), getJSON(`/league/${ID}/winners_bracket`).catch(() => []),
+    ]);
+    const nomes = {};
+    for (const r of rosters) { const u = users.find(x => x.user_id === r.owner_id) || {}; nomes[r.roster_id] = { manager: u.display_name || `Roster ${r.roster_id}`, time: (u.metadata && u.metadata.team_name) || u.display_name || "" }; }
+    const N = (rid) => (nomes[rid] || {}).manager || "?";
+    $("#sub").textContent = `${lg.name} — temporada ${lg.season}`;
+
+    const ps = (lg.settings && lg.settings.playoff_week_start) || 15;
+    const ultimaSemana = 18;
+    const ws = []; for (let w = 1; w <= ultimaSemana; w++) ws.push(w);
+    const [mts, trs] = await Promise.all([
+      Promise.all(ws.map(w => getJSON(`/league/${ID}/matchups/${w}`).catch(() => []))),
+      Promise.all(ws.map(w => getJSON(`/league/${ID}/transactions/${w}`).catch(() => []))),
+    ]);
+    const picks = lg.draft_id ? await getJSON(`/draft/${lg.draft_id}/picks`).catch(() => []) : [];
+
+    // ---- processa semanas ----
+    const regular = [], todas = [];
+    const ptsJogador = {}; // player_id -> pontos somados no ano (dentro da liga)
+    for (let i = 0; i < ws.length; i++) {
+      const w = ws[i], ms = mts[i];
+      if (!ms || !ms.some(m => (m.points || 0) > 0)) continue;
+      const times = ms.map(m => {
+        const pp = m.players_points || {}; const st = new Set(m.starters || []);
+        for (const p in pp) ptsJogador[p] = (ptsJogador[p] || 0) + (pp[p] || 0);
+        const banco = (m.players || []).filter(p => !st.has(p)).reduce((s, p) => s + (pp[p] || 0), 0);
+        return { roster: m.roster_id, matchup: m.matchup_id, pontos: m.points || 0, banco };
+      });
+      const por = {}; for (const t of times) if (t.matchup != null) (por[t.matchup] ||= []).push(t);
+      const jogos = Object.values(por).filter(p => p.length === 2).map(([a, b]) => { const [v, d] = a.pontos >= b.pontos ? [a, b] : [b, a]; return { semana: w, vencedor: v.roster, perdedor: d.roster, pv: v.pontos, pd: d.pontos, margem: v.pontos - d.pontos }; });
+      const rod = { semana: w, times, jogos };
+      todas.push(rod); if (w < ps) regular.push(rod);
+    }
+    if (!regular.length) throw new Error("Nenhuma rodada pontuada encontrada em 2025.");
+
+    // ---- classificação e sorte ----
+    const camp = rosters.map(r => { const s = r.settings || {}; return { roster: r.roster_id, w: s.wins || 0, l: s.losses || 0, t: s.ties || 0, pf: (s.fpts || 0) + (s.fpts_decimal || 0) / 100, pa: (s.fpts_against || 0) + (s.fpts_against_decimal || 0) / 100 }; });
+    const porTabela = [...camp].sort((a, b) => b.w - a.w || b.pf - a.pf);
+    const porPontos = [...camp].sort((a, b) => b.pf - a.pf);
+    for (const c of camp) { c.pos = porTabela.findIndex(x => x.roster === c.roster) + 1; c.posPts = porPontos.findIndex(x => x.roster === c.roster) + 1; c.sorte = c.posPts - c.pos; }
+    const lanterna = porTabela[porTabela.length - 1];
+
+    // ---- pódio via chave ----
+    const final = wb.find(m => m.p === 1); const terceiro = wb.find(m => m.p === 3);
+    const placarDe = (m) => { if (!m || !m.w) return ""; const r = todas.find(x => x.jogos.some(j => (j.vencedor === m.w && j.perdedor === m.l))); const j = r && r.jogos.find(j => j.vencedor === m.w && j.perdedor === m.l); return j ? `${fmt(j.pv)} a ${fmt(j.pd)} na semana ${j.semana}` : ""; };
+    $("#podio").innerHTML = (final && final.w) ? `
+      <div class="lugar campeao"><div class="rot">Campeão</div><div class="nome">${N(final.w)}</div><div class="det">Venceu ${N(final.l)} por ${placarDe(final) || "placar não localizado"}.</div></div>
+      <div class="lugar"><div class="rot">Vice</div><div class="nome">${N(final.l)}</div><div class="det">Chegou lá. Só isso.</div></div>
+      <div class="lugar"><div class="rot">Terceiro</div><div class="nome">${terceiro && terceiro.w ? N(terceiro.w) : "—"}</div><div class="det">${terceiro && terceiro.w ? "Bronze de fantasy. Vale o que vale." : "Chave sem disputa de 3º."}</div></div>
+      <div class="lugar lanterna"><div class="rot">Lanterna</div><div class="nome">${N(lanterna.roster)}</div><div class="det">${lanterna.w}–${lanterna.l} na temporada regular. ${MEMORIA.punicao ? "Punição: " + MEMORIA.punicao : "A punição você ainda não me contou."}</div></div>`
+      : `<div class="lugar campeao"><div class="rot">Campeão</div><div class="nome">?</div><div class="det">A chave dos playoffs não veio da API; a tabela abaixo é a melhor referência.</div></div>
+         <div class="lugar lanterna"><div class="rot">Lanterna</div><div class="nome">${N(lanterna.roster)}</div><div class="det">${lanterna.w}–${lanterna.l} na temporada regular.</div></div>`;
+
+    $("#tabela").innerHTML = `<table><thead><tr><th>#</th><th>Manager</th><th>Campanha</th><th class="num">PF</th><th class="num">PA</th><th class="num">Sorte</th></tr></thead><tbody>${porTabela.map((c, i) => `<tr class="${i === 0 ? "lider" : i === porTabela.length - 1 ? "lanterna" : ""}"><td>${i + 1}</td><td><strong>${N(c.roster)}</strong></td><td>${c.w}–${c.l}${c.t ? "–" + c.t : ""}</td><td class="num">${fmt(c.pf)}</td><td class="num">${fmt(c.pa)}</td><td class="num">${c.sorte > 0 ? "+" : ""}${c.sorte}</td></tr>`).join("")}</tbody></table>`;
+
+    // ---- prêmios do ano (temporada regular) ----
+    const acc = {}; for (const r of rosters) acc[r.roster_id] = { alface: 0, cadeirada: 0, vexame: 0, pefrio: 0, canhao: 0, banco: 0, vergonha: 0, melhor: null, pior: null };
+    let recCanhao = null, recPefrio = null, recCadeirada = null, recVexame = null, recBanco = null;
+    for (const r of regular) {
+      const al = [...r.times].sort((a, b) => b.banco - a.banco)[0]; const ca = [...r.times].sort((a, b) => b.pontos - a.pontos)[0]; const pf = [...r.times].sort((a, b) => a.pontos - b.pontos)[0];
+      const cd = [...r.jogos].sort((a, b) => a.margem - b.margem)[0]; const vx = [...r.jogos].sort((a, b) => b.margem - a.margem)[0];
+      acc[al.roster].alface++; acc[al.roster].vergonha += PESO.alface; acc[ca.roster].canhao++; acc[pf.roster].pefrio++; acc[pf.roster].vergonha += PESO.pefrio;
+      if (cd) { acc[cd.perdedor].cadeirada++; acc[cd.perdedor].vergonha += PESO.cadeirada; } if (vx) { acc[vx.perdedor].vexame++; acc[vx.perdedor].vergonha += PESO.vexame; }
+      for (const t of r.times) { const a = acc[t.roster]; a.banco += t.banco; if (!a.melhor || t.pontos > a.melhor.pontos) a.melhor = { pontos: t.pontos, semana: r.semana }; if (!a.pior || t.pontos < a.pior.pontos) a.pior = { pontos: t.pontos, semana: r.semana }; }
+      if (!recCanhao || ca.pontos > recCanhao.pontos) recCanhao = { ...ca, semana: r.semana };
+      if (!recPefrio || pf.pontos < recPefrio.pontos) recPefrio = { ...pf, semana: r.semana };
+      if (!recBanco || al.banco > recBanco.banco) recBanco = { ...al, semana: r.semana };
+      if (cd && (!recCadeirada || cd.margem < recCadeirada.margem)) recCadeirada = cd;
+      if (vx && (!recVexame || vx.margem > recVexame.margem)) recVexame = vx;
+    }
+    const top = (k) => Object.entries(acc).sort((a, b) => b[1][k] - a[1][k])[0];
+    const premios = [
+      { tipo: "alface", e: top("banco"), txt: (e) => `${fmt(e.banco)} pontos deixados no banco ao longo do ano. Um time inteiro desperdiçado.` },
+      { tipo: "cadeirada", e: top("cadeirada"), txt: (e) => `${e.cadeirada} derrota${e.cadeirada > 1 ? "s" : ""} pela menor margem da rodada. Especialista em sofrer.` },
+      { tipo: "vexame", e: top("vexame"), txt: (e) => `${e.vexame} goleada${e.vexame > 1 ? "s" : ""} levada${e.vexame > 1 ? "s" : ""} como a maior da semana.`, ruim: true },
+      { tipo: "pefrio", e: top("pefrio"), txt: (e) => `${e.pefrio} vez${e.pefrio > 1 ? "es" : ""} com a pior pontuação da rodada.`, ruim: true },
+      { tipo: "canhao", e: top("canhao"), txt: (e) => `${e.canhao} rodada${e.canhao > 1 ? "s" : ""} como maior pontuador. O único elogio da página.` },
+    ];
+    $("#premios").innerHTML = premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${ROTULO[p.tipo]} do ano</div><div class="corpo"><div class="quem">${N(p.e[0])}</div><p class="porque">${p.txt(p.e[1])}</p></div></article>`).join("");
+
+    // ---- recordes ----
+    const seqs = {}; for (const r of rosters) seqs[r.roster_id] = { v: 0, d: 0, maxV: 0, maxD: 0 };
+    for (const r of regular) for (const j of r.jogos) { const a = seqs[j.vencedor], b = seqs[j.perdedor]; a.v++; a.d = 0; a.maxV = Math.max(a.maxV, a.v); b.d++; b.v = 0; b.maxD = Math.max(b.maxD, b.d); }
+    const seqV = Object.entries(seqs).sort((a, b) => b[1].maxV - a[1].maxV)[0], seqD = Object.entries(seqs).sort((a, b) => b[1].maxD - a[1].maxD)[0];
+    const linhas = [
+      ["Maior placar", `${fmt(recCanhao.pontos)}`, `${N(recCanhao.roster)}, semana ${recCanhao.semana}`],
+      ["Menor placar", `${fmt(recPefrio.pontos)}`, `${N(recPefrio.roster)}, semana ${recPefrio.semana}`],
+      ["Jogo mais apertado", `${fmt(recCadeirada.margem)}`, `${N(recCadeirada.vencedor)} ${fmt(recCadeirada.pv)} × ${fmt(recCadeirada.pd)} ${N(recCadeirada.perdedor)}, semana ${recCadeirada.semana}`],
+      ["Maior goleada", `${fmt(recVexame.margem)}`, `${N(recVexame.vencedor)} ${fmt(recVexame.pv)} × ${fmt(recVexame.pd)} ${N(recVexame.perdedor)}, semana ${recVexame.semana}`],
+      ["Pior semana de banco", `${fmt(recBanco.banco)}`, `${N(recBanco.roster)}, semana ${recBanco.semana}`],
+      ["Maior sequência de vitórias", `${seqV[1].maxV}`, N(seqV[0])],
+      ["Maior sequência de derrotas", `${seqD[1].maxD}`, N(seqD[0])],
+    ];
+    $("#recordes").innerHTML = `<table><tbody>${linhas.map(l => `<tr><td><strong>${l[0]}</strong></td><td class="num">${l[1]}</td><td>${l[2]}</td></tr>`).join("")}</tbody></table>`;
+
+    // ---- rivalidades ----
+    const h2h = {};
+    for (const r of regular) for (const j of r.jogos) { const [a, b] = [j.vencedor, j.perdedor].sort((x, y) => x - y); const e = (h2h[a + "-" + b] ||= { a, b, va: 0, vb: 0, margens: [] }); if (j.vencedor === a) e.va++; else e.vb++; e.margens.push(j.margem); }
+    const pares = Object.values(h2h).filter(p => p.va + p.vb >= 2).sort((x, y) => (y.va + y.vb) - (x.va + x.vb));
+    $("#rival").innerHTML = pares.length ? pares.map(p => { const jg = p.va + p.vb; const obs = p.va === p.vb ? "Empatados no ano." : `${N(p.va > p.vb ? p.a : p.b)} foi o freguês… digo, o dono.`; return `<div class="rival"><div class="lado">${N(p.a)}</div><div class="placar">${p.va}–${p.vb}</div><div class="lado dir">${N(p.b)}</div><div class="obs">${jg} jogos. ${obs} Margem média ${fmt(p.margens.reduce((s, m) => s + m, 0) / jg)}.</div></div>`; }).join("") : `<p class="vazio">Ninguém se enfrentou duas vezes na temporada regular.</p>`;
+
+    // ---- movimentações ----
+    const mov = {}; for (const r of rosters) mov[r.roster_id] = { trades: 0, waivers: 0 };
+    for (const sem of trs) for (const t of sem || []) { if (t.status !== "complete") continue; for (const rid of t.roster_ids || []) { if (!mov[rid]) continue; if (t.type === "trade") mov[rid].trades++; else mov[rid].waivers++; } }
+    const movL = Object.entries(mov).sort((a, b) => (b[1].trades + b[1].waivers) - (a[1].trades + a[1].waivers));
+    $("#movs").innerHTML = `<table><thead><tr><th>Manager</th><th class="num">Trades</th><th class="num">Waivers/FA</th><th class="num">Total</th></tr></thead><tbody>${movL.map(([rid, m], i) => `<tr class="${i === 0 ? "lider" : i === movL.length - 1 ? "lanterna" : ""}"><td><strong>${N(rid)}</strong></td><td class="num">${m.trades}</td><td class="num">${m.waivers}</td><td class="num">${m.trades + m.waivers}</td></tr>`).join("")}</tbody></table>`;
+
+    // ---- draft ----
+    if (picks.length) {
+      const nomeJ = (pk) => `${pk.metadata?.first_name || ""} ${pk.metadata?.last_name || ""}`.trim() || pk.player_id;
+      const donoDe = (pk) => N(pk.roster_id);
+      const ord = [...picks].sort((a, b) => a.pick_no - b.pick_no);
+      const comPts = ord.map(pk => ({ pk, pts: ptsJogador[pk.player_id] || 0 }));
+      const melhor = [...comPts].sort((a, b) => b.pts - a.pts)[0];
+      const pior = [...comPts].filter(x => x.pk.round <= 3).sort((a, b) => a.pts - b.pts)[0];
+      const roubo = [...comPts].filter(x => x.pk.round >= 8).sort((a, b) => b.pts - a.pts)[0];
+      const itens = [
+        { rot: "Primeira pick", quem: donoDe(ord[0]), txt: `${nomeJ(ord[0])}, que fez ${fmt(ptsJogador[ord[0].player_id] || 0)} pontos na liga.` },
+        { rot: "Mr. Irrelevant", quem: donoDe(ord[ord.length - 1]), txt: `${nomeJ(ord[ord.length - 1])}, pick ${ord[ord.length - 1].pick_no}.` },
+        { rot: "Melhor pick", quem: donoDe(melhor.pk), txt: `${nomeJ(melhor.pk)} (rodada ${melhor.pk.round}) foi o draftado que mais pontuou: ${fmt(melhor.pts)}.` },
+      ];
+      if (pior) itens.push({ rot: "Bust do draft", quem: donoDe(pior.pk), txt: `${nomeJ(pior.pk)} na rodada ${pior.pk.round}, pick ${pior.pk.pick_no}, e só ${fmt(pior.pts)} pontos.`, ruim: true });
+      if (roubo) itens.push({ rot: "Roubo do draft", quem: donoDe(roubo.pk), txt: `${nomeJ(roubo.pk)} na rodada ${roubo.pk.round} rendeu ${fmt(roubo.pts)}. Sorte ou visão, tanto faz.` });
+      $("#draft").innerHTML = itens.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${p.rot}</div><div class="corpo"><div class="quem">${p.quem}</div><p class="porque">${p.txt}</p></div></article>`).join("");
+    } else $("#draft").innerHTML = `<p class="vazio">Draft de 2025 não encontrado.</p>`;
+
+    // ---- memória ----
+    if (MEMORIA.momentos.length || MEMORIA.punicao) $("#memoria").innerHTML = `${MEMORIA.punicao ? `<p><strong>Punição do lanterna:</strong> ${MEMORIA.punicao}</p>` : ""}${MEMORIA.momentos.length ? `<ul>${MEMORIA.momentos.map(m => `<li>${m}</li>`).join("")}</ul>` : ""}`;
+    else { $("#memoria").previousElementSibling.remove(); $("#memoria").remove(); }
+
+    // ---- fichas ----
+    $("#fichas").innerHTML = porTabela.map(c => { const a = acc[c.roster]; const cr = []; for (const k of ["alface", "cadeirada", "vexame", "pefrio"]) if (a[k]) cr.push(`${ROTULO[k]} ×${a[k]}`); return `<article class="ficha"><div class="nome">${N(c.roster)}</div><div class="time">${nomes[c.roster].time} — ${c.pos}º lugar</div><dl><div><dt>Campanha</dt><dd>${c.w}–${c.l}</dd></div><div><dt>Pontos</dt><dd>${fmt(c.pf)}</dd></div><div><dt>No banco</dt><dd>${fmt(a.banco)}</dd></div><div><dt>Melhor jogo</dt><dd>${a.melhor ? fmt(a.melhor.pontos) + " (s" + a.melhor.semana + ")" : "—"}</dd></div><div><dt>Pior jogo</dt><dd>${a.pior ? fmt(a.pior.pontos) + " (s" + a.pior.semana + ")" : "—"}</dd></div><div><dt>Vergonha</dt><dd>${a.vergonha}</dd></div></dl><div class="crimes">${cr.length ? "Antecedentes: " + cr.map(x => `<span>${x}</span>`).join("") : "Ficha limpa. Suspeito."}</div></article>`; }).join("");
+
+    $("#status").classList.remove("carregando"); $("#status").textContent = `${regular.length} rodadas regulares + ${todas.length - regular.length} de playoffs`;
+  } catch (err) {
+    $("#status").classList.remove("carregando"); $("#status").textContent = "não deu";
+    $("#main").innerHTML = `<div class="aviso">Não consegui montar a temporada.<code>${err.message}</code></div>`;
+  }
+})();
+</script>
+</body>
+</html>
