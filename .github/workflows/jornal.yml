@@ -23,6 +23,11 @@ on:
         description: "Liga alternativa (só para teste; vazio = liga atual)"
         required: false
         type: string
+      previa:
+        description: "Rodar a prévia da rodada (normalmente só às quintas)"
+        required: false
+        type: boolean
+        default: false
       telegram:
         description: "Enviar no grupo do Telegram"
         required: false
@@ -49,6 +54,22 @@ jobs:
 
       - name: Instala o SDK da Anthropic
         run: npm install --no-save --no-audit --no-fund @anthropic-ai/sdk
+
+      - name: Que dia é hoje
+        id: hoje
+        run: echo "dia=$(date -u +%u)" >> "$GITHUB_OUTPUT"
+
+      - name: Prévia da rodada, às quintas
+        if: steps.hoje.outputs.dia == '4' || inputs.previa
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SEMANA: ${{ inputs.semana }}
+          FORCE: ${{ inputs.force && '1' || '' }}
+          LEAGUE_ID: ${{ inputs.league_id }}
+          SEM_TELEGRAM: ${{ github.event_name == 'workflow_dispatch' && !inputs.telegram && '1' || '' }}
+        run: node scripts/jornal.mjs --previa
 
       - name: Atualiza o mapa de nomes que o site usa
         env:

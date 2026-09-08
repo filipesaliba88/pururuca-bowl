@@ -13,6 +13,7 @@
 //   FORCE=1 node scripts/jornal.mjs      # regrava uma edição que já existe
 //   node scripts/jornal.mjs --draft      # edição especial do draft, só quando ele fecha
 //   node scripts/jornal.mjs --jogadores  # atualiza o mapa de nomes que o site usa
+//   node scripts/jornal.mjs --previa     # prévia de quinta, antes de a rodada começar
 
 import fs from "node:fs";
 import path from "node:path";
@@ -826,6 +827,165 @@ async function mapaDeJogadores(league) {
   console.log(`data/jogadores.json: ${Object.keys(mapa).length} jogadores.`);
 }
 
+// ---------- Prévia de quinta ----------
+// A edição de terça olha para trás. Esta olha para a frente: quem joga contra
+// quem, quem está pendurado no boletim médico, e um palpite para errar em
+// público. Os alertas de lesão são calculados aqui, no código — o modelo
+// escreve o texto, mas não inventa quem está machucado.
+function montaContextoPrevia({ semana, matchups, nomes, rosters, players, h2h, donoDe, campanha }) {
+  const tabela = Object.values(campanha)
+    .sort((a, b) => a.posicao - b.posicao)
+    .map((c) => ({
+      roster: c.roster, time: nomes[c.roster].time, posicao: c.posicao,
+      v: c.v, d: c.d, pf: r2(c.pf), pa: r2(c.pa),
+      sequencia: (c.seq || []).slice(-4).join("") || "—",
+    }));
+  const pos = Object.fromEntries(tabela.map((c) => [c.roster, c]));
+
+  const machucados = (rosterId) => {
+    const r = rosters.find((x) => x.roster_id === rosterId) || {};
+    return (r.players || [])
+      .map((id) => players[id])
+      .filter((p) => p && p.injury_status)
+      .map((p) => `${p.full_name} (${p.position}) — ${p.injury_status}`);
+  };
+
+  const por = {};
+  for (const m of matchups || []) if (m.matchup_id) (por[m.matchup_id] ||= []).push(m);
+
+  const confrontos = Object.values(por).filter((x) => x.length === 2).map(([a, b], i) => {
+    const ua = donoDe[a.roster_id], ub = donoDe[b.roster_id];
+    const hist = h2h[[ua, ub].sort().join("|")] || {};
+    const lado = (m) => ({
+      time: nomes[m.roster_id].time,
+      posicao: pos[m.roster_id]?.posicao,
+      campanha: `${pos[m.roster_id]?.v}–${pos[m.roster_id]?.d}`,
+      sequencia: pos[m.roster_id]?.sequencia,
+      pontos_feitos: pos[m.roster_id]?.pf,
+      no_boletim_medico: machucados(m.roster_id),
+    });
+    return {
+      id: `jogo-${i + 1}`,
+      a: lado(a), b: lado(b),
+      retrospecto: `${nomes[a.roster_id].time} ${hist[ua] || 0} × ${hist[ub] || 0} ${nomes[b.roster_id].time}`,
+    };
+  });
+
+  return { semana, tabela, confrontos };
+}
+
+const SCHEMA_PREVIA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["manchete", "coluna", "palpites"],
+  properties: {
+    manchete: { type: "string", description: "Manchete curta sobre a rodada que vem. Máximo 80 caracteres." },
+    coluna: { type: "string", description: "2 a 3 parágrafos do Seu Pururuca sobre a rodada que vem, separados por \\n\\n." },
+    palpites: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["confronto", "favorito", "porque"],
+        properties: {
+          confronto: { type: "string", description: "Time A × Time B." },
+          favorito: { type: "string", description: "Nome do time favorito." },
+          porque: { type: "string", description: "Uma frase curta e debochada justificando." },
+        },
+      },
+    },
+  },
+};
+
+function systemPromptPrevia() {
+  return `Você escreve a prévia de quinta-feira do Jornal da Pururuca Bowl, uma liga de fantasy football entre dez amigos brasileiros. Tudo em português do Brasil.
+
+Quem assina é o SEU PURURUCA: porco velho e rabugento de boteco, sarcástico, cansado, que já viu essa liga errar demais. Zoeira ácida entre amigos — ataque escalação e teimosia, nunca aparência, família ou trabalho.
+
+Chame cada participante pelo NOME DO TIME, nunca pelo usuário.
+
+Esta edição olha para FRENTE: a rodada ainda não aconteceu. Você não sabe o resultado e não pode fingir que sabe. Pode provocar, cutucar quem está mal na tabela e dar palpite — mas palpite é palpite, e o graça é justamente você poder errar na terça seguinte.
+
+Duas regras que não podem ser quebradas:
+1. Não invente lesão. Você recebe a lista de quem está no boletim médico; só fale de quem está nela, e do jeito que está escrito.
+2. Não invente número. Campanha, posição e pontos vêm nos dados.
+
+Feche a coluna lembrando que a escalação trava quando o jogo começa. É o motivo prático de a mensagem existir.`;
+}
+
+async function chamaModeloPrevia(contexto) {
+  const { default: Anthropic } = await import("@anthropic-ai/sdk");
+  const client = new Anthropic();
+  const resp = await client.beta.messages.create({
+    model: MODELO,
+    max_tokens: 8000,
+    betas: ["server-side-fallback-2026-07-01"],
+    fallbacks: "default",
+    system: systemPromptPrevia(),
+    output_config: { format: { type: "json_schema", schema: SCHEMA_PREVIA } },
+    messages: [{ role: "user", content: `Rodada ${contexto.semana}, que começa hoje à noite:\n\n${JSON.stringify(contexto, null, 2)}` }],
+  });
+  if (resp.stop_reason === "refusal")
+    throw new Error(`Modelo recusou (${resp.stop_details?.category || "sem categoria"}).`);
+  const texto = resp.content.filter((b) => b.type === "text").map((b) => b.text).join("");
+  console.log(`Tokens: ${resp.usage.input_tokens} entrada, ${resp.usage.output_tokens} saída.`);
+  return JSON.parse(texto);
+}
+
+function textoPrevia(previa, contexto) {
+  const p = [`<b>PURURUCA BOWL — A RODADA ${contexto.semana} COMEÇA HOJE</b>`, `<i>${esc(previa.manchete)}</i>`];
+  p.push(`\n${esc(previa.coluna)}`);
+  const doentes = contexto.confrontos.flatMap((c) => [c.a, c.b]).filter((x) => x.no_boletim_medico.length);
+  if (doentes.length) {
+    p.push(`\n<b>NO BOLETIM MÉDICO</b>`);
+    for (const t of doentes) p.push(`• <b>${esc(t.time)}:</b> ${esc(t.no_boletim_medico.join(", "))}`);
+  }
+  p.push(`\n<b>PALPITES DO PORCO</b>`);
+  for (const g of previa.palpites) p.push(`• <b>${esc(g.confronto)}</b> — ${esc(g.favorito)}. ${esc(g.porque)}`);
+  p.push(`\n<a href="${SITE}">Ver a tabela no jornal ›</a>`);
+  return p.join("\n");
+}
+
+async function edicaoPrevia(league, nomes, rosters, users) {
+  const state = await sleeper("/state/nfl");
+  const semana = process.env.SEMANA ? Number(process.env.SEMANA)
+    : (state.season === league.season ? state.week : null);
+  if (!semana) { console.log("Fora de temporada. Sem prévia."); return; }
+
+  const matchups = await sleeper(`/league/${LEAGUE_ID}/matchups/${semana}`).catch(() => []);
+  const pares = new Set((matchups || []).filter((m) => m.matchup_id).map((m) => m.matchup_id));
+  if (!pares.size) { console.log(`A tabela de jogos da rodada ${semana} ainda não saiu.`); return; }
+  if ((matchups || []).some((m) => (m.points || 0) > 0) && !FORCE) {
+    console.log(`A rodada ${semana} já começou a pontuar. Prévia não faz sentido.`);
+    return;
+  }
+
+  const [players, h2h, campanha] = await Promise.all([
+    getJSON("https://api.sleeper.app/v1/players/nfl"),
+    historicoH2H(league),
+    campanhaAte(semana - 1, nomes),
+  ]);
+  const donoDe = Object.fromEntries(rosters.map((r) => [r.roster_id, r.owner_id]));
+  const contexto = montaContextoPrevia({ semana, matchups, nomes, rosters, players, h2h, donoDe, campanha });
+
+  if (DRY) {
+    console.log(JSON.stringify(contexto, null, 2));
+    console.log("\n--dry-run: não chamei a IA nem o Telegram.");
+    return;
+  }
+  const previa = await chamaModeloPrevia(contexto);
+  fs.mkdirSync("data", { recursive: true });
+  fs.writeFileSync("data/previa.json", JSON.stringify({
+    temporada: Number(league.season), semana, gerado_em: new Date().toISOString(),
+    ...previa,
+    boletim: contexto.confrontos.flatMap((c) => [c.a, c.b])
+      .filter((x) => x.no_boletim_medico.length)
+      .map((x) => ({ time: x.time, jogadores: x.no_boletim_medico })),
+  }, null, 2) + "\n");
+  console.log("Gravei data/previa.json.");
+  await telegram(textoPrevia(previa, contexto));
+}
+
 async function main() {
   const [league, users, rosters] = await Promise.all([
     sleeper(`/league/${LEAGUE_ID}`),
@@ -834,6 +994,11 @@ async function main() {
   ]);
   const nomes = montaNomes(users, rosters);
   const donoDe = Object.fromEntries(rosters.map((r) => [r.roster_id, r.owner_id]));
+
+  if (process.argv.includes("--previa")) {
+    await edicaoPrevia(league, nomes, rosters, users);
+    return;
+  }
 
   if (process.argv.includes("--jogadores")) {
     await mapaDeJogadores(league);
