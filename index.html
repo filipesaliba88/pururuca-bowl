@@ -136,6 +136,22 @@
   .convidado .quem { font-family: "Archivo Black"; font-size: 17px; line-height: 1.1; }
   .convidado .oque { margin-top: 3px; font-size: 14px; color: rgba(243,239,228,.7); }
 
+  .copiar {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-bottom: 4px; padding: 10px 14px;
+    background: var(--asfalto); color: var(--amarelo);
+    border: 0; font: inherit; font-weight: 800; font-size: 12px;
+    letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+  }
+  .copiar:hover { background: var(--vermelho); color: var(--cal); }
+  .copiar[data-feito="1"] { background: var(--amarelo); color: var(--asfalto); }
+  .copiar svg { width: 15px; height: 15px; }
+  .para-copiar {
+    display: block; width: 100%; height: 180px; margin-bottom: 4px;
+    padding: 12px; font: inherit; font-size: 13px; line-height: 1.4;
+    background: var(--cal); color: var(--asfalto); border: 2px solid var(--asfalto); resize: vertical;
+  }
+
   .expediente {
     background: var(--asfalto); color: var(--amarelo);
     padding: 10px 14px; margin-bottom: 4px; font-size: 14px; font-weight: 700;
@@ -845,10 +861,17 @@ async function renderJornal(rodadas, temporada) {
       ? { chave: `${e.temporada}-${e.semana}`, rotulo: `Rodada ${e.semana}`, edicao: e }
       : { chave: `regras-${r.semana}`, rotulo: `Rodada ${r.semana} (prévia)`, rodada: r });
   }
-  // edições de temporadas passadas continuam acessíveis
+  // Qualquer edição publicada que não tenha entrado acima entra agora. Sem isto,
+  // uma edição da temporada atual some do seletor se a rodada dela não aparecer
+  // no cálculo das rodadas pontuadas.
   for (const e of indice) {
-    if (e.temporada !== temporada)
-      entradas.push({ chave: `${e.temporada}-${e.semana}`, rotulo: `Rodada ${e.semana} — ${e.temporada}`, edicao: e });
+    const chave = e.semana === 0 ? `${e.temporada}-esp-${e.tipo || "x"}` : `${e.temporada}-${e.semana}`;
+    if (entradas.some(x => x.chave === chave)) continue;
+    entradas.push({
+      chave,
+      rotulo: e.rotulo || (e.temporada === temporada ? `Rodada ${e.semana}` : `Rodada ${e.semana} — ${e.temporada}`),
+      edicao: e,
+    });
   }
 
   if (!entradas.length) {
@@ -868,7 +891,10 @@ async function renderJornal(rodadas, temporada) {
     try {
       const r = await fetch(`data/jornal/${e.edicao.arquivo}`, { cache: "no-cache" });
       if (!r.ok) throw new Error(r.status);
-      alvo.innerHTML = jornalEscrito(await r.json());
+      const edicao = await r.json();
+      alvo.innerHTML = jornalEscrito(edicao);
+      const bt = alvo.querySelector("[data-copiar]");
+      if (bt) bt.addEventListener("click", () => copiar(bt, paraWhatsApp(edicao)));
     } catch {
       alvo.innerHTML = `<p class="vazio">Não consegui carregar essa edição.</p>`;
     }
@@ -886,6 +912,68 @@ function escolheOlho(paras) {
   return frases.sort((a, b) => a.length - b.length)[0] || null;
 }
 
+// O WhatsApp usa *asteriscos* e _sublinhados_, não HTML. Isto monta a edição
+// inteira na sintaxe dele, para colar de uma vez só — o limite lá é de 65 mil
+// caracteres e uma edição tem uns 8 mil, então cabe numa mensagem.
+function paraWhatsApp(d) {
+  const L = [];
+  L.push(d.tipo === "draft"
+    ? `*JORNAL DA PURURUCA BOWL — EDIÇÃO ESPECIAL: O DRAFT*`
+    : `*JORNAL DA PURURUCA BOWL — Rodada ${d.semana}*`);
+  L.push(`_${d.manchete}_`);
+  L.push("");
+  L.push(`*${d.coluna.titulo}*`);
+  L.push(d.coluna.texto);
+  if (d.coluna.vitima) { L.push(""); L.push(`*Vítima da semana:* ${d.coluna.vitima}`); }
+
+  for (const x of d.times || []) {
+    L.push(""); L.push(`*${x.time} — ${x.titulo}*`);
+    L.push(x.resumo); L.push(`• ${x.veredito}`);
+  }
+  if ((d.confrontos || []).length) {
+    L.push(""); L.push(`_Confrontos por ${d.comentarista}_`);
+    for (const c of d.confrontos) {
+      L.push(""); L.push(`*${c.titulo}*`);
+      L.push(c.resumo); L.push(`_${c.momento_decisivo}_`);
+      for (const v of c.vereditos || []) L.push(`• *${v.manager}:* ${v.texto}`);
+    }
+  }
+  L.push(""); L.push(`Ler no jornal: ${location.origin}${location.pathname}`);
+  return L.join("\n");
+}
+
+async function copiar(botao, texto) {
+  const antes = botao.innerHTML;
+  const restaura = () => setTimeout(() => { botao.innerHTML = antes; delete botao.dataset.feito; }, 2600);
+  try {
+    await navigator.clipboard.writeText(texto);
+    botao.dataset.feito = "1";
+    botao.textContent = "Copiado! Agora é só colar";
+    return restaura();
+  } catch { /* segue para o plano B */ }
+
+  // Plano B, e plano C: alguns navegadores bloqueiam a área de transferência.
+  // Em vez de deixar o usuário na mão, mostramos o texto já selecionado.
+  const ta = document.createElement("textarea");
+  ta.className = "para-copiar";
+  ta.value = texto;
+  ta.readOnly = true;
+  botao.insertAdjacentElement("afterend", ta);
+  ta.focus(); ta.select(); ta.setSelectionRange(0, texto.length);
+  let ok = false;
+  try { ok = document.execCommand && document.execCommand("copy"); } catch { ok = false; }
+  if (ok) {
+    ta.remove();
+    botao.dataset.feito = "1";
+    botao.textContent = "Copiado! Agora é só colar";
+    return restaura();
+  }
+  botao.textContent = "O texto está aí embaixo, já selecionado";
+  restaura();
+}
+
+const ICONE_COPIA = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+
 function jornalEscrito(d) {
   const paras = String(d.coluna.texto || "").split(/\n{2,}/).map(s => s.trim()).filter(Boolean);
   const olho = escolheOlho(paras);
@@ -900,6 +988,7 @@ function jornalEscrito(d) {
     : `Rodada ${d.semana} · ${d.temporada}${d.playoffs ? " · playoffs" : ""} · convidado: ${esc(d.comentarista)}`;
 
   return `<div class="expediente">${cabecalho}</div>
+    <button class="copiar" type="button" data-copiar>${ICONE_COPIA}Copiar para o WhatsApp</button>
     <article class="coluna">
       <h4>${esc(d.manchete)}</h4>
       <div class="assinatura">

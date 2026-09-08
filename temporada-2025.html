@@ -93,6 +93,15 @@
   .ano-a-ano .n { font-family:"Anton",sans-serif; font-size:17px; color:var(--cinza); }
   .ano-a-ano b { font-size:15px; }
   .ano-a-ano p { margin:2px 0 0; font-size:13.5px; color:var(--cinza); line-height:1.4; }
+  .copiar { display:inline-flex; align-items:center; gap:8px; margin-bottom:4px; padding:10px 14px;
+    background:var(--asfalto); color:var(--amarelo); border:0; font:inherit; font-weight:800; font-size:12px;
+    letter-spacing:.1em; text-transform:uppercase; cursor:pointer; }
+  .copiar:hover { background:var(--vermelho); color:var(--cal); }
+  .copiar[data-feito="1"] { background:var(--amarelo); color:var(--asfalto); }
+  .copiar svg { width:15px; height:15px; }
+  .para-copiar { display:block; width:100%; height:180px; margin-bottom:4px; padding:12px;
+    font:inherit; font-size:13px; line-height:1.4; background:var(--cal); color:var(--asfalto);
+    border:2px solid var(--asfalto); resize:vertical; }
   .memoria { background:var(--cal); color:var(--asfalto); padding:16px 18px; }
   .memoria li { margin-bottom:6px; }
   .aviso { background:var(--vermelho); color:var(--cal); padding:16px 18px; font-weight:700; }
@@ -117,6 +126,7 @@
 <a class="volta" href="./">‹ Voltar para a edição desta semana</a>
 
 <main id="main">
+  <button class="copiar" type="button" id="copiarRecap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copiar para o WhatsApp</button>
   <article class="recap">
     <h2 class="display">Doze vitórias, nenhuma taça: o ano em que o dono da liga aprendeu a perder</h2>
     <div class="assinatura">
@@ -216,6 +226,55 @@
 </footer>
 
 <script>
+// Lê a retrospectiva da própria página e converte para a sintaxe do WhatsApp.
+// Assim o texto vive num lugar só: se eu editar a prosa, o botão acompanha.
+function recapParaWhatsApp() {
+  const L = ["*PURURUCA BOWL — RETROSPECTIVA 2025*"];
+  const r = document.querySelector(".recap");
+  L.push(`_${r.querySelector("h2").textContent.trim()}_`);
+  for (const el of r.querySelectorAll("p, .intertitulo, .olho")) {
+    const txt = el.textContent.trim();
+    if (!txt) continue;
+    L.push("");
+    if (el.classList.contains("intertitulo")) L.push(`*${txt}*`);
+    else if (el.classList.contains("olho")) L.push(`_${txt}_`);
+    else L.push(txt);
+  }
+  L.push(""); L.push("*A TEMPORADA EM NÚMEROS*");
+  for (const d of document.querySelectorAll(".caixa-numeros dl > div")) {
+    const rot = d.querySelector("dt").textContent.trim();
+    const dd = d.querySelector("dd");
+    const peq = dd.querySelector("small");
+    const val = dd.childNodes[0].textContent.trim();
+    L.push(`• *${rot}:* ${val}${peq ? ` — ${peq.textContent.trim()}` : ""}`);
+  }
+  L.push(""); L.push("*O ANO DE CADA UM*");
+  for (const d of document.querySelectorAll(".ano-a-ano > div")) {
+    L.push(`${d.querySelector(".n").textContent.trim()}. *${d.querySelector("b").textContent.trim()}* — ${d.querySelector("p").textContent.trim()}`);
+  }
+  L.push(""); L.push(`Ler no jornal: ${location.origin}${location.pathname}`);
+  return L.join("\n");
+}
+
+document.getElementById("copiarRecap").addEventListener("click", async (e) => {
+  const b = e.currentTarget, texto = recapParaWhatsApp(), antes = b.innerHTML;
+  const restaura = () => setTimeout(() => { b.innerHTML = antes; delete b.dataset.feito; }, 2600);
+  try {
+    await navigator.clipboard.writeText(texto);
+    b.dataset.feito = "1"; b.textContent = "Copiado! Agora é só colar";
+    return restaura();
+  } catch { /* plano B */ }
+  const ta = document.createElement("textarea");
+  ta.className = "para-copiar"; ta.value = texto; ta.readOnly = true;
+  b.insertAdjacentElement("afterend", ta);
+  ta.focus(); ta.select(); ta.setSelectionRange(0, texto.length);
+  let ok = false;
+  try { ok = document.execCommand && document.execCommand("copy"); } catch { ok = false; }
+  if (ok) { ta.remove(); b.dataset.feito = "1"; b.textContent = "Copiado! Agora é só colar"; return restaura(); }
+  b.textContent = "O texto está aí embaixo, já selecionado";
+  restaura();
+});
+
 const LEAGUE_ID_ATUAL = "1389719862191849472";
 const TEMPORADA = "2025";
 
