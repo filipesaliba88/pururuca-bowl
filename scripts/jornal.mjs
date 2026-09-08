@@ -519,14 +519,18 @@ async function chamaModelo(contexto, convidado) {
   return jornal;
 }
 
+// Telegram em HTML, não em Markdown: o texto vem do modelo e um asterisco
+// solto derruba a mensagem inteira com 400. Em HTML basta escapar três caracteres.
+const esc = (s) => String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+
 function paraTexto(jornal, semana) {
   const p = [];
-  p.push(`*JORNAL DA PURURUCA BOWL — Rodada ${semana}*`);
-  p.push(`_${jornal.manchete}_`);
-  p.push(`\n*${jornal.coluna.titulo}*\n${jornal.coluna.texto}`);
+  p.push(`<b>JORNAL DA PURURUCA BOWL — Rodada ${semana}</b>`);
+  p.push(`<i>${esc(jornal.manchete)}</i>`);
+  p.push(`\n<b>${esc(jornal.coluna.titulo)}</b>\n${esc(jornal.coluna.texto)}`);
   for (const c of jornal.confrontos) {
-    const v = c.vereditos.map((x) => `• *${x.manager}:* ${x.texto}`).join("\n");
-    p.push(`\n*${c.titulo}*\n${c.resumo}\n\n_${c.momento_decisivo}_\n\n${v}`);
+    const v = c.vereditos.map((x) => `• <b>${esc(x.manager)}:</b> ${esc(x.texto)}`).join("\n");
+    p.push(`\n<b>${esc(c.titulo)}</b>\n${esc(c.resumo)}\n\n<i>${esc(c.momento_decisivo)}</i>\n\n${v}`);
   }
   return p.join("\n");
 }
@@ -544,6 +548,7 @@ async function telegram(texto) {
     return;
   }
 
+  // Quebra por linha inteira: uma tag HTML nunca fica partida entre mensagens.
   const pedacos = [];
   for (const bloco of texto.split("\n")) {
     if (!pedacos.length || pedacos.at(-1).length + bloco.length + 1 > 3800) pedacos.push(bloco);
@@ -554,7 +559,7 @@ async function telegram(texto) {
     const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chat, text: parte, parse_mode: "Markdown" }),
+      body: JSON.stringify({ chat_id: chat, text: parte, parse_mode: "HTML" }),
     });
     // Nunca imprimir o corpo da resposta: a URL da chamada carrega o token.
     if (!r.ok) throw new Error(`Telegram respondeu ${r.status}.`);
@@ -732,9 +737,9 @@ async function chamaModeloDraft(contexto) {
 }
 
 function textoDraft(jornal) {
-  const p = [`*JORNAL DA PURURUCA BOWL — EDIÇÃO ESPECIAL: O DRAFT*`, `_${jornal.manchete}_`];
-  p.push(`\n*${jornal.coluna.titulo}*\n${jornal.coluna.texto}`);
-  for (const t of jornal.times) p.push(`\n*${t.time} — ${t.titulo}*\n${t.resumo}\n\n• ${t.veredito}`);
+  const p = [`<b>JORNAL DA PURURUCA BOWL — EDIÇÃO ESPECIAL: O DRAFT</b>`, `<i>${esc(jornal.manchete)}</i>`];
+  p.push(`\n<b>${esc(jornal.coluna.titulo)}</b>\n${esc(jornal.coluna.texto)}`);
+  for (const t of jornal.times) p.push(`\n<b>${esc(t.time)} — ${esc(t.titulo)}</b>\n${esc(t.resumo)}\n\n• ${esc(t.veredito)}`);
   return p.join("\n");
 }
 
