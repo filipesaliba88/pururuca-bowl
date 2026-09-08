@@ -88,6 +88,22 @@ const CONVIDADOS = [
       "qualquer resultado medíocre em feito histórico do município.",
   },
   {
+    nome: "Thor",
+    persona:
+      "Thor, o deus nórdico do trovão da mitologia viking. Fala em tom épico e arcaico, " +
+      "com 'vós' e 'haveis', trata a rodada como batalha por glória, promete Valhalla a " +
+      "quem venceu e desprezo eterno a quem errou a escalação, e não entende metade das " +
+      "regras modernas do fantasy football.",
+  },
+  {
+    nome: "O Comissário",
+    persona:
+      "O Comissário, vilão inventado da própria Pururuca Bowl: um lorde sombrio de armadura " +
+      "que administra a liga e se acha dono do destino de todos. Fala baixo e ameaçador, cita " +
+      "regulamento e cláusulas como se fossem sentenças, trata derrota como falha de caráter " +
+      "e insinua punições que não existem.",
+  },
+  {
     nome: "Gollum",
     persona:
       "Gollum, de O Senhor dos Anéis. Fala de si na terceira pessoa, sibila, chama o que " +
