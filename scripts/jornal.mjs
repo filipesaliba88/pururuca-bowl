@@ -21,6 +21,7 @@ import path from "node:path";
 const LEAGUE_ID = process.env.LEAGUE_ID || "1389719862191849472";
 const API = "https://api.sleeper.app/v1";
 const DIR = "data/jornal";
+const SITE = "https://filipesaliba88.github.io/pururuca-bowl/";
 const MODELO = "claude-opus-5";
 
 // Precisa bater com o ROTULO de index.html: é assim que o modelo aprende
@@ -523,7 +524,7 @@ async function chamaModelo(contexto, convidado) {
 // solto derruba a mensagem inteira com 400. Em HTML basta escapar três caracteres.
 const esc = (s) => String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
 
-function paraTexto(jornal, semana) {
+export function paraTexto(jornal, semana) {
   const p = [];
   p.push(`<b>JORNAL DA PURURUCA BOWL — Rodada ${semana}</b>`);
   p.push(`<i>${esc(jornal.manchete)}</i>`);
@@ -532,7 +533,19 @@ function paraTexto(jornal, semana) {
     const v = c.vereditos.map((x) => `• <b>${esc(x.manager)}:</b> ${esc(x.texto)}`).join("\n");
     p.push(`\n<b>${esc(c.titulo)}</b>\n${esc(c.resumo)}\n\n<i>${esc(c.momento_decisivo)}</i>\n\n${v}`);
   }
+  p.push(`\n<a href="${SITE}">Ler no jornal, com as ilustrações ›</a>`);
   return p.join("\n");
+}
+
+// Quebra por linha inteira: uma tag HTML nunca fica partida entre mensagens,
+// e o link do rodapé sempre cai na última.
+export function quebraEmMensagens(texto) {
+  const pedacos = [];
+  for (const bloco of texto.split("\n")) {
+    if (!pedacos.length || pedacos.at(-1).length + bloco.length + 1 > 3800) pedacos.push(bloco);
+    else pedacos[pedacos.length - 1] += "\n" + bloco;
+  }
+  return pedacos;
 }
 
 // O Telegram corta em 4096 caracteres, então mandamos em pedaços.
@@ -548,12 +561,7 @@ async function telegram(texto) {
     return;
   }
 
-  // Quebra por linha inteira: uma tag HTML nunca fica partida entre mensagens.
-  const pedacos = [];
-  for (const bloco of texto.split("\n")) {
-    if (!pedacos.length || pedacos.at(-1).length + bloco.length + 1 > 3800) pedacos.push(bloco);
-    else pedacos[pedacos.length - 1] += "\n" + bloco;
-  }
+  const pedacos = quebraEmMensagens(texto);
 
   for (const parte of pedacos) {
     const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -736,10 +744,11 @@ async function chamaModeloDraft(contexto) {
   return JSON.parse(texto);
 }
 
-function textoDraft(jornal) {
+export function textoDraft(jornal) {
   const p = [`<b>JORNAL DA PURURUCA BOWL — EDIÇÃO ESPECIAL: O DRAFT</b>`, `<i>${esc(jornal.manchete)}</i>`];
   p.push(`\n<b>${esc(jornal.coluna.titulo)}</b>\n${esc(jornal.coluna.texto)}`);
   for (const t of jornal.times) p.push(`\n<b>${esc(t.time)} — ${esc(t.titulo)}</b>\n${esc(t.resumo)}\n\n• ${esc(t.veredito)}`);
+  p.push(`\n<a href="${SITE}">Ler no jornal, com as ilustrações ›</a>`);
   return p.join("\n");
 }
 
