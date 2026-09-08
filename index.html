@@ -9,6 +9,7 @@
 <style>
   :root {
     --grama: #0F3D2E;
+    --papel: #E4DBC6;   /* o chão do site: papel de jornal, não gramado */
     --grama-escura: #0A2B20;
     --cal: #F3EFE4;
     --amarelo: #F5C518;
@@ -17,17 +18,14 @@
     --cinza: #6B6B63;
   }
   * { box-sizing: border-box; }
-  html { background: #0F3D2E; background: var(--grama); }
+  html { background: #E4DBC6; background: var(--papel); }
   body {
     margin: 0;
     font-family: "Archivo", system-ui, sans-serif;
     font-variation-settings: "wdth" 100;
-    color: #F3EFE4;
-    color: var(--cal);
-    background-color: #0F3D2E;
-    background:
-      repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(243,239,228,.12) calc(10% - 1px) 10%),
-      var(--grama);
+    color: #1C1C1C;
+    color: var(--asfalto);
+    background: var(--papel);
     line-height: 1.45;
   }
   a { color: inherit; }
@@ -35,11 +33,11 @@
   .display { font-family: "Anton", "Archivo Black", "Archivo", sans-serif; font-weight: 400; letter-spacing: -.01em; }
 
   /* Cabeçalho de primeira página */
-  header { padding: 14px 16px 0; border-bottom: 3px solid var(--cal); }
+  header { padding: 14px 16px 0; border-bottom: 3px solid var(--asfalto); }
   .expediente-topo {
     display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
     font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-    color: rgba(243,239,228,.55);
+    color: var(--cinza);
   }
   header h1 {
     margin: 6px 0 4px;
@@ -48,11 +46,11 @@
   }
   .slogan {
     display: flex; align-items: center; gap: 10px; padding-bottom: 10px;
-    font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(243,239,228,.6);
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza);
   }
-  .slogan::before, .slogan::after { content: ""; flex: 1; height: 1px; background: rgba(243,239,228,.35); }
-  header p { margin: 0 0 6px; color: rgba(243,239,228,.75); max-width: 60ch; font-size: 14px; }
-  .status { margin: 0; padding-bottom: 10px; font-size: 13px; color: var(--amarelo); }
+  .slogan::before, .slogan::after { content: ""; flex: 1; height: 1px; background: rgba(28,28,28,.3); }
+  header p { margin: 0 0 6px; color: var(--cinza); max-width: 60ch; font-size: 14px; }
+  .status { margin: 0; padding-bottom: 10px; font-size: 13px; color: var(--vermelho); font-weight: 600; }
 
   /* Tarja de edição, logo abaixo do menu */
   .tarja {
@@ -63,8 +61,8 @@
   /* Quebra em duas linhas em vez de rolar para o lado: nada de aba escondida. */
   nav {
     display: flex; flex-wrap: wrap; gap: 0;
-    border-bottom: 3px solid var(--cal);
-    background: var(--grama-escura);
+    border-bottom: 3px solid var(--asfalto);
+    background: var(--grama);
     position: sticky; top: 0; z-index: 2;
   }
   nav button {
@@ -77,8 +75,8 @@
 
   main { padding: 20px; max-width: 980px; margin: 0 auto; }
   section[hidden] { display: none; }
-  h2 { margin: 8px 0 16px; font-size: clamp(26px, 6vw, 40px); text-transform: uppercase; line-height: 1; }
-  h3 { margin: 24px 0 8px; font-size: 18px; }
+  h2 { color: var(--asfalto); margin: 8px 0 16px; font-size: clamp(26px, 6vw, 40px); text-transform: uppercase; line-height: 1; }
+  h3 { color: var(--asfalto); margin: 24px 0 8px; font-size: 18px; }
 
   /* Rodada / prêmios */
   .rodada-sel, .sel-linha { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
@@ -146,7 +144,7 @@
   .coluna { background: var(--cal); color: var(--asfalto); padding: 16px 18px 18px; margin-bottom: 4px; }
   .coluna h4 {
     margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
-    font-size: clamp(27px, 8vw, 40px); line-height: .94; letter-spacing: -.01em;
+    font-size: clamp(27px, 8vw, 40px); line-height: 1.02; letter-spacing: -.01em;
     text-transform: uppercase; text-wrap: balance;
   }
   .coluna .assinatura {
@@ -206,7 +204,7 @@
     background: var(--amarelo); color: var(--asfalto);
     padding: 10px 13px; margin-top: 4px; font-size: 13.5px; line-height: 1.45;
   }
-  .rodape-tabela { margin-top: 10px; font-size: 12.5px; line-height: 1.5; color: rgba(243,239,228,.65); }
+  .rodape-tabela { margin-top: 10px; font-size: 12.5px; line-height: 1.5; color: var(--cinza); }
 
   /* Tabelas */
   /* As do draft têm coluna por posição e não cabem em tela de celular:
@@ -244,8 +242,8 @@
 
   .aviso { background: var(--vermelho); color: var(--cal); padding: 16px 18px; font-weight: 700; }
   .aviso code { display: block; margin-top: 8px; font-weight: 400; font-size: 13px; word-break: break-all; }
-  .vazio { color: rgba(243,239,228,.7); }
-  footer { padding: 24px 20px 40px; color: rgba(243,239,228,.55); font-size: 13px; text-align: center; }
+  .vazio { color: var(--cinza); }
+  footer { padding: 24px 20px 40px; color: var(--cinza); font-size: 13px; text-align: center; border-top: 1px solid rgba(28,28,28,.25); margin-top: 28px; }
   @media (prefers-reduced-motion: no-preference) {
     .carregando { animation: pisca 1s steps(2) infinite; }
     @keyframes pisca { to { opacity: .35; } }
@@ -317,7 +315,7 @@
   </section>
 
   <section id="sec-fichas" hidden>
-    <h2 class="display">Ficha criminal</h2>
+    <h2 class="display">Os times, um por um</h2>
     <div id="fichas"></div>
   </section>
 </main>
@@ -829,8 +827,8 @@ function renderFichas(rodadas, rosters, nomes, transacoes, historico) {
     const s = r.settings || {};
     const pts = (s.fpts || 0) + (s.fpts_decimal || 0) / 100;
     return `<article class="ficha">
-      <div class="nome">${nomes[r.roster_id].manager}</div>
-      <div class="time">${nomes[r.roster_id].time}</div>
+      <div class="nome">${nomes[r.roster_id].time}</div>
+      <div class="time">${nomes[r.roster_id].manager}</div>
       <dl>
         <div><dt>Campanha</dt><dd>${s.wins || 0}–${s.losses || 0}${s.ties ? "–" + s.ties : ""}</dd></div>
         <div><dt>Pontos</dt><dd>${fmt(pts)}</dd></div>
@@ -838,7 +836,7 @@ function renderFichas(rodadas, rosters, nomes, transacoes, historico) {
         <div><dt>Trades</dt><dd>${trades[r.roster_id] || 0}</dd></div>
       </dl>
       ${historico.length > 1 ? `<div class="crimes">Campanhas: ${historico.map(t => { const c = t.campanha.find(x => x.user === r.owner_id); return c ? `${t.season}: ${c.w}–${c.l}` : `${t.season}: não jogou`; }).join(", ")}</div>` : ""}
-      <div class="crimes">${(crimes[r.roster_id] || []).length ? "Antecedentes: " + crimes[r.roster_id].map(c => `<span>${c}</span>`).join("") : "Ficha limpa. Por enquanto."}</div>
+      <div class="crimes">${(crimes[r.roster_id] || []).length ? "No noticiário: " + crimes[r.roster_id].map(c => `<span>${c}</span>`).join("") : "Nada a declarar. Por enquanto."}</div>
     </article>`;
   }).join("");
 }

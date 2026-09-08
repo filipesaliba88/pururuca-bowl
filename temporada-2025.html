@@ -5,82 +5,179 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pururuca Bowl — Temporada 2025</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
 <style>
-  :root { --grama:#0F3D2E; --grama-escura:#0A2B20; --cal:#F3EFE4; --amarelo:#F5C518; --vermelho:#D0342C; --asfalto:#1C1C1C; --cinza:#6B6B63; }
+  :root { --grama:#0F3D2E; --papel:#E4DBC6; --grama-escura:#0A2B20; --cal:#F3EFE4; --amarelo:#F5C518; --vermelho:#D0342C; --asfalto:#1C1C1C; --cinza:#6B6B63; }
   * { box-sizing: border-box; }
-  html { background:#0F3D2E; background:var(--grama); }
-  body { margin:0; font-family:"Archivo",system-ui,sans-serif; color:#F3EFE4; color:var(--cal); line-height:1.45;
-    background-color:#0F3D2E;
-    background: repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), rgba(243,239,228,.12) calc(10% - 1px) 10%), var(--grama); }
+  html { background:#E4DBC6; background:var(--papel); }
+  body { margin:0; font-family:"Archivo",system-ui,sans-serif; color:#1C1C1C; color:var(--asfalto); line-height:1.45;
+    background: var(--papel); }
   a { color: inherit; }
-  .display { font-family:"Archivo Black","Archivo",sans-serif; font-weight:400; letter-spacing:-.01em; }
-  header { padding:28px 20px 20px; border-bottom:3px solid var(--cal); }
-  header h1 { margin:0; font-size:clamp(38px,11vw,96px); line-height:.92; text-transform:uppercase; }
-  header h1 span { display:block; color:var(--amarelo); }
-  header p { margin:12px 0 0; color:rgba(243,239,228,.75); }
-  .status { margin-top:6px; font-size:14px; color:var(--amarelo); }
-  .volta { display:inline-block; margin-top:14px; font-weight:700; }
+  .display { font-family:"Anton","Archivo Black","Archivo",sans-serif; font-weight:400; letter-spacing:-.01em; }
+  header { padding:14px 16px 0; border-bottom:3px solid var(--asfalto); }
+  .expediente-topo { display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--cinza); }
+  header h1 { margin:6px 0 4px; font-size:clamp(40px,13vw,104px); line-height:.86; letter-spacing:-.02em; text-transform:uppercase; }
+  .slogan { display:flex; align-items:center; gap:10px; padding-bottom:10px;
+    font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--cinza); }
+  .slogan::before, .slogan::after { content:""; flex:1; height:1px; background:rgba(28,28,28,.3); }
+  .status { margin:0; padding-bottom:10px; font-size:13px; color:var(--vermelho); font-weight:600; }
+  .volta { display:block; background:var(--vermelho); color:var(--cal); padding:6px 16px;
+    font-size:10.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
   main { padding:20px; max-width:980px; margin:0 auto; }
-  h2 { margin:32px 0 14px; font-size:clamp(26px,6vw,40px); text-transform:uppercase; line-height:1; }
+  h2 { color:var(--asfalto); margin:32px 0 14px; font-size:clamp(26px,6vw,40px); text-transform:uppercase; line-height:1; }
   h2:first-child { margin-top:8px; }
-  h3 { margin:20px 0 8px; font-size:18px; }
-  p.intro { color:rgba(243,239,228,.75); margin:0 0 12px; }
+  h3 { color:var(--asfalto); margin:20px 0 8px; font-size:18px; }
+  p.intro { color:var(--cinza); margin:0 0 12px; }
 
   .podio { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
   .podio .lugar { background:var(--cal); color:var(--asfalto); padding:16px 18px; }
   .podio .lugar.campeao { grid-column:1 / -1; background:var(--amarelo); }
   .podio .lugar.lanterna { grid-column:1 / -1; background:var(--vermelho); color:var(--cal); }
   .podio .rot { font-size:13px; font-weight:800; }
-  .podio .nome { font-family:"Archivo Black"; font-size:clamp(24px,7vw,44px); line-height:1; margin-top:4px; }
+  .podio .nome { font-family:"Anton",sans-serif; font-size:clamp(24px,7vw,44px); line-height:1; margin-top:4px; }
   .podio .det { margin-top:6px; font-size:15px; opacity:.85; }
 
-  .premio { display:grid; grid-template-columns:104px 1fr; gap:14px; background:var(--cal); color:var(--asfalto); margin-bottom:4px; }
-  .premio .selo { display:grid; place-items:center; padding:12px 6px; font-family:"Archivo Black"; font-size:11px; line-height:1.15; text-align:center; text-transform:uppercase; overflow-wrap:anywhere; background:var(--amarelo); }
-  .premio.vermelho .selo { background:var(--vermelho); color:var(--cal); }
-  .premio .corpo { padding:12px 14px 12px 0; }
-  .premio .quem { font-size:22px; font-family:"Archivo Black"; line-height:1.05; }
+  .premio { display:grid; grid-template-columns:1fr; gap:0; background:var(--cal); color:var(--asfalto); padding:11px 13px; margin-bottom:4px; }
+  .premio .etiqueta { display:inline-block; background:var(--amarelo); color:var(--asfalto); font-size:9px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:3px 7px; }
+  .premio.vermelho .etiqueta { background:var(--vermelho); color:var(--cal); }
+  .premio .corpo { padding:0; }
+  .premio .quem { font-size:24px; font-family:"Anton",sans-serif; line-height:1; text-transform:uppercase; margin-top:6px; }
   .premio .porque { margin:4px 0 0; color:var(--cinza); font-size:15px; }
 
   .tabela-wrap { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; background:var(--cal); color:var(--asfalto); font-size:15px; }
   th, td { padding:10px 12px; text-align:left; border-bottom:1px solid rgba(28,28,28,.15); white-space:nowrap; }
-  th { font-weight:800; background:var(--amarelo); }
+  th { font-weight:800; background:var(--asfalto); color:var(--cal); font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
   td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
   tr.lider td { background:#FFF6CF; }
   tr.lanterna td { background:#FDE1DE; }
 
   .rival { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px; background:var(--cal); color:var(--asfalto); padding:12px 14px; margin-bottom:4px; }
   .rival .lado { font-weight:800; } .rival .lado.dir { text-align:right; }
-  .rival .placar { font-family:"Archivo Black"; font-size:26px; padding:0 10px; background:var(--asfalto); color:var(--amarelo); }
+  .rival .placar { font-family:"Anton",sans-serif; font-size:26px; padding:0 10px; background:var(--asfalto); color:var(--amarelo); }
   .rival .obs { grid-column:1 / -1; color:var(--cinza); font-size:14px; }
 
   .ficha { background:var(--cal); color:var(--asfalto); padding:16px 18px; margin-bottom:6px; }
-  .ficha .nome { font-family:"Archivo Black"; font-size:24px; line-height:1; }
+  .ficha .nome { font-family:"Anton",sans-serif; font-size:24px; line-height:1; }
   .ficha .time { color:var(--cinza); margin-top:2px; }
   .ficha dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:8px 16px; margin:12px 0 0; }
   .ficha dt { font-size:13px; color:var(--cinza); } .ficha dd { margin:0; font-weight:800; font-size:18px; font-variant-numeric:tabular-nums; }
   .ficha .crimes { margin-top:12px; font-size:14px; }
   .ficha .crimes span { display:inline-block; background:var(--asfalto); color:var(--amarelo); padding:3px 8px; margin:3px 4px 0 0; font-weight:700; }
 
+  /* Retrospectiva: a mesma página de jornal da edição semanal */
+  .recap { background:var(--cal); color:var(--asfalto); padding:18px 18px 20px; margin-bottom:4px; }
+  .recap h2 { margin:0; font-size:clamp(29px,8.5vw,46px); line-height:1.02; text-wrap:balance; }
+  .recap .assinatura { display:flex; align-items:center; gap:10px; margin-top:12px; padding-top:9px;
+    border-top:1px solid rgba(28,28,28,.3); font-size:11.5px; line-height:1.3; }
+  .recap .assinatura img { width:38px; height:38px; object-fit:cover; flex:none; }
+  .recap .assinatura b { display:block; text-transform:uppercase; letter-spacing:.06em; }
+  .recap .assinatura span { color:var(--cinza); }
+  .recap .lede { margin:14px 0 0; font-size:17px; line-height:1.42; font-weight:600; }
+  .recap p { margin:11px 0 0; font-size:15px; line-height:1.6; }
+  .recap p.capitular::first-letter { float:left; font-family:"Anton",sans-serif; font-size:54px; line-height:.74; padding:4px 9px 0 0; color:var(--vermelho); }
+  .recap .olho { margin:16px 0 0; padding:12px 0; border-top:3px double var(--asfalto); border-bottom:3px double var(--asfalto);
+    font-family:"Anton",sans-serif; font-size:clamp(19px,5vw,25px); line-height:1.1; text-transform:uppercase; color:var(--vermelho); }
+  .recap .intertitulo { margin:16px 0 -4px; font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--cinza); }
+  .caixa-numeros { background:var(--asfalto); color:var(--cal); padding:14px 16px; margin-bottom:4px; }
+  .caixa-numeros .rot { font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--amarelo); }
+  .caixa-numeros dl { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px 18px; margin:10px 0 0; }
+  .caixa-numeros dt { font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:rgba(243,239,228,.6); }
+  .caixa-numeros dd { margin:2px 0 0; font-family:"Anton",sans-serif; font-size:24px; line-height:1; }
+  .caixa-numeros dd small { display:block; font-family:"Archivo",sans-serif; font-size:12px; font-weight:400; color:rgba(243,239,228,.65); margin-top:3px; letter-spacing:0; }
+  .ano-a-ano { background:var(--cal); color:var(--asfalto); padding:4px 0; margin-bottom:4px; }
+  .ano-a-ano > div { display:grid; grid-template-columns:26px 1fr; gap:10px; padding:9px 16px; border-bottom:1px solid rgba(28,28,28,.16); }
+  .ano-a-ano > div:last-child { border-bottom:0; }
+  .ano-a-ano .n { font-family:"Anton",sans-serif; font-size:17px; color:var(--cinza); }
+  .ano-a-ano b { font-size:15px; }
+  .ano-a-ano p { margin:2px 0 0; font-size:13.5px; color:var(--cinza); line-height:1.4; }
   .memoria { background:var(--cal); color:var(--asfalto); padding:16px 18px; }
   .memoria li { margin-bottom:6px; }
   .aviso { background:var(--vermelho); color:var(--cal); padding:16px 18px; font-weight:700; }
   .aviso code { display:block; margin-top:8px; font-weight:400; font-size:13px; word-break:break-all; }
-  .vazio { color:rgba(243,239,228,.7); }
-  footer { padding:24px 20px 40px; color:rgba(243,239,228,.55); font-size:13px; text-align:center; }
+  .vazio { color:var(--cinza); }
+  footer { padding:24px 20px 40px; color:var(--cinza); font-size:13px; text-align:center; border-top:1px solid rgba(28,28,28,.25); margin-top:28px; }
   @media (prefers-reduced-motion:no-preference) { .carregando { animation:pisca 1s steps(2) infinite; } @keyframes pisca { to { opacity:.35; } } }
 </style>
 </head>
 <body>
 <header>
-  <h1 class="display">Temporada<span>2025</span></h1>
-  <p id="sub">Buscando a temporada no Sleeper…</p>
+  <div class="expediente-topo">
+    <span>Ano I · Edição especial</span>
+    <span>Encerrada</span>
+  </div>
+  <h1 class="display">Pururuca Bowl</h1>
+  <div class="slogan">Retrospectiva 2025</div>
   <div class="status carregando" id="status">carregando</div>
-  <a class="volta" href="./">← Voltar para o Hall da Vergonha</a>
 </header>
+<a class="volta" href="./">‹ Voltar para a edição desta semana</a>
 
 <main id="main">
+  <article class="recap">
+    <h2 class="display">Doze vitórias, nenhuma taça: o ano em que o dono da liga aprendeu a perder</h2>
+    <div class="assinatura">
+      <img src="assets/pururuca-jornal.jpg" alt="Seu Pururuca no balcão do boteco">
+      <div>
+        <b>Coluna do Seu Pururuca</b>
+        <span>Retrospectiva da temporada 2025</span>
+      </div>
+    </div>
+
+    <p class="lede">Catorze rodadas, uma final e a mesma conclusão de sempre: nesta liga, fazer ponto e ganhar taça são duas profissões diferentes.</p>
+
+    <p class="capitular">O Baconators ganhou doze dos catorze jogos da temporada regular. Doze. Fez cerca de 1.800 pontos e sofreu 1.485, liderou de ponta a ponta e chegou nos playoffs como favorito de todo mundo — inclusive dele mesmo. Terminou em terceiro. Levou a disputa de terceiro lugar, que é o troféu que ninguém pendura na parede.</p>
+
+    <div class="olho">“Fazer ponto e ganhar taça são duas profissões diferentes.”</div>
+
+    <div class="intertitulo">O campeão</div>
+    <p>O Bisteca Lombos Patriots passou o ano inteiro em segundo. Segundo na tabela, segundo em pontos, segundo em tudo que dava para ser segundo. Aí chegou o dia que contava e bateu o Toucinho na final. Não foi o melhor time de 2025 — foi o time que estava certo na semana certa, que é uma habilidade que ninguém treina e todo mundo inveja.</p>
+
+    <div class="intertitulo">O vice que era o melhor</div>
+    <p>O Toucinho fez quase 1.900 pontos, mais que qualquer outro. Terminou a temporada regular em quarto, com 8–6, três posições abaixo do que os pontos mandavam. E deixou 853 pontos no banco no acumulado do ano, o maior desperdício da liga, com cinco Cemitérios de Craques na conta. Perdeu a final. Não precisa de mais nada: o time mais forte do ano perdeu para si mesmo antes de perder para alguém.</p>
+
+    <div class="intertitulo">Dois centésimos</div>
+    <p>Na semana 12 o zuzahawks bateu o Bacon Smashers por 0,02 ponto. Dois centésimos. Uma casa decimal separou vitória de derrota. E o Bacon Smashers já tinha levado a maior goleada do ano sete semanas antes, 193,66 a 109,54 do lucasrbtsantos. Levar as duas pontas da mesma régua na mesma temporada é uma forma rara de azar, e ele conseguiu.</p>
+
+    <div class="intertitulo">O campeão da vergonha</div>
+    <p>O zuzahawks fechou 2025 com 17 pontos de vergonha, o maior número da liga, cinco deles de Cemitério de Craques. Na semana 3 ele deixou 98,22 pontos sentados no banco, recorde da temporada. E terminou a temporada regular em terceiro, com 9–5, e ainda ganhou a disputa de quinto lugar nos playoffs. Alguém me explique.</p>
+
+    <div class="intertitulo">Quem sofreu</div>
+    <p>O Green Baycon fez pouco menos de 1.700 pontos, número de meio de tabela, e sofreu 1.931 — de longe o maior da liga. Quatro Vexames no ano. Terminou 5–9 sem ter feito nada de muito errado além de existir no calendário errado. Já o Contagens Torresmo fez 59,40 numa semana 10 que ele deve querer esquecer: a menor pontuação do ano, por uma distância confortável.</p>
+
+    <p>No fim, quem levou a taça não foi quem fez mais pontos, nem quem ganhou mais jogos, nem quem escalou melhor. Foi quem estava de pé em dezembro. Guardem essa, que em 2026 vocês vão repetir tudo igualzinho.</p>
+  </article>
+
+  <div class="caixa-numeros">
+    <div class="rot">A temporada em números</div>
+    <dl>
+      <div><dt>Campeão</dt><dd>Bisteca Lombos Patriots<small>venceu o Toucinho na final</small></dd></div>
+      <div><dt>Melhor campanha</dt><dd>12–2<small>Baconators, eliminado na semi</small></dd></div>
+      <div><dt>Maior pontuação</dt><dd>193,66<small>lucasrbtsantos, semana 5</small></dd></div>
+      <div><dt>Menor pontuação</dt><dd>59,40<small>Contagens Torresmo, semana 10</small></dd></div>
+      <div><dt>Maior goleada</dt><dd>84,12<small>193,66 a 109,54, semana 5</small></dd></div>
+      <div><dt>Jogo mais apertado</dt><dd>0,02<small>zuzahawks × Bacon Smashers, semana 12</small></dd></div>
+      <div><dt>Mais no banco, numa rodada</dt><dd>98,22<small>zuzahawks, semana 3</small></dd></div>
+      <div><dt>Mais no banco, no ano</dt><dd>853<small>Toucinho, e ainda foi vice</small></dd></div>
+    </dl>
+  </div>
+
+  <h2 class="display">O ano de cada um</h2>
+  <div class="ano-a-ano">
+    <div><span class="n">1</span><div><b>Baconators 🥓 — 12–2</b><p>Ganhou doze jogos e a temporada acabou sem taça. Guarde o print, vai precisar dele em 2026.</p></div></div>
+    <div><span class="n">2</span><div><b>Bisteca Lombos Patriots — 9–5 · CAMPEÃO</b><p>Foi segundo o ano inteiro e primeiro no único dia que contava.</p></div></div>
+    <div><span class="n">3</span><div><b>zuzahawks — 9–5</b><p>Dezessete pontos de vergonha, recorde de banco desperdiçado, e mesmo assim terminou em cima. Não pergunte como.</p></div></div>
+    <div><span class="n">4</span><div><b>Toucinho 🐗 — 8–6 · VICE</b><p>Fez mais pontos que todo mundo e deixou 853 no banco. A conta fecha sozinha.</p></div></div>
+    <div><span class="n">5</span><div><b>lucasrbtsantos — 7–7</b><p>Fez a maior pontuação do ano e três vezes perdeu pela menor margem da rodada.</p></div></div>
+    <div><span class="n">6</span><div><b>DanintosChiefs — 7–7</b><p>Terminou quatro posições acima do que os pontos dele mereciam. Chama-se calendário.</p></div></div>
+    <div><span class="n">7</span><div><b>Denver Bacons — 6–8</b><p>Passou o ano sem chamar atenção para nada. Interprete como quiser.</p></div></div>
+    <div><span class="n">8</span><div><b>Bacon Smashers — 6–8</b><p>Levou a maior goleada do ano e perdeu outra por 0,02. Colecionou os dois extremos.</p></div></div>
+    <div><span class="n">9</span><div><b>Custelinha — 6–8</b><p>A ficha mais limpa da liga: três pontos de vergonha no ano inteiro. Também não fez muito mais que isso.</p></div></div>
+    <div><span class="n">10</span><div><b>Green Baycon — 5–9</b><p>Sofreu 1.931 pontos. Ninguém na liga sofreu tanto, nem de perto.</p></div></div>
+    <div><span class="n">11</span><div><b>Contagens Torresmo — 5–9</b><p>Fez 59,40 numa rodada. É o recorde que ninguém disputa.</p></div></div>
+    <div><span class="n">12</span><div><b>Green Ribs n' Roll — 4–10</b><p>Lanterna. Sem eufemismo, sem atenuante, sem nota de rodapé.</p></div></div>
+  </div>
+
   <h2 class="display">O pódio</h2>
   <div id="podio" class="podio"></div>
 
@@ -145,8 +242,8 @@ async function getJSON(p) { const r = await fetch(`${API}${p}`); if (!r.ok) thro
     ]);
     const nomes = {};
     for (const r of rosters) { const u = users.find(x => x.user_id === r.owner_id) || {}; nomes[r.roster_id] = { manager: u.display_name || `Roster ${r.roster_id}`, time: (u.metadata && u.metadata.team_name) || u.display_name || "" }; }
-    const N = (rid) => (nomes[rid] || {}).manager || "?";
-    $("#sub").textContent = `${lg.name} — temporada ${lg.season}`;
+    // Jornal chama pelo nome do time, igual à edição semanal.
+    const N = (rid) => (nomes[rid] || {}).time || (nomes[rid] || {}).manager || "?";
 
     const ps = (lg.settings && lg.settings.playoff_week_start) || 15;
     const ultimaSemana = 18;
@@ -219,7 +316,7 @@ async function getJSON(p) { const r = await fetch(`${API}${p}`); if (!r.ok) thro
       { tipo: "pefrio", e: top("pefrio"), txt: (e) => `${e.pefrio} vez${e.pefrio > 1 ? "es" : ""} com a pior pontuação da rodada.`, ruim: true },
       { tipo: "canhao", e: top("canhao"), txt: (e) => `${e.canhao} rodada${e.canhao > 1 ? "s" : ""} como maior pontuador. O único elogio da página.` },
     ];
-    $("#premios").innerHTML = premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${ROTULO[p.tipo]}</div><div class="corpo"><div class="quem">${N(p.e[0])}</div><p class="porque">${p.txt(p.e[1])}</p></div></article>`).join("");
+    $("#premios").innerHTML = premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="corpo"><span class="etiqueta">${ROTULO[p.tipo]}</span><div class="quem">${N(p.e[0])}</div><p class="porque">${p.txt(p.e[1])}</p></div></article>`).join("");
 
     // ---- recordes ----
     const seqs = {}; for (const r of rosters) seqs[r.roster_id] = { v: 0, d: 0, maxV: 0, maxD: 0 };
@@ -264,7 +361,7 @@ async function getJSON(p) { const r = await fetch(`${API}${p}`); if (!r.ok) thro
       ];
       if (pior) itens.push({ rot: "Bust do draft", quem: donoDe(pior.pk), txt: `${nomeJ(pior.pk)} na rodada ${pior.pk.round}, pick ${pior.pk.pick_no}, e só ${fmt(pior.pts)} pontos.`, ruim: true });
       if (roubo) itens.push({ rot: "Roubo do draft", quem: donoDe(roubo.pk), txt: `${nomeJ(roubo.pk)} na rodada ${roubo.pk.round} rendeu ${fmt(roubo.pts)}. Sorte ou visão, tanto faz.` });
-      $("#draft").innerHTML = itens.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${p.rot}</div><div class="corpo"><div class="quem">${p.quem}</div><p class="porque">${p.txt}</p></div></article>`).join("");
+      $("#draft").innerHTML = itens.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="corpo"><span class="etiqueta">${p.rot}</span><div class="quem">${p.quem}</div><p class="porque">${p.txt}</p></div></article>`).join("");
     } else $("#draft").innerHTML = `<p class="vazio">Draft de 2025 não encontrado.</p>`;
 
     // ---- memória ----
