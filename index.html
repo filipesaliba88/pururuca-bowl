@@ -36,6 +36,12 @@
   header {
     padding: 28px 20px 20px;
     border-bottom: 3px solid var(--cal);
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  header .cabeca { flex: 1; min-width: 0; }
+  header .avatar {
+    flex: none; width: clamp(66px, 19vw, 116px); aspect-ratio: 1;
+    object-fit: cover; border-radius: 50%; border: 3px solid var(--amarelo);
   }
   header h1 {
     margin: 0;
@@ -76,9 +82,14 @@
     margin-bottom: 4px;
   }
   .premio .selo {
-    display: grid; place-items: center; padding: 12px 8px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
+    padding: 10px 8px;
     font-family: "Archivo Black"; font-size: 11px; line-height: 1.15; text-align: center; text-transform: uppercase;
     overflow-wrap: anywhere; background: var(--amarelo);
+  }
+  .premio .selo img {
+    width: 62px; height: 62px; object-fit: cover;
+    border-radius: 50%; border: 2px solid var(--asfalto);
   }
   .premio.vermelho .selo { background: var(--vermelho); color: var(--cal); }
   .premio .corpo { padding: 12px 14px 12px 0; }
@@ -92,6 +103,45 @@
   }
   .manchete h4 { margin: 0; font-family: "Archivo Black"; font-size: clamp(22px, 5.5vw, 34px); line-height: 1; text-transform: uppercase; }
   .manchete p { margin: 8px 0 0; color: var(--cinza); font-size: 15px; }
+
+  /* Faixa ilustrada usada no topo de uma seção */
+  .ilustra {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--cal); color: var(--asfalto);
+    padding: 12px 16px; margin-bottom: 12px;
+  }
+  .ilustra img { flex: none; width: 72px; height: 72px; object-fit: cover; border-radius: 50%; border: 2px solid var(--asfalto); }
+  .ilustra p { margin: 0; font-size: 15px; }
+
+  .jornal-sel { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .jornal-sel select { font: inherit; padding: 8px 12px; background: var(--cal); color: var(--asfalto); border: 0; font-weight: 700; }
+  .expediente {
+    background: var(--asfalto); color: var(--amarelo);
+    padding: 10px 14px; margin-bottom: 4px; font-size: 14px; font-weight: 700;
+  }
+  .coluna {
+    display: grid; grid-template-columns: 104px 1fr; gap: 16px;
+    background: var(--cal); color: var(--asfalto);
+    padding: 16px 18px; margin-bottom: 4px;
+  }
+  .coluna img { width: 104px; height: 104px; object-fit: cover; border-radius: 50%; border: 3px solid var(--asfalto); }
+  .coluna h4 { margin: 0 0 8px; font-family: "Archivo Black"; font-size: clamp(19px, 4.5vw, 26px); line-height: 1.05; text-transform: uppercase; }
+  .coluna p { margin: 0 0 10px; font-size: 15px; }
+  .coluna .vitima { display: inline-block; background: var(--vermelho); color: var(--cal); padding: 4px 10px; font-weight: 700; font-size: 13px; }
+  @media (max-width: 520px) {
+    .coluna { grid-template-columns: 1fr; justify-items: center; text-align: left; }
+    .coluna .texto { width: 100%; }
+  }
+
+  .confronto {
+    background: var(--cal); color: var(--asfalto);
+    padding: 16px 18px; margin-bottom: 4px;
+  }
+  .confronto h4 { margin: 0; font-family: "Archivo Black"; font-size: 19px; line-height: 1.1; text-transform: uppercase; }
+  .confronto .resumo { margin: 10px 0 0; font-size: 15px; }
+  .confronto .decisivo { margin: 12px 0 0; padding-left: 12px; border-left: 4px solid var(--amarelo); color: var(--cinza); font-size: 15px; }
+  .confronto .vereditos { margin: 12px 0 0; display: grid; gap: 6px; font-size: 15px; }
+  .confronto .vereditos b { font-family: "Archivo Black"; font-weight: 400; }
 
   /* Tabelas */
   table { width: 100%; border-collapse: collapse; background: var(--cal); color: var(--asfalto); font-size: 15px; }
@@ -135,9 +185,12 @@
 </head>
 <body>
 <header>
-  <h1 class="display">Hall da<span>Vergonha</span></h1>
-  <p id="sub">Buscando a liga no Sleeper…</p>
-  <div class="status carregando" id="status">carregando rodadas</div>
+  <div class="cabeca">
+    <h1 class="display">Hall da<span>Vergonha</span></h1>
+    <p id="sub">Buscando a liga no Sleeper…</p>
+    <div class="status carregando" id="status">carregando rodadas</div>
+  </div>
+  <img class="avatar" src="assets/pururuca-avatar.jpg" alt="Seu Pururuca, o colunista da liga">
 </header>
 
 <nav id="nav" aria-label="Seções">
@@ -153,6 +206,10 @@
 <main>
   <section id="sec-draft">
     <h2 class="display">Draft</h2>
+    <div class="ilustra">
+      <img src="assets/pururuca-draft.jpg" alt="Seu Pururuca com a prancheta">
+      <p>O Seu Pururuca anotou tudo. Cada escolha aqui vira prova contra você depois.</p>
+    </div>
     <p id="draftStatus" class="vazio"></p>
     <div id="draftPremios"></div>
     <h3>Quem pegou o quê</h3>
@@ -169,7 +226,10 @@
   </section>
 
   <section id="sec-jornal" hidden>
-    <h2 class="display">Jornal da liga</h2>
+    <div class="jornal-sel">
+      <h2 class="display" style="margin:0">Jornal da liga</h2>
+      <select id="selEdicao" aria-label="Escolher edição" hidden></select>
+    </div>
     <div id="jornal"></div>
   </section>
 
@@ -200,9 +260,18 @@ const LEAGUE_IDS_ANTERIORES = [];
 
 const PESO = { alface: 2, cadeirada: 1, vexame: 2, pefrio: 3 };
 const ROTULO = { alface: "Mão de Alface", cadeirada: "Cadeirada", vexame: "Vexame", pefrio: "Pé Frio", canhao: "Canhão" };
+const RETRATO = {
+  alface: "assets/pururuca-alface.jpg",
+  cadeirada: "assets/pururuca-cadeirada.jpg",
+  vexame: "assets/pururuca-vexame.jpg",
+  pefrio: "assets/pururuca-pefrio.jpg",
+  canhao: "assets/pururuca-canhao.jpg",
+};
 
 const $ = (s) => document.querySelector(s);
 const fmt = (n) => (Math.round(n * 100) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+// O texto do Jornal vem da IA e entra via innerHTML, então escapa antes.
+const esc = (s) => String(s ?? "").replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 
 async function getJSON(path) {
   const r = await fetch(`${API}${path}`);
@@ -273,7 +342,7 @@ $("#nav").addEventListener("click", (e) => {
     }
 
     renderRodada(rodadas);
-    renderJornal(rodadas);
+    renderJornal(rodadas, Number(league.season));
     renderVergonha(rodadas, nomes);
     renderFichas(rodadas, rosters, nomes, transacoes, []);
 
@@ -428,7 +497,7 @@ function renderRodada(rodadas) {
     const r = rodadas.find(x => x.semana == sel.value);
     $("#premios").innerHTML = r.premios.map(p => `
       <article class="premio ${p.tipo === "vexame" || p.tipo === "pefrio" ? "vermelho" : ""}">
-        <div class="selo">${ROTULO[p.tipo]}</div>
+        <div class="selo"><img src="${RETRATO[p.tipo]}" alt="" loading="lazy">${ROTULO[p.tipo]}</div>
         <div class="corpo">
           <div class="quem">${nomeDe(p.roster)}</div>
           <p class="porque">${p.texto}</p>
@@ -441,19 +510,89 @@ function renderRodada(rodadas) {
   function nomeDe(roster) { return window.__nomes[roster].manager; }
 }
 
-function renderJornal(rodadas) {
-  if (!rodadas.length) { $("#jornal").innerHTML = `<p class="vazio">O jornal só sai depois da primeira rodada.</p>`; return; }
+// O Jornal tem duas origens: a edição escrita pela IA, publicada em data/jornal/
+// pela Action semanal, e a prévia por regras, que cobre a rodada enquanto a
+// edição não sai. O seletor mistura as duas, sempre da mais recente para a mais antiga.
+async function renderJornal(rodadas, temporada) {
+  const alvo = $("#jornal");
+  const sel = $("#selEdicao");
+
+  let indice = [];
+  try {
+    // GitHub Pages não lista diretório, então o manifesto diz o que existe.
+    const r = await fetch("data/jornal/index.json", { cache: "no-cache" });
+    if (r.ok) indice = await r.json();
+  } catch { /* nenhuma edição publicada ainda; segue só com as prévias */ }
+
+  const entradas = [];
+  for (const r of [...rodadas].reverse()) {
+    const e = indice.find(x => x.temporada === temporada && x.semana === r.semana);
+    entradas.push(e
+      ? { chave: `${e.temporada}-${e.semana}`, rotulo: `Rodada ${e.semana}`, edicao: e }
+      : { chave: `regras-${r.semana}`, rotulo: `Rodada ${r.semana} (prévia)`, rodada: r });
+  }
+  // edições de temporadas passadas continuam acessíveis
+  for (const e of indice) {
+    if (e.temporada !== temporada)
+      entradas.push({ chave: `${e.temporada}-${e.semana}`, rotulo: `Rodada ${e.semana} — ${e.temporada}`, edicao: e });
+  }
+
+  if (!entradas.length) {
+    alvo.innerHTML = `<p class="vazio">O jornal só sai depois da primeira rodada.</p>`;
+    sel.hidden = true;
+    return;
+  }
+
+  sel.hidden = entradas.length < 2;
+  sel.innerHTML = entradas.map(e => `<option value="${e.chave}">${e.rotulo}</option>`).join("");
+  sel.value = entradas[0].chave;
+
+  const desenha = async () => {
+    const e = entradas.find(x => x.chave === sel.value);
+    if (e.rodada) { alvo.innerHTML = jornalPorRegras(e.rodada); return; }
+    alvo.innerHTML = `<p class="vazio carregando">buscando a edição…</p>`;
+    try {
+      const r = await fetch(`data/jornal/${e.edicao.arquivo}`, { cache: "no-cache" });
+      if (!r.ok) throw new Error(r.status);
+      alvo.innerHTML = jornalEscrito(await r.json());
+    } catch {
+      alvo.innerHTML = `<p class="vazio">Não consegui carregar essa edição.</p>`;
+    }
+  };
+  sel.addEventListener("change", desenha);
+  desenha();
+}
+
+function jornalEscrito(d) {
+  const paras = (t) => String(t || "").split(/\n{2,}/).filter(Boolean).map(x => `<p>${esc(x)}</p>`).join("");
+  return `<div class="expediente">Rodada ${d.semana} · ${d.temporada}${d.playoffs ? " · playoffs" : ""} · comentarista convidado: ${esc(d.comentarista)}</div>
+    <article class="manchete"><h4>${esc(d.manchete)}</h4></article>
+    <article class="coluna">
+      <img src="assets/pururuca-jornal.jpg" alt="Seu Pururuca no balcão do boteco">
+      <div class="texto">
+        <h4>${esc(d.coluna.titulo)}</h4>
+        ${paras(d.coluna.texto)}
+        ${d.coluna.vitima ? `<span class="vitima">Vítima da semana: ${esc(d.coluna.vitima)}</span>` : ""}
+      </div>
+    </article>
+    ${(d.confrontos || []).map(c => `<article class="confronto">
+      <h4>${esc(c.titulo)}</h4>
+      <p class="resumo">${esc(c.resumo)}</p>
+      <p class="decisivo">${esc(c.momento_decisivo)}</p>
+      <div class="vereditos">${(c.vereditos || []).map(v => `<div><b>${esc(v.manager)}:</b> ${esc(v.texto)}</div>`).join("")}</div>
+    </article>`).join("")}`;
+}
+
+function jornalPorRegras(r) {
   const N = window.__nomes;
-  const html = [...rodadas].reverse().map(r => {
-    const m = [];
-    if (r.vexame && r.vexame.margem >= 30) m.push({ t: `${N[r.vexame.perdedor].manager} toma ${fmt(r.vexame.margem)} de diferença e pede socorro`, s: `Massacre na rodada ${r.semana}. ${N[r.vexame.vencedor].manager} nem precisou escalar direito.` });
-    if (r.cadeirada && r.cadeirada.margem < 3) m.push({ t: `Por ${fmt(r.cadeirada.margem)}: ${N[r.cadeirada.perdedor].manager} perde e culpa o kicker`, s: `Fontes próximas confirmam que ele "ia trocar o WR3" mas esqueceu.` });
-    if (r.alface.banco >= 25) m.push({ t: `${N[r.alface.roster].manager} deixa ${fmt(r.alface.banco)} pontos no banco e diz que "foi estratégia"`, s: `Especialistas não encontraram a estratégia.` });
-    m.push({ t: `${N[r.canhao.roster].manager} faz ${fmt(r.canhao.pontos)} e já fala em título`, s: `A liga lembra que estamos na rodada ${r.semana}.` });
-    m.push({ t: `${N[r.pefrio.roster].manager} anota ${fmt(r.pefrio.pontos)} e investiga se o app estava aberto`, s: `Pior pontuação da semana. Sem comentários adicionais da assessoria.` });
-    return `<h3>Edição da rodada ${r.semana}</h3>` + m.map(x => `<article class="manchete"><h4>${x.t}</h4><p>${x.s}</p></article>`).join("");
-  }).join("");
-  $("#jornal").innerHTML = html;
+  const m = [];
+  if (r.vexame && r.vexame.margem >= 30) m.push({ t: `${N[r.vexame.perdedor].manager} toma ${fmt(r.vexame.margem)} de diferença e pede socorro`, s: `Massacre na rodada ${r.semana}. ${N[r.vexame.vencedor].manager} nem precisou escalar direito.` });
+  if (r.cadeirada && r.cadeirada.margem < 3) m.push({ t: `Por ${fmt(r.cadeirada.margem)}: ${N[r.cadeirada.perdedor].manager} perde e culpa o kicker`, s: `Fontes próximas confirmam que ele "ia trocar o WR3" mas esqueceu.` });
+  if (r.alface.banco >= 25) m.push({ t: `${N[r.alface.roster].manager} deixa ${fmt(r.alface.banco)} pontos no banco e diz que "foi estratégia"`, s: `Especialistas não encontraram a estratégia.` });
+  m.push({ t: `${N[r.canhao.roster].manager} faz ${fmt(r.canhao.pontos)} e já fala em título`, s: `A liga lembra que estamos na rodada ${r.semana}.` });
+  m.push({ t: `${N[r.pefrio.roster].manager} anota ${fmt(r.pefrio.pontos)} e investiga se o app estava aberto`, s: `Pior pontuação da semana. Sem comentários adicionais da assessoria.` });
+  return `<div class="expediente">Rodada ${r.semana} · prévia por regras — o Seu Pururuca ainda não escreveu esta</div>`
+    + m.map(x => `<article class="manchete"><h4>${x.t}</h4><p>${x.s}</p></article>`).join("");
 }
 
 function renderVergonha(rodadas, nomes) {
