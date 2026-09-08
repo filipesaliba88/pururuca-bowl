@@ -1,0 +1,60 @@
+name: Jornal semanal
+
+on:
+  schedule:
+    # Terça, 13:00 UTC = 10:00 de Brasília, depois do Monday Night.
+    # O Brasil não tem mais horário de verão, então o horário local não muda.
+    - cron: "0 13 * * 2"
+  workflow_dispatch:
+    inputs:
+      semana:
+        description: "Forçar uma semana específica (deixe vazio para a última fechada)"
+        required: false
+        type: string
+      force:
+        description: "Regravar a edição mesmo se já existir"
+        required: false
+        type: boolean
+        default: false
+
+# Necessário para o job commitar a edição de volta no repositório.
+permissions:
+  contents: write
+
+concurrency:
+  group: jornal
+  cancel-in-progress: false
+
+jobs:
+  jornal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instala o SDK da Anthropic
+        run: npm install --no-save --no-audit --no-fund @anthropic-ai/sdk
+
+      - name: Gera a edição
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SEMANA: ${{ inputs.semana }}
+          FORCE: ${{ inputs.force && '1' || '' }}
+        run: node scripts/jornal.mjs
+
+      - name: Commita a edição
+        run: |
+          if [ -z "$(git status --porcelain data/jornal)" ]; then
+            echo "Nada novo para commitar."
+            exit 0
+          fi
+          git config user.name "Seu Pururuca"
+          git config user.email "actions@github.com"
+          git add data/jornal
+          git commit -m "Jornal: edição de $(date -u +%d/%m/%Y)"
+          git push

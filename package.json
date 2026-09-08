@@ -1,0 +1,13 @@
+{
+  "name": "pururuca-bowl",
+  "private": true,
+  "type": "module",
+  "description": "Site da liga Pururuca Bowl. O site em si é HTML estático; isto aqui só existe para o script do Jornal.",
+  "scripts": {
+    "jornal": "node scripts/jornal.mjs",
+    "jornal:dry": "node scripts/jornal.mjs --dry-run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0"
+  }
+}
