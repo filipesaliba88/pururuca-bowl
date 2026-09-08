@@ -1,0 +1,143 @@
+{
+  "temporada": 2025,
+  "semana": 5,
+  "playoffs": false,
+  "comentarista": "Dona Florinda",
+  "gerado_em": "2026-09-08T22:19:33.214Z",
+  "manchete": "Rodada 5: banco lota, escalação vaza e o Bacon Smashers vira tapete",
+  "coluna": {
+    "titulo": "Seu Pururuca: dez times, cinco bancos melhores que os titulares",
+    "texto": "Cinco rodadas. Cinco. E eu ainda vejo essa gente escalando kicker como quem escolhe fruta no escuro. A rodada 5 rendeu 193,66 pontos de um lado e 108,88 do outro, o que na prática significa que metade da liga jogou fantasy e a outra metade jogou bingo. Eu, que já vi de tudo neste boteco, só anotei os números e pedi outra dose.\n\nO Cemitério de Craques vai pro zuzahawks, que deixou 67,08 pontos apodrecendo no banco — Deebo Samuel com 22,5, Daniel Jones com 16,68 — e ainda assim venceu. Sim, venceu, por 5,04. Isso não é competência, é a liga inteira sendo pior que o erro dele. Elogio? Tá aí: dispensou o Zach Ertz na waiver. Só esqueceu de tirar o Ertz da escalação, e o homem devolveu 0. Genial.\n\nO Choro é Livre é do Contagens Torresmo, que tinha C.J. Stroud e seus 28,76 pontos sentados enquanto o titular Trevor Lawrence fazia 27,24 e o Bucky Irving zerava. Perdeu por 5,04 com 41,46 no banco. Não foi azar, foi decisão. Já o Vexame é do Bacon Smashers, que levou 193,66 a 109,54 do lucasrbtsantos com Jaxon Smith-Njigba e seus 26,6 pontos assistindo de camisa social. Quatro derrotas seguidas e um Kyle Hamilton zerado no time titular: isso é coleção, não elenco.\n\nO Várzea fica com o Green Baycon, 108,88, a menor da rodada, com Calvin Ridley (18,1) no banco e Jameson Williams entregando 1,8 em campo. E o Bola Cheia é do lucasrbtsantos, único prêmio decente da noite — 713,8 pontos na temporada, melhor ataque da liga, e mesmo assim segundo lugar atrás de um Bisteca Lombos Patriots que está 5–0 marcando 684,85. Ou seja: o líder é invicto e nem é o melhor. Essa liga é assim mesmo.\n\nVítima da semana: Bacon Smashers. Perder por 84,12 pontos com 36,6 no banco não é derrota, é curadoria de tragédia. Boa sorte na rodada 6, vai precisar de mais que isso.",
+    "vitima": "Bacon Smashers"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "O menino Bisteca Lombos Patriots é impecável (o outro é a gentalha de sempre)",
+      "resumo": "135,82 a 116,22 e ponto final. O Bisteca Lombos Patriots é EDUCADO, é 5–0, tem Patrick Mahomes fazendo 27,72 pontos como um cavalheiro e não se mistura com essa vizinhança. O Custelinha, coitado, apareceu com Jared Goff e 20,12 pontinhos achando que ia incomodar o meu menino. Não incomodou. E olha que o meu menino ainda teve o Jake Elliott chutando 5 pontos e deixou 46,2 no banco — Rhamondre Stevenson com 14,3, Evan Engram com 12,7, Cooper Kupp com 10,9 — porque gente fina pode se dar ao luxo de desperdiçar, minha filha. O Custelinha desperdiçou 17,7 e caiu para a décima posição, 1–4. É o que dá conviver com essa chusma.",
+      "momento_decisivo": "Quando o Nick Cross entregou 8,6 pontinhos ao Custelinha e o Mahomes já tinha resolvido tudo sozinho. Vergonha alheia.",
+      "vereditos": [
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Invicto, elegante e cinco vitórias em cinco. Só me explique por que Cooper Kupp estava sentado, meu bem — nem o meu menino pode tudo."
+        },
+        {
+          "manager": "Custelinha",
+          "texto": "1–4 e três derrotas em quatro. Não é azar, é falta de classe: o Nick Folk fez 7 no banco e o kicker de vocês nem apareceu."
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "O Denver Bacons trocou de kicker três vezes e ainda assim passou por cima da gentalha",
+      "resumo": "143,14 a 109,05. Eu não sei o que dizer de um time que pegou Eddy Pineiro na waiver, dispensou o Spencer Shrader, depois RECONTRATOU o Spencer Shrader como free agent e o dito cujo fez 2 pontos. Dois! Isso é coisa de quem mora em vila. Mas venceu, porque Jacory Croskey-Merritt fez 26,9 e o resto do bairro é ainda pior. Deixou 39,62 no banco com Justin Fields fazendo 25,92 de camisa limpa. Já o Green Ribs n' Roll saiu catando RB em free agent — Michael Carter, Zavier Scott, Hassan Haskins — e o Zavier Scott escalado fez MENOS DE ZERO, ouviu, gentalha? Menos 0,2. Jaylen Waddle fez 23,2 e Jordan Addison ficou de fora com 14,3.",
+      "momento_decisivo": "O Zavier Scott, recém-chegado da rua, marcando -0,2 pontos no titular. Foi ali que a vizinhança inteira perdeu a dignidade.",
+      "vereditos": [
+        {
+          "manager": "Denver Bacons",
+          "texto": "3–2 e vitória bonita, mas essa novela de kicker é coisa de gente sem berço. Deixe o Justin Fields jogar."
+        },
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "Três derrotas seguidas, 1–4 e um running back de rua com pontuação negativa. Chusma, chusma, chusma!"
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "Toucinho 🐗 venceu com 58,58 pontos sentados — a isso eu chamo de desperdício de gente rica",
+      "resumo": "142,42 a 121,54. O Toucinho 🐗 tem Kyren Williams fazendo 29,7 pontos e é 3–2, muito bem, parabéns, mas deixar Dak Prescott e seus 28,28 pontos no banco é atitude de quem joga dinheiro pela janela para os pobres verem. 58,58 pontos apodrecendo, com Jordan Mason (12) e Zach Charbonnet (11,7) de espectadores. Do outro lado, o DanintosChiefs mexeu no elenco a semana inteira — pegou Bobby Okereke, devolveu Dalton Schultz, contratou Matthew Stafford — e o Stafford até que honrou, 25,56 pontos. O problema é o Rachaad White com 22,4 no banco, o T.J. Watt zerando e o Harrison Butker fazendo 4. Quatro pontos, minha nossa senhora.",
+      "momento_decisivo": "Dak Prescott marcando 28,28 pontos de banco enquanto o Toucinho vencia por 20,88. Sorte que a vizinhança é fraca.",
+      "vereditos": [
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "Vitória com 58,58 no banco é vitória de quem tem elenco, não critério. Arrume essa casa antes que alguém decente apareça."
+        },
+        {
+          "manager": "DanintosChiefs",
+          "texto": "Movimentou meio mercado e perdeu por 20,88 com Rachaad White sentado. Trabalho não substitui juízo, meu filho."
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "Baconators 🥓 ganhou o duelo dos bancos gordos contra a menor pontuação da rodada",
+      "resumo": "121,64 a 108,88, o jogo mais pobre da rodada — e olha que eu sou exigente. O Baconators 🥓 é 4–1, terceiro colocado, e ganhou com Jake Ferguson fazendo 22,8. Só que deixou 56,28 no banco: Sam LaPorta com 19,9, Kareem Hunt com 18,5, Bo Nix com 17,88. Se tivesse escalado direito, ganhava por 60 e eu não precisaria assistir a isso. Myles Garrett fez 3,6, um horror. E o Green Baycon? Menor pontuação da rodada inteira, 108,88, com Christian McCaffrey carregando 26,7 nas costas e Jameson Williams devolvendo 1,8. Calvin Ridley com 18,1 no banco, Tee Higgins com 10,7 no banco. Isso não é time, é sala de espera.",
+      "momento_decisivo": "Os 12,76 pontos de margem: bastava o Green Baycon escalar Calvin Ridley no lugar do Jameson Williams. Bastava, gentalha!",
+      "vereditos": [
+        {
+          "manager": "Baconators 🥓",
+          "texto": "4–1 é campanha de gente séria, mas ganhar por 12,76 com 56,28 no banco é sorte de vizinho, não mérito."
+        },
+        {
+          "manager": "Green Baycon",
+          "texto": "Menor pontuação da rodada, 1–4, e os melhores wide receivers sentados. Não me culpe, culpe quem escalou."
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "zuzahawks venceu por 5,04 sendo o pior de si mesmo — praga do bairro!",
+      "resumo": "117,88 a 112,84. Eu me RECUSO a chamar isso de vitória. O zuzahawks deixou 67,08 pontos no banco — o maior cemitério da liga, com Deebo Samuel (22,5), Daniel Jones (16,68) e Chase Brown (10,4) —, dispensou o Zach Ertz na waiver e AINDA ASSIM manteve o Ertz escalado para fazer zero. Zero! Salvou-se porque Rico Dowdle, contratado como free agent, fez 33,2. Sorte de quem mora em cortiço. E o Contagens Torresmo, coitadinho, perdeu por 5,04 com C.J. Stroud fazendo 28,76 no banco, mais que o titular Trevor Lawrence (27,24), e ainda com Bucky Irving zerando na escalação. 41,46 pontos jogados fora por uma diferença de cinco.",
+      "momento_decisivo": "C.J. Stroud, 28,76 pontos, sentado. A margem era 5,04. Não precisa saber matemática para entender o tamanho da desgraça.",
+      "vereditos": [
+        {
+          "manager": "zuzahawks",
+          "texto": "67,08 no banco e mesmo assim venceu. Isso não é talento, é a vizinhança ser ainda mais desleixada que você."
+        },
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "Perder por 5,04 com o QB reserva pontuando mais que o titular é o tipo de coisa que só acontece nesta vila."
+        }
+      ]
+    },
+    {
+      "id": "confronto-6",
+      "titulo": "lucasrbtsantos fez 193,66 e o Bacon Smashers apanhou como quem não paga aluguel",
+      "resumo": "193,66 a 109,54. Oitenta e quatro pontos de diferença, minha nossa. O lucasrbtsantos jogou como gente de família: Ja'Marr Chase com 33,5, só 26,8 pontos no banco — o menor desperdício da rodada, veja só o que é ter organização — e 713,8 pontos na temporada, o melhor ataque desta liga de gentalha. Nem o Carl Granderson com 5,9 estragou. Do outro lado, o Bacon Smashers passou a semana mexendo em free agent, dispensou Tyler Bass, dispensou J.J. McCarthy, catou Tremaine Edmunds e Kam Curl, e no domingo escalou Kyle Hamilton para fazer ZERO enquanto Jaxon Smith-Njigba fazia 26,6 no banco. Rashid Shaheed com 22,6 tentou salvar. Não salvou. Quarta derrota seguida, lanterna, 1–4.",
+      "momento_decisivo": "Não houve momento. Houve uma hora em que ficou claro que só um dos dois tinha escalado um time de verdade.",
+      "vereditos": [
+        {
+          "manager": "lucasrbtsantos",
+          "texto": "193,66 pontos e banco enxuto — o único aqui que parece ter lido as regras. Pena que ainda está atrás de um invicto."
+        },
+        {
+          "manager": "Bacon Smashers",
+          "texto": "Lanterna, quatro derrotas seguidas, 36,6 no banco e um DB zerado escalado. Chusma, ralé, gentalha!"
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "zuzahawks",
+      "manager": "zuzahawks",
+      "detalhe": "Deixou 67,08 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Contagens Torresmo",
+      "manager": "Enock87",
+      "detalhe": "Perdeu por 5,04 para zuzahawks. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Bacon Smashers",
+      "manager": "MarcioRezende",
+      "detalhe": "Levou 193,66 a 109,54 de lucasrbtsantos. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Green Baycon",
+      "manager": "QueijoMinas",
+      "detalhe": "Menor pontuação da rodada: 108,88. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "lucasrbtsantos",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Maior pontuação da rodada: 193,66. O único prêmio bom daqui."
+    }
+  ]
+}

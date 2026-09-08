@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "temporada": 2025,
+    "semana": 5,
+    "arquivo": "2025-rodada-05.json",
+    "manchete": "Rodada 5: banco lota, escalação vaza e o Bacon Smashers vira tapete",
+    "comentarista": "Dona Florinda",
+    "rotulo": "Rodada 5"
+  },
+  {
+    "temporada": 2025,
+    "semana": 0,
+    "tipo": "draft",
+    "arquivo": "2025-draft.json",
+    "manchete": "Draft 2026: 192 picks, nenhuma defesa e um QB solitário no zuzahawks",
+    "rotulo": "Especial · o Draft"
+  }
+]
