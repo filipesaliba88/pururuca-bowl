@@ -123,7 +123,8 @@ const MEMORIA = {
 };
 
 const PESO = { alface: 2, cadeirada: 1, vexame: 2, pefrio: 3 };
-const ROTULO = { alface: "Mão de Alface", cadeirada: "Cadeirada", vexame: "Vexame", pefrio: "Pé Frio", canhao: "Canhão" };
+// Os nomes internos (alface, cadeirada…) nunca mudam; só o que aparece na tela.
+const ROTULO = { alface: "Cemitério de Craques", cadeirada: "O Choro é Livre", vexame: "Vexame", pefrio: "Várzea", canhao: "Bola Cheia" };
 const API = "https://api.sleeper.app/v1";
 const $ = (s) => document.querySelector(s);
 const fmt = (n) => (Math.round(n * 100) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -218,7 +219,7 @@ async function getJSON(p) { const r = await fetch(`${API}${p}`); if (!r.ok) thro
       { tipo: "pefrio", e: top("pefrio"), txt: (e) => `${e.pefrio} vez${e.pefrio > 1 ? "es" : ""} com a pior pontuação da rodada.`, ruim: true },
       { tipo: "canhao", e: top("canhao"), txt: (e) => `${e.canhao} rodada${e.canhao > 1 ? "s" : ""} como maior pontuador. O único elogio da página.` },
     ];
-    $("#premios").innerHTML = premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${ROTULO[p.tipo]} do ano</div><div class="corpo"><div class="quem">${N(p.e[0])}</div><p class="porque">${p.txt(p.e[1])}</p></div></article>`).join("");
+    $("#premios").innerHTML = premios.map(p => `<article class="premio ${p.ruim ? "vermelho" : ""}"><div class="selo">${ROTULO[p.tipo]}</div><div class="corpo"><div class="quem">${N(p.e[0])}</div><p class="porque">${p.txt(p.e[1])}</p></div></article>`).join("");
 
     // ---- recordes ----
     const seqs = {}; for (const r of rosters) seqs[r.roster_id] = { v: 0, d: 0, maxV: 0, maxD: 0 };

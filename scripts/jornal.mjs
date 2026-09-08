@@ -22,6 +22,16 @@ const API = "https://api.sleeper.app/v1";
 const DIR = "data/jornal";
 const MODELO = "claude-opus-5";
 
+// Precisa bater com o ROTULO de index.html: é assim que o modelo aprende
+// como o prêmio se chama. Mandar o nome interno faria ele escrever "o Alface da semana".
+const ROTULO = {
+  alface: "Cemitério de Craques",
+  cadeirada: "O Choro é Livre",
+  vexame: "Vexame",
+  pefrio: "Várzea",
+  canhao: "Bola Cheia",
+};
+
 const DRY = process.argv.includes("--dry-run");
 const FORCE = !!process.env.FORCE;
 
@@ -371,7 +381,7 @@ function montaContexto({ rodada, matchups, nomes, players, campanha, h2h, donoDe
     semana: rodada.semana,
     playoffs: rodada.playoffs,
     premios: rodada.premios.map((p) => ({
-      premio: p.tipo,
+      premio: ROTULO[p.tipo] || p.tipo,
       manager: nomes[p.roster].manager,
       detalhe: p.texto,
     })),
@@ -566,7 +576,8 @@ async function main() {
   const temporada = Number(league.season);
   const arquivo = path.join(DIR, `${temporada}-rodada-${String(semana).padStart(2, "0")}.json`);
 
-  if (fs.existsSync(arquivo) && !FORCE) {
+  // O --dry-run não grava nada, então não faz sentido barrá-lo por já existir.
+  if (fs.existsSync(arquivo) && !FORCE && !DRY) {
     console.log(`${arquivo} já existe. Use FORCE=1 para regravar.`);
     return;
   }
