@@ -119,12 +119,17 @@
     background: var(--asfalto); color: var(--cal);
     padding: 12px 16px; margin: 12px 0 4px;
   }
+  /* Retrato e emblema ocupam o mesmo quadrado, para a faixa não mudar de forma
+     entre um convidado que tem ilustração e outro que só tem objeto. */
+  .convidado .emblema, .convidado .retrato {
+    flex: none; width: 84px; height: 84px;
+  }
   .convidado .emblema {
-    flex: none; display: grid; place-items: center;
-    width: 54px; height: 54px; border-radius: 50%;
+    display: grid; place-items: center;
     background: var(--amarelo); color: var(--asfalto);
   }
-  .convidado .emblema svg { width: 30px; height: 30px; }
+  .convidado .emblema svg { width: 44px; height: 44px; }
+  .convidado .retrato { object-fit: cover; }
   .convidado .quem { font-family: "Archivo Black"; font-size: 17px; line-height: 1.1; }
   .convidado .oque { margin-top: 3px; font-size: 14px; color: rgba(243,239,228,.7); }
 
@@ -546,6 +551,25 @@ const EMBLEMA = {
 const EMBLEMA_PADRAO = `<circle cx="12" cy="12" r="8"/><path d="M12 8v5M12 16h.01"/>`;
 const emblemaDe = (nome) => `<span class="emblema" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${EMBLEMA[nome] || EMBLEMA_PADRAO}</svg></span>`;
 
+// Retrato em versão porco, quando existe. Quem não tem cai no emblema acima —
+// é o caso do Darth Vader, que o gerador de imagem se recusa a desenhar.
+const RETRATO_CONVIDADO = {
+  "Michael Scott": "michael-scott",
+  "Seu Barriga": "seu-barriga",
+  "Ted Mosby": "ted-mosby",
+  "Capitão Nascimento": "nascimento",
+  "Dona Florinda": "dona-florinda",
+  "Odorico Paraguaçu": "odorico",
+  "Gollum": "gollum",
+  "Dwight Schrute": "dwight",
+  "Sherlock Holmes": "sherlock",
+  "Mestre Yoda": "yoda",
+  "O Narrador": "narrador",
+};
+const figuraDe = (nome) => RETRATO_CONVIDADO[nome]
+  ? `<img class="retrato" src="assets/convidado-${RETRATO_CONVIDADO[nome]}.jpg" alt="${esc(nome)} em versão porco" loading="lazy">`
+  : emblemaDe(nome);
+
 // O Jornal tem duas origens: a edição escrita pela IA, publicada em data/jornal/
 // pela Action semanal, e a prévia por regras, que cobre a rodada enquanto a
 // edição não sai. O seletor mistura as duas, sempre da mais recente para a mais antiga.
@@ -612,7 +636,7 @@ function jornalEscrito(d) {
       </div>
     </article>
     ${(d.confrontos || []).length ? `<div class="convidado">
-      ${emblemaDe(d.comentarista)}
+      ${figuraDe(d.comentarista)}
       <div>
         <div class="quem">${esc(d.comentarista)}</div>
         <div class="oque">assina os ${d.confrontos.length} confrontos desta rodada</div>
