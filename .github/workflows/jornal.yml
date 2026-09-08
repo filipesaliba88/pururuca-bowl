@@ -16,6 +16,15 @@ on:
         required: false
         type: boolean
         default: false
+      league_id:
+        description: "Liga alternativa (só para teste; vazio = liga atual)"
+        required: false
+        type: string
+      telegram:
+        description: "Enviar no grupo do Telegram"
+        required: false
+        type: boolean
+        default: true
 
 # Necessário para o job commitar a edição de volta no repositório.
 permissions:
@@ -45,6 +54,9 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SEMANA: ${{ inputs.semana }}
           FORCE: ${{ inputs.force && '1' || '' }}
+          LEAGUE_ID: ${{ inputs.league_id }}
+          # No agendamento inputs.telegram é vazio, então o envio fica ligado.
+          SEM_TELEGRAM: ${{ github.event_name == 'workflow_dispatch' && !inputs.telegram && '1' || '' }}
         run: node scripts/jornal.mjs
 
       - name: Commita a edição

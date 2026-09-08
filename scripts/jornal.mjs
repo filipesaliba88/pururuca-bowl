@@ -440,6 +440,10 @@ function paraTexto(jornal, semana) {
 async function telegram(texto) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chat = process.env.TELEGRAM_CHAT_ID;
+  if (process.env.SEM_TELEGRAM) {
+    console.log("SEM_TELEGRAM ligado; não enviei nada no grupo.");
+    return;
+  }
   if (!token || !chat) {
     console.log("Telegram não configurado; pulando o envio.");
     return;
