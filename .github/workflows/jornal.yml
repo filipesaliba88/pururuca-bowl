@@ -28,6 +28,16 @@ on:
         required: false
         type: boolean
         default: false
+      rodada:
+        description: "Gerar a edição da rodada fechada"
+        required: false
+        type: boolean
+        default: false
+      draft:
+        description: "Gerar a edição especial do draft"
+        required: false
+        type: boolean
+        default: false
       telegram:
         description: "Enviar no grupo do Telegram"
         required: false
@@ -77,6 +87,7 @@ jobs:
         run: node scripts/jornal.mjs --jogadores
 
       - name: Edição especial do draft, se ele tiver fechado
+        if: github.event_name != 'workflow_dispatch' || inputs.draft
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -86,6 +97,7 @@ jobs:
         run: node scripts/jornal.mjs --draft
 
       - name: Gera a edição da rodada
+        if: github.event_name != 'workflow_dispatch' || inputs.rodada
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
