@@ -2,9 +2,12 @@ name: Jornal semanal
 
 on:
   schedule:
-    # Terça, 13:00 UTC = 10:00 de Brasília, depois do Monday Night.
-    # O Brasil não tem mais horário de verão, então o horário local não muda.
-    - cron: "0 13 * * 2"
+    # Todo dia às 13:00 UTC = 10:00 de Brasília.
+    # A edição da rodada só sai na terça, porque só na terça existe rodada
+    # fechada sem edição — nos outros dias o script não faz nada e não gasta
+    # API. Rodar diariamente serve para duas coisas: pegar o draft no dia em
+    # que ele fechar, e recuperar sozinho se a terça falhar.
+    - cron: "0 13 * * *"
   workflow_dispatch:
     inputs:
       semana:
@@ -47,7 +50,16 @@ jobs:
       - name: Instala o SDK da Anthropic
         run: npm install --no-save --no-audit --no-fund @anthropic-ai/sdk
 
-      - name: Gera a edição
+      - name: Edição especial do draft, se ele tiver fechado
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LEAGUE_ID: ${{ inputs.league_id }}
+          SEM_TELEGRAM: ${{ github.event_name == 'workflow_dispatch' && !inputs.telegram && '1' || '' }}
+        run: node scripts/jornal.mjs --draft
+
+      - name: Gera a edição da rodada
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

@@ -11,6 +11,7 @@
 //   node scripts/jornal.mjs --dry-run    # só o contexto, sem chamar a IA nem o Telegram
 //   SEMANA=3 node scripts/jornal.mjs     # força uma semana específica
 //   FORCE=1 node scripts/jornal.mjs      # regrava uma edição que já existe
+//   node scripts/jornal.mjs --draft      # edição especial do draft, só quando ele fecha
 
 import fs from "node:fs";
 import path from "node:path";
@@ -562,20 +563,213 @@ async function telegram(texto) {
 }
 
 // GitHub Pages não lista diretório, então o site precisa de um manifesto.
-function atualizaIndice(arquivo, jornal, semana, temporada, convidado) {
+function atualizaIndice(entrada) {
   const caminho = path.join(DIR, "index.json");
   const atual = fs.existsSync(caminho) ? JSON.parse(fs.readFileSync(caminho, "utf8")) : [];
-  const entrada = {
-    temporada,
-    semana,
-    arquivo: path.basename(arquivo),
-    manchete: jornal.manchete,
-    comentarista: convidado.nome,
-  };
-  const lista = atual.filter((e) => !(e.temporada === temporada && e.semana === semana));
+  const lista = atual.filter((e) => !(e.temporada === entrada.temporada && e.semana === entrada.semana));
   lista.push(entrada);
   lista.sort((a, b) => b.temporada - a.temporada || b.semana - a.semana);
   fs.writeFileSync(caminho, JSON.stringify(lista, null, 2) + "\n");
+}
+
+// ---------- Edição especial: o draft ----------
+// Não existe desempenho ainda, então nada aqui é "boa" ou "má" escolha: é
+// montagem de elenco. O que dá para medir sem chutar: distribuição por
+// posição, concentração num time da NFL, quando cada um foi atrás das
+// posições que ninguém quer, e a distância entre a pick e o search_rank do
+// Sleeper — que é consenso de mercado, não desempenho.
+// bye_week existe no schema do Sleeper mas vem VAZIO para os 12 mil jogadores;
+// não dá para analisar colisão de bye, e campo sempre nulo só convida a chute.
+function montaContextoDraft({ draft, picks, nomes, players }) {
+  const porRoster = {};
+  for (const pk of picks) (porRoster[pk.roster_id] ||= []).push(pk);
+
+  const info = (pk) => {
+    const p = players[pk.player_id] || {};
+    return {
+      nome: `${pk.metadata?.first_name || ""} ${pk.metadata?.last_name || ""}`.trim() || pk.player_id,
+      pos: pk.metadata?.position || p.position || "?",
+      time_nfl: pk.metadata?.team || p.team || "FA",
+      rank: p.search_rank && p.search_rank < 9999 ? p.search_rank : null,
+      anos: Number(pk.metadata?.years_exp ?? p.years_exp ?? 0),
+      lesao: (pk.metadata?.injury_status || "").trim(),
+      rodada: pk.round,
+      pick: pk.pick_no,
+    };
+  };
+
+  const times = Object.entries(porRoster).map(([rid, ps]) => {
+    const js = ps.map(info).sort((a, b) => a.pick - b.pick);
+    const conta = (chave) => js.reduce((m, j) => (j[chave] ? ((m[j[chave]] = (m[j[chave]] || 0) + 1), m) : m), {});
+    const pos = conta("pos");
+    const nfl = Object.entries(conta("time_nfl")).sort((a, b) => b[1] - a[1])[0];
+    // pick − rank: positivo = caiu no colo mais tarde que o consenso; negativo = foi buscar cedo.
+    const comRank = js.filter((j) => j.rank).map((j) => ({ ...j, delta: j.pick - j.rank }));
+    const sobrou = [...comRank].sort((a, b) => b.delta - a.delta)[0];
+    const antecipou = [...comRank].sort((a, b) => a.delta - b.delta)[0];
+    const primeira = (p) => js.find((j) => j.pos === p);
+    const q = primeira("QB"), te = primeira("TE"), k = primeira("K"), df = primeira("DEF");
+
+    return {
+      time: nomes[rid].time,
+      manager: nomes[rid].manager,
+      elenco_por_posicao: pos,
+      primeira_escolha: `${js[0].nome} (${js[0].pos}, ${js[0].time_nfl}) na pick ${js[0].pick}`,
+      ultima_escolha: `${js.at(-1).nome} (${js.at(-1).pos}) na pick ${js.at(-1).pick}`,
+      primeiro_qb: q ? `rodada ${q.rodada} (${q.nome})` : "não pegou QB",
+      primeiro_te: te ? `rodada ${te.rodada} (${te.nome})` : "não pegou TE",
+      kicker: k ? `rodada ${k.rodada}` : "não pegou kicker",
+      defesa: df ? `rodada ${df.rodada}` : "não pegou defesa",
+      mais_do_mesmo_time_nfl: nfl && nfl[1] > 1 ? `${nfl[1]} jogadores do ${nfl[0]}` : null,
+      caiu_no_colo: sobrou && sobrou.delta > 15
+        ? `${sobrou.nome} (${sobrou.pos}): consenso ${sobrou.rank}, pegou na ${sobrou.pick}`
+        : null,
+      foi_buscar_cedo: antecipou && antecipou.delta < -15
+        ? `${antecipou.nome} (${antecipou.pos}): consenso ${antecipou.rank}, pegou na ${antecipou.pick}`
+        : null,
+      novatos: js.filter((j) => j.anos === 0).length,
+      veteranos_8_anos_ou_mais: js.filter((j) => j.anos >= 8).length,
+      escolhidos_machucados: js.filter((j) => j.lesao).map((j) => `${j.nome} (${j.lesao})`),
+    };
+  });
+
+  const ordenadas = [...picks].sort((a, b) => a.pick_no - b.pick_no);
+  const primeira = info(ordenadas[0]);
+  const ultima = info(ordenadas.at(-1));
+  const corrida = {};
+  for (const pk of ordenadas) {
+    const p = pk.metadata?.position;
+    if (!p) continue;
+    (corrida[p] ||= { primeira_rodada: pk.round, total: 0 }).total++;
+  }
+
+  const todosComRank = ordenadas.map(info).filter((j) => j.rank).map((j) => ({ ...j, delta: j.pick - j.rank }));
+  const maiorEspera = [...todosComRank].sort((a, b) => b.delta - a.delta).slice(0, 3)
+    .map((j) => `${j.nome} (${j.pos}): consenso ${j.rank}, saiu na ${j.pick}`);
+  const maiorAntecipacao = [...todosComRank].sort((a, b) => a.delta - b.delta).slice(0, 3)
+    .map((j) => `${j.nome} (${j.pos}): consenso ${j.rank}, saiu na ${j.pick}`);
+
+  return {
+    o_que_e_consenso: "search_rank é a ordem de procura do Sleeper, um proxy de consenso de mercado. Não é desempenho e não prova nada sobre o futuro.",
+    maior_espera_do_draft: maiorEspera,
+    maior_antecipacao_do_draft: maiorAntecipacao,
+    rodadas: draft.settings?.rounds,
+    times_na_liga: draft.settings?.teams,
+    total_de_picks: picks.length,
+    primeira_pick_do_draft: `${primeira.nome} (${primeira.pos}, ${primeira.time_nfl}), por ${nomes[ordenadas[0].roster_id].time}`,
+    mr_irrelevant: `${ultima.nome} (${ultima.pos}), por ${nomes[ordenadas.at(-1).roster_id].time}`,
+    posicoes_no_geral: corrida,
+    times,
+  };
+}
+
+const SCHEMA_DRAFT = {
+  type: "object",
+  additionalProperties: false,
+  required: ["manchete", "coluna", "times"],
+  properties: {
+    manchete: { type: "string", description: "Manchete da edição especial do draft. Máximo 80 caracteres." },
+    coluna: {
+      type: "object",
+      additionalProperties: false,
+      required: ["titulo", "texto", "vitima"],
+      properties: {
+        titulo: { type: "string" },
+        texto: { type: "string", description: "A coluna do Seu Pururuca sobre o draft inteiro, 4 a 6 parágrafos separados por \\n\\n." },
+        vitima: { type: "string", description: "Nome do TIME que fez o draft mais duvidoso." },
+      },
+    },
+    times: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["time", "titulo", "resumo", "veredito"],
+        properties: {
+          time: { type: "string", description: "Nome do time." },
+          titulo: { type: "string", description: "Título curto para o elenco montado." },
+          resumo: { type: "string", description: "Análise do elenco, 2 a 4 frases." },
+          veredito: { type: "string", description: "Veredito curto, uma frase." },
+        },
+      },
+    },
+  },
+};
+
+function systemPromptDraft() {
+  return `Você escreve a edição especial do Jornal da Pururuca Bowl sobre o draft de 2026, uma liga de fantasy football entre dez amigos brasileiros. Tudo em português do Brasil.
+
+O tom é zoeira ácida entre amigos. Ataque escalação, teimosia e montagem de elenco — nunca aparência, família ou trabalho. Sem palavrão pesado.
+
+Quem assina é o SEU PURURUCA, colunista fixo: porco velho e rabugento de boteco, sarcástico, cansado, que já viu essa liga errar demais. Ele escreve a coluna sobre o draft inteiro e depois um bloco curto sobre o elenco de cada time.
+
+Chame cada participante pelo NOME DO TIME, não pelo usuário: "o Custelinha montou", nunca "o DanielBrankito montou".
+
+REGRA QUE NÃO PODE SER QUEBRADA: a temporada ainda não começou e ninguém pontuou nada. Você NÃO SABE se uma escolha foi boa ou ruim, não sabe se um jogador vai render, e não existe ranking de draft aqui. Nunca diga que alguém "fez o melhor draft" ou "levou o maior roubo" com base em desempenho — não há desempenho. O que você pode julgar é o que está nos dados: quantos jogadores por posição, concentração de jogadores do mesmo time da NFL, colisão de semana de bye, gastar pick cedo em kicker ou defesa, demorar demais para pegar QB, e apostar em novato ou em veterano.
+
+Você também recebe um "consenso" por jogador, que é a ordem de procura do Sleeper. Ele mostra quem o mercado achava que valia mais, e serve para apontar quem foi buscado antes da hora e quem sobrou até tarde. NÃO é desempenho e não prova que a escolha foi certa ou errada — trate como fofoca de mercado, não como fato.
+
+Se quiser prever, deixe claro que é palpite de boteco, não informação.`;
+}
+
+async function chamaModeloDraft(contexto) {
+  const { default: Anthropic } = await import("@anthropic-ai/sdk");
+  const client = new Anthropic();
+  const resp = await client.beta.messages.create({
+    model: MODELO,
+    max_tokens: 16000,
+    betas: ["server-side-fallback-2026-07-01"],
+    fallbacks: "default",
+    system: systemPromptDraft(),
+    output_config: { format: { type: "json_schema", schema: SCHEMA_DRAFT } },
+    messages: [{ role: "user", content: `Draft de 2026, encerrado:\n\n${JSON.stringify(contexto, null, 2)}` }],
+  });
+  if (resp.stop_reason === "refusal")
+    throw new Error(`Modelo recusou (${resp.stop_details?.category || "sem categoria"}).`);
+  const texto = resp.content.filter((b) => b.type === "text").map((b) => b.text).join("");
+  console.log(`Tokens: ${resp.usage.input_tokens} entrada, ${resp.usage.output_tokens} saída.`);
+  return JSON.parse(texto);
+}
+
+function textoDraft(jornal) {
+  const p = [`*JORNAL DA PURURUCA BOWL — EDIÇÃO ESPECIAL: O DRAFT*`, `_${jornal.manchete}_`];
+  p.push(`\n*${jornal.coluna.titulo}*\n${jornal.coluna.texto}`);
+  for (const t of jornal.times) p.push(`\n*${t.time} — ${t.titulo}*\n${t.resumo}\n\n• ${t.veredito}`);
+  return p.join("\n");
+}
+
+async function edicaoDoDraft(league, nomes) {
+  const temporada = Number(league.season);
+  const arquivo = path.join(DIR, `${temporada}-draft.json`);
+  if (fs.existsSync(arquivo) && !FORCE) {
+    console.log(`${arquivo} já existe. Nada a fazer.`);
+    return;
+  }
+  const draft = await sleeper(`/draft/${league.draft_id}`);
+  if (draft.status !== "complete") {
+    console.log(`Draft ainda ${draft.status}. Volto quando fechar.`);
+    return;
+  }
+  const [picks, players] = await Promise.all([
+    sleeper(`/draft/${league.draft_id}/picks`),
+    getJSON("https://api.sleeper.app/v1/players/nfl"),
+  ]);
+  const contexto = montaContextoDraft({ draft, picks, nomes, players });
+  if (DRY) {
+    console.log(JSON.stringify(contexto, null, 2));
+    console.log("\n--dry-run: não chamei a IA nem o Telegram.");
+    return;
+  }
+  const jornal = await chamaModeloDraft(contexto);
+  fs.mkdirSync(DIR, { recursive: true });
+  const edicao = { temporada, tipo: "draft", gerado_em: new Date().toISOString(), ...jornal };
+  fs.writeFileSync(arquivo, JSON.stringify(edicao, null, 2) + "\n");
+  atualizaIndice({
+    temporada, semana: 0, tipo: "draft", arquivo: path.basename(arquivo),
+    manchete: jornal.manchete, rotulo: "Especial · o Draft",
+  });
+  console.log(`Gravei ${arquivo}.`);
+  await telegram(textoDraft(jornal));
 }
 
 async function main() {
@@ -586,6 +780,11 @@ async function main() {
   ]);
   const nomes = montaNomes(users, rosters);
   const donoDe = Object.fromEntries(rosters.map((r) => [r.roster_id, r.owner_id]));
+
+  if (process.argv.includes("--draft")) {
+    await edicaoDoDraft(league, nomes);
+    return;
+  }
 
   const rodada = await achaRodadaFechada(league, nomes);
   if (!rodada) {
@@ -646,7 +845,13 @@ async function main() {
     premios: contexto.premios,
   };
   fs.writeFileSync(arquivo, JSON.stringify(edicao, null, 2) + "\n");
-  atualizaIndice(arquivo, jornal, semana, temporada, convidado);
+  atualizaIndice({
+    temporada, semana,
+    arquivo: path.basename(arquivo),
+    manchete: jornal.manchete,
+    comentarista: convidado.nome,
+    rotulo: `Rodada ${semana}`,
+  });
   console.log(`Gravei ${arquivo}.`);
 
   await telegram(paraTexto(jornal, semana));

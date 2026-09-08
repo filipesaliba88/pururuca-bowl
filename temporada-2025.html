@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pururuca Bowl — Temporada 2025</title>
+<link rel="icon" href="assets/logo-icone.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
 <style>
@@ -97,6 +98,8 @@
   .aviso { background:var(--vermelho); color:var(--cal); padding:16px 18px; font-weight:700; }
   .aviso code { display:block; margin-top:8px; font-weight:400; font-size:13px; word-break:break-all; }
   .vazio { color:var(--cinza); }
+  footer img.brasao { display:block; width:108px; margin:0 auto 12px; }
+  footer p { margin:0; }
   footer { padding:24px 20px 40px; color:var(--cinza); font-size:13px; text-align:center; border-top:1px solid rgba(28,28,28,.25); margin-top:28px; }
   @media (prefers-reduced-motion:no-preference) { .carregando { animation:pisca 1s steps(2) infinite; } @keyframes pisca { to { opacity:.35; } } }
 </style>
@@ -207,7 +210,10 @@
   <div id="fichas"></div>
 </main>
 
-<footer>Dados: API pública do Sleeper.</footer>
+<footer>
+  <img class="brasao" src="assets/logo-pururuca.png" alt="Brasão da Pururuca Bowl">
+  <p>Dados: API pública do Sleeper.</p>
+</footer>
 
 <script>
 const LEAGUE_ID_ATUAL = "1389719862191849472";

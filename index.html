@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pururuca Bowl — o jornal da vergonha alheia</title>
+<link rel="icon" href="assets/logo-icone.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
 <style>
@@ -62,7 +63,7 @@
   nav {
     display: flex; flex-wrap: wrap; gap: 0;
     border-bottom: 3px solid var(--asfalto);
-    background: var(--grama);
+    background: var(--asfalto);
     position: sticky; top: 0; z-index: 2;
   }
   nav button {
@@ -243,6 +244,8 @@
   .aviso { background: var(--vermelho); color: var(--cal); padding: 16px 18px; font-weight: 700; }
   .aviso code { display: block; margin-top: 8px; font-weight: 400; font-size: 13px; word-break: break-all; }
   .vazio { color: var(--cinza); }
+  footer img.brasao { display: block; width: 108px; margin: 0 auto 12px; }
+  footer p { margin: 0; }
   footer { padding: 24px 20px 40px; color: var(--cinza); font-size: 13px; text-align: center; border-top: 1px solid rgba(28,28,28,.25); margin-top: 28px; }
   @media (prefers-reduced-motion: no-preference) {
     .carregando { animation: pisca 1s steps(2) infinite; }
@@ -320,7 +323,10 @@
   </section>
 </main>
 
-<footer>Dados: API pública do Sleeper. Atualiza sozinho toda vez que a página abre.</footer>
+<footer>
+  <img class="brasao" src="assets/logo-pururuca.png" alt="Brasão da Pururuca Bowl">
+  <p>Dados: API pública do Sleeper. Atualiza sozinho toda vez que a página abre.</p>
+</footer>
 
 <script>
 const LEAGUE_ID = "1389719862191849472";
@@ -351,12 +357,30 @@ async function getJSON(path) {
 }
 
 // ---------- Navegação ----------
+let abaEscolhida = false; // vira true no primeiro clique, para não roubar a aba do leitor
+
+function abre(sec) {
+  document.querySelectorAll("#nav button").forEach(x =>
+    x.dataset.sec === sec ? x.setAttribute("aria-current", "true") : x.removeAttribute("aria-current"));
+  document.querySelectorAll("main section").forEach(s => s.hidden = s.id !== `sec-${sec}`);
+}
+
 $("#nav").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
-  document.querySelectorAll("#nav button").forEach(x => x.removeAttribute("aria-current"));
-  b.setAttribute("aria-current", "true");
-  document.querySelectorAll("main section").forEach(s => s.hidden = s.id !== `sec-${b.dataset.sec}`);
+  abaEscolhida = true;
+  abre(b.dataset.sec);
 });
+
+// Enquanto o draft acontece ele é o assunto. Depois vira arquivo: o Jornal
+// assume a primeira posição e o Draft desce para o fim. Sem ninguém mexer.
+function draftEncerrado() {
+  const nav = $("#nav");
+  const bDraft = nav.querySelector('button[data-sec="draft"]');
+  if (!bDraft) return;
+  nav.appendChild(bDraft);
+  bDraft.textContent = "Draft 2026";
+  if (!abaEscolhida) abre("jornal");
+}
 
 // ---------- Carga ----------
 (async function main() {
@@ -407,6 +431,7 @@ $("#nav").addEventListener("click", (e) => {
         getJSON(`/draft/${league.draft_id}/picks`),
       ]);
       renderDraft(draft, picks, users, rosters, nomes);
+      if (draft.status === "complete") draftEncerrado();
     } catch (e) {
       $("#draftStatus").textContent = `Draft indisponível: ${e.message}`;
     }
@@ -648,6 +673,11 @@ async function renderJornal(rodadas, temporada) {
   } catch { /* nenhuma edição publicada ainda; segue só com as prévias */ }
 
   const entradas = [];
+  // Edições especiais — o draft, por exemplo — não pertencem a rodada nenhuma.
+  for (const e of indice) {
+    if (e.temporada === temporada && e.semana === 0)
+      entradas.push({ chave: `${e.temporada}-esp-${e.tipo || "x"}`, rotulo: e.rotulo || "Edição especial", edicao: e });
+  }
   for (const r of [...rodadas].reverse()) {
     const e = indice.find(x => x.temporada === temporada && x.semana === r.semana);
     entradas.push(e
@@ -704,7 +734,11 @@ function jornalEscrito(d) {
     return i === 1 && olho ? `${bloco}<div class="olho">“${esc(olho)}”</div>` : bloco;
   }).join("");
 
-  return `<div class="expediente">Rodada ${d.semana} · ${d.temporada}${d.playoffs ? " · playoffs" : ""} · convidado: ${esc(d.comentarista)}</div>
+  const cabecalho = d.tipo === "draft"
+    ? `Edição especial · o draft de ${d.temporada}`
+    : `Rodada ${d.semana} · ${d.temporada}${d.playoffs ? " · playoffs" : ""} · convidado: ${esc(d.comentarista)}`;
+
+  return `<div class="expediente">${cabecalho}</div>
     <article class="coluna">
       <h4>${esc(d.manchete)}</h4>
       <div class="assinatura">
@@ -717,6 +751,11 @@ function jornalEscrito(d) {
       ${corpo}
       ${d.coluna.vitima ? `<span class="vitima">Vítima da semana: ${esc(d.coluna.vitima)}</span>` : ""}
     </article>
+    ${(d.times || []).map(x => `<article class="confronto">
+      <h4>${esc(x.time)} — ${esc(x.titulo)}</h4>
+      <p class="resumo">${esc(x.resumo)}</p>
+      <div class="vereditos"><div><b>Veredito:</b> ${esc(x.veredito)}</div></div>
+    </article>`).join("")}
     ${(d.confrontos || []).length ? `<div class="convidado">
       ${figuraDe(d.comentarista)}
       <div>
