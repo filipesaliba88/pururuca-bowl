@@ -103,9 +103,18 @@ Decidido com Filipe:
 4. **Segredos** em Settings → Secrets do repositório: `ANTHROPIC_API_KEY`,
    `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Filipe ficou de criar a chave (console da
    Anthropic, crédito pré-pago) e o bot (@BotFather). Nunca colocar chave no HTML.
-5. **WhatsApp está descartado** como envio automático (API oficial é paga/burocrática,
-   bibliotecas não oficiais dão ban). Telegram é o canal; Filipe encaminha ao WhatsApp
-   se quiser.
+5. **WhatsApp está descartado** como envio automático — decisão reafirmada em 08/09/2026,
+   depois de avaliar as duas rotas a fundo:
+   - **API oficial (Cloud API):** não manda para grupo (é 1:1 empresa↔cliente) e exige
+     modelo pré-aprovado pela Meta, o que inviabiliza uma coluna de 8 mil caracteres.
+     O preço é irrelevante porque a ferramenta não faz o que se precisa.
+   - **Baileys / whatsapp-web.js:** funcionam e o código é simples, mas exigem sessão
+     24h numa VPS, arriscam banir o número e caem algumas vezes por ano exigindo ler
+     QR code na mão. Filipe tem VPS, então o custo não era o problema — o problema era
+     virar a peça que morre na semana 5.
+   **Telegram é o canal.** Para levar ao WhatsApp existe o botão "copiar para o WhatsApp"
+   no Jornal e na retrospectiva, que converte a edição para *negrito* e _itálico_ do
+   WhatsApp numa mensagem só.
 
 ### Formato editorial do Jornal (decidido)
 - **Seu Pururuca é o colunista fixo** toda semana: coluna curta e ácida sobre a rodada
