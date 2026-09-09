@@ -152,6 +152,12 @@
     background: var(--cal); color: var(--asfalto); border: 2px solid var(--asfalto); resize: vertical;
   }
 
+  .errata {
+    background: var(--amarelo); color: var(--asfalto);
+    padding: 11px 14px; margin-bottom: 4px; font-size: 13.5px; line-height: 1.45;
+  }
+  .errata b { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; display: block; margin-bottom: 3px; }
+
   .expediente {
     background: var(--asfalto); color: var(--amarelo);
     padding: 10px 14px; margin-bottom: 4px; font-size: 14px; font-weight: 700;
@@ -989,6 +995,7 @@ function jornalEscrito(d) {
 
   return `<div class="expediente">${cabecalho}</div>
     <button class="copiar" type="button" data-copiar>${ICONE_COPIA}Copiar para o WhatsApp</button>
+    ${d.errata ? `<div class="errata"><b>Errata</b>${esc(d.errata)}</div>` : ""}
     <article class="coluna">
       <h4>${esc(d.manchete)}</h4>
       <div class="assinatura">

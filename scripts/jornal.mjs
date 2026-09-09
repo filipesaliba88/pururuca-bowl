@@ -595,7 +595,7 @@ function atualizaIndice(entrada) {
 // Sleeper — que é consenso de mercado, não desempenho.
 // bye_week existe no schema do Sleeper mas vem VAZIO para os 12 mil jogadores;
 // não dá para analisar colisão de bye, e campo sempre nulo só convida a chute.
-function montaContextoDraft({ draft, picks, nomes, players }) {
+function montaContextoDraft({ draft, picks, nomes, players, liga_roster_positions }) {
   const porRoster = {};
   for (const pk of picks) (porRoster[pk.roster_id] ||= []).push(pk);
 
@@ -665,6 +665,8 @@ function montaContextoDraft({ draft, picks, nomes, players }) {
     .map((j) => `${j.nome} (${j.pos}): consenso ${j.rank}, saiu na ${j.pick}`);
 
   return {
+    escalacao_da_liga: liga_roster_positions,
+    nao_existe_vaga_de_defesa_de_time: true,
     o_que_e_consenso: "search_rank é a ordem de procura do Sleeper, um proxy de consenso de mercado. Não é desempenho e não prova nada sobre o futuro.",
     maior_espera_do_draft: maiorEspera,
     maior_antecipacao_do_draft: maiorAntecipacao,
@@ -720,7 +722,9 @@ Quem assina é o SEU PURURUCA, colunista fixo: porco velho e rabugento de boteco
 
 Chame cada participante pelo NOME DO TIME, não pelo usuário: "o Custelinha montou", nunca "o DanielBrankito montou".
 
-REGRA QUE NÃO PODE SER QUEBRADA: a temporada ainda não começou e ninguém pontuou nada. Você NÃO SABE se uma escolha foi boa ou ruim, não sabe se um jogador vai render, e não existe ranking de draft aqui. Nunca diga que alguém "fez o melhor draft" ou "levou o maior roubo" com base em desempenho — não há desempenho. O que você pode julgar é o que está nos dados: quantos jogadores por posição, concentração de jogadores do mesmo time da NFL, colisão de semana de bye, gastar pick cedo em kicker ou defesa, demorar demais para pegar QB, e apostar em novato ou em veterano.
+REGRA QUE NÃO PODE SER QUEBRADA: a temporada ainda não começou e ninguém pontuou nada. Você NÃO SABE se uma escolha foi boa ou ruim, não sabe se um jogador vai render, e não existe ranking de draft aqui. Nunca diga que alguém "fez o melhor draft" ou "levou o maior roubo" com base em desempenho — não há desempenho. ATENÇÃO À ESCALAÇÃO DESTA LIGA, que vem nos dados: **não existe vaga de defesa de time (D/ST)**. São duas vagas de IDP, preenchidas por defensores individuais — DL, LB e DB. Portanto NÃO É ERRO ninguém ter draftado defesa de time: seria erro ter draftado. Nunca trate a ausência de D/ST como descuido, e nunca sugira que alguém deveria ter pego uma.
+
+O que você pode julgar é o que está nos dados: quantos jogadores por posição contra as vagas que existem, concentração de jogadores do mesmo time da NFL, gastar pick cedo em kicker, demorar demais para pegar QB, e apostar em novato ou em veterano.
 
 Você também recebe um "consenso" por jogador, que é a ordem de procura do Sleeper. Ele mostra quem o mercado achava que valia mais, e serve para apontar quem foi buscado antes da hora e quem sobrou até tarde. NÃO é desempenho e não prova que a escolha foi certa ou errada — trate como fofoca de mercado, não como fato.
 
@@ -770,7 +774,7 @@ async function edicaoDoDraft(league, nomes) {
     sleeper(`/draft/${league.draft_id}/picks`),
     getJSON("https://api.sleeper.app/v1/players/nfl"),
   ]);
-  const contexto = montaContextoDraft({ draft, picks, nomes, players });
+  const contexto = montaContextoDraft({ draft, picks, nomes, players, liga_roster_positions: league.roster_positions.filter((x) => x !== "BN").join(", ") });
   if (DRY) {
     console.log(JSON.stringify(contexto, null, 2));
     console.log("\n--dry-run: não chamei a IA nem o Telegram.");
