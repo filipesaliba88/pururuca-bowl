@@ -807,6 +807,14 @@ async function mapaDeJogadores(league) {
   // Enquanto o draft não fecha, roster.players vem vazio: as picks são a fonte.
   for (const pk of picks || []) if (pk.player_id) ids.add(String(pk.player_id));
 
+  // E todo jogador ativo com time e posição de fantasy. Sem isto, quem é pescado
+  // no mercado depois da última geração do mapa aparece como "jogador 9500" no
+  // site até o dia seguinte — foi o que aconteceu com Josh Downs e Tyjae Spears.
+  // São ~2.100 nomes, uns 99 KB, contra os 8 KB da versão só com os elencos.
+  const POSICOES = new Set(["QB", "RB", "WR", "TE", "K", "DL", "DE", "DT", "LB", "DB", "CB", "S"]);
+  for (const p of Object.values(players))
+    if (p.active && p.team && POSICOES.has(p.position)) ids.add(String(p.player_id));
+
   // Quem entrou ou saiu por transação também precisa de nome, mesmo já dispensado.
   const ps = league.settings?.playoff_week_start || 15;
   const semanas = await Promise.all(
