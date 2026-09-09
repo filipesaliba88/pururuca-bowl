@@ -14,7 +14,9 @@ Leia tudo antes de tocar em qualquer arquivo.
 - League ID atual: `1389719862191849472`. Draft de 2026 estava em andamento em 07/09/2026;
   temporada regular da NFL começa 10/09/2026.
 - Repositório: `github.com/filipesaliba88/pururuca-bowl`, publicado via GitHub Pages em
-  `https://filipesaliba88.github.io/pururuca-bowl/` (branch `main`, raiz).
+  **`https://pururucabowl.com.br`** (branch `main`, raiz; domínio próprio no Registro.br desde
+  09/09/2026, com o arquivo `CNAME` na raiz do repositório). O endereço antigo
+  `filipesaliba88.github.io/pururuca-bowl` segue funcionando e redireciona.
 - Tom do site: zoeira ácida entre amigos. Prêmios são majoritariamente de vergonha.
 
 ## Estado atual (o que já existe e funciona)

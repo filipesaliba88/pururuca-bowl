@@ -23,7 +23,7 @@ import path from "node:path";
 const LEAGUE_ID = process.env.LEAGUE_ID || "1389719862191849472";
 const API = "https://api.sleeper.app/v1";
 const DIR = "data/jornal";
-const SITE = "https://filipesaliba88.github.io/pururuca-bowl/";
+const SITE = "https://pururucabowl.com.br/";
 const MODELO = "claude-opus-5";
 
 // Precisa bater com o ROTULO de index.html: é assim que o modelo aprende
