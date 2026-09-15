@@ -856,16 +856,18 @@ async function renderJornal(rodadas, temporada) {
   } catch { /* nenhuma edição publicada ainda; segue só com as prévias */ }
 
   const entradas = [];
-  // Edições especiais — o draft, por exemplo — não pertencem a rodada nenhuma.
-  for (const e of indice) {
-    if (e.temporada === temporada && e.semana === 0)
-      entradas.push({ chave: `${e.temporada}-esp-${e.tipo || "x"}`, rotulo: e.rotulo || "Edição especial", edicao: e });
-  }
+  // A rodada mais recente vem primeiro e é a que abre por padrão.
   for (const r of [...rodadas].reverse()) {
     const e = indice.find(x => x.temporada === temporada && x.semana === r.semana);
     entradas.push(e
       ? { chave: `${e.temporada}-${e.semana}`, rotulo: `Rodada ${e.semana}`, edicao: e }
       : { chave: `regras-${r.semana}`, rotulo: `Rodada ${r.semana} (prévia)`, rodada: r });
+  }
+  // Edições especiais — o draft, por exemplo — não pertencem a rodada nenhuma
+  // e ficam depois das rodadas, para não roubar a abertura da semana corrente.
+  for (const e of indice) {
+    if (e.temporada === temporada && e.semana === 0)
+      entradas.push({ chave: `${e.temporada}-esp-${e.tipo || "x"}`, rotulo: e.rotulo || "Edição especial", edicao: e });
   }
   // Qualquer edição publicada que não tenha entrado acima entra agora. Sem isto,
   // uma edição da temporada atual some do seletor se a rodada dela não aparecer

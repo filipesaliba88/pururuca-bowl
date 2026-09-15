@@ -2,12 +2,13 @@ name: Jornal semanal
 
 on:
   schedule:
-    # Todo dia às 13:00 UTC = 10:00 de Brasília.
+    # Todo dia às 12:23 UTC = 9:23 de Brasília. Minuto quebrado de propósito:
+    # no horário cheio a fila do GitHub atrasava o run em 3 a 5 horas.
     # A edição da rodada só sai na terça, porque só na terça existe rodada
     # fechada sem edição — nos outros dias o script não faz nada e não gasta
     # API. Rodar diariamente serve para duas coisas: pegar o draft no dia em
     # que ele fechar, e recuperar sozinho se a terça falhar.
-    - cron: "0 13 * * *"
+    - cron: "23 12 * * *"
   workflow_dispatch:
     inputs:
       semana:
