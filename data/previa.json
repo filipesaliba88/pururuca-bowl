@@ -1,0 +1,109 @@
+{
+  "temporada": 2026,
+  "semana": 2,
+  "gerado_em": "2026-09-17T12:50:19.399Z",
+  "manchete": "Semana 2: cinco invictos, cinco chorões e um boletim médico lotado",
+  "coluna": "Pois é, a liga acordou com cinco times de 1–0 se achando o Vince Lombardi e cinco de 0–1 jurando que foi azar. Baconators 🥓 abriu 181.05 e já desfila em primeiro como se a temporada tivesse 17 semanas de sorte contratada. Do outro lado do buraco, Denver Bacons fez 109.35, o menor da rodada, e agora tem a delicada missão de provar que aquilo foi um acidente e não um projeto de vida. No meio, Toucinho 🐗 com 155.51 e Green Baycon com 160.52 fingindo que foi tudo planejado no draft.\n\nO boletim médico desta semana é um necrotério de WR. Green Ribs n' Roll tem Michael Pittman e Nico Collins como Questionable e vai passar a quinta atualizando app feito adolescente apaixonado. Bisteca Lombos Patriots perdeu A.J. Brown para a IR, tem Brock Bowers e Jalen Coker como Questionable e ainda pegou Green Baycon — que por sua vez tem D'Andre Swift Questionable e Micah Parsons no PUP. Contagens Torresmo tem Joe Burrow como Questionable e Josh Jacobs com status NA, o que em bom português de boteco quer dizer: boa sorte, meu filho. Baconators 🥓 mesmo com Myles Garrett Out e três Questionable ainda deve ganhar, porque o universo é injusto e vocês sabem disso.\n\nE tem o clássico dos caídos: Contagens Torresmo × Denver Bacons, 0–1 contra 0–1, retrospecto empatado em 1 × 1, o jogo que ninguém quer assistir e que decide quem vai passar a semana inteira fingindo que ainda dá tempo. Philadelphia Roast Pork perdeu Jordan Mason para a IR mas tem histórico de 1 × 0 contra Bacon Smashers e chega com 143.22 — mais pontos que o adversário invicto, o que resume bem essa liga. Ah, e último aviso do velho porco: a escalação TRAVA quando o jogo começa. Não adianta chorar no grupo às 21h47 que esqueceu o cara no banco. Já vi isso acontecer e vou ver de novo.",
+  "palpites": [
+    {
+      "confronto": "Green Ribs n' Roll × Toucinho 🐗",
+      "favorito": "Toucinho 🐗",
+      "porque": "Já venceu esse confronto uma vez e Green Ribs n' Roll tem dois WR de Questionable pendurados no fio."
+    },
+    {
+      "confronto": "Baconators 🥓 × Custelinha",
+      "favorito": "Baconators 🥓",
+      "porque": "181.05 contra 127.16 e Custelinha rezando pra um George Kittle Questionable salvar o domingo."
+    },
+    {
+      "confronto": "Contagens Torresmo × Denver Bacons",
+      "favorito": "Contagens Torresmo",
+      "porque": "Duelo de afogados, mas 141.58 afunda mais devagar que 109.35."
+    },
+    {
+      "confronto": "Bisteca Lombos Patriots × Green Baycon",
+      "favorito": "Green Baycon",
+      "porque": "Bisteca perdeu A.J. Brown pra IR e agora aposta tudo na fé, que historicamente não pontua."
+    },
+    {
+      "confronto": "Philadelphia Roast Pork × Bacon Smashers",
+      "favorito": "Philadelphia Roast Pork",
+      "porque": "Fez mais pontos perdendo do que Bacon Smashers fez ganhando — e ainda lidera o retrospecto."
+    }
+  ],
+  "boletim": [
+    {
+      "time": "Green Ribs n' Roll",
+      "jogadores": [
+        "Michael Pittman (WR) — Questionable",
+        "Nico Collins (WR) — Questionable"
+      ]
+    },
+    {
+      "time": "Toucinho 🐗",
+      "jogadores": [
+        "Jordyn Tyson (WR) — IR",
+        "Blake Cashman (LB) — Questionable",
+        "Zach Charbonnet (RB) — PUP"
+      ]
+    },
+    {
+      "time": "Baconators 🥓",
+      "jogadores": [
+        "Brian Thomas (WR) — Questionable",
+        "Kyle Monangai (RB) — Questionable",
+        "Myles Garrett (DE) — Out",
+        "Zay Flowers (WR) — Questionable"
+      ]
+    },
+    {
+      "time": "Custelinha",
+      "jogadores": [
+        "George Kittle (TE) — Questionable"
+      ]
+    },
+    {
+      "time": "Contagens Torresmo",
+      "jogadores": [
+        "Josh Jacobs (RB) — NA",
+        "Joe Burrow (QB) — Questionable"
+      ]
+    },
+    {
+      "time": "Denver Bacons",
+      "jogadores": [
+        "Cedric Gray (LB) — Questionable"
+      ]
+    },
+    {
+      "time": "Bisteca Lombos Patriots",
+      "jogadores": [
+        "Brock Bowers (TE) — Questionable",
+        "Jalen Coker (WR) — Questionable",
+        "A.J. Brown (WR) — IR"
+      ]
+    },
+    {
+      "time": "Green Baycon",
+      "jogadores": [
+        "D'Andre Swift (RB) — Questionable",
+        "Micah Parsons (LB) — PUP"
+      ]
+    },
+    {
+      "time": "Philadelphia Roast Pork",
+      "jogadores": [
+        "Jordan Mason (RB) — IR"
+      ]
+    },
+    {
+      "time": "Bacon Smashers",
+      "jogadores": [
+        "Ladd McConkey (WR) — Questionable",
+        "RJ Harvey (RB) — Questionable",
+        "Foyesade Oluokun (LB) — Questionable",
+        "Andrew Van Ginkel (LB) — Questionable"
+      ]
+    }
+  ]
+}
