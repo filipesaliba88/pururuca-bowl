@@ -964,6 +964,19 @@ async function edicaoPrevia(league, nomes, rosters, users) {
     : (state.season === league.season ? state.week : null);
   if (!semana) { console.log("Fora de temporada. Sem prévia."); return; }
 
+  // Uma prévia por rodada. Sem esta trava, qualquer run de quinta (o cron
+  // diário, um disparo manual sem flags) regravava a prévia por cima da que
+  // já tinha ido para o grupo — e mandava de novo no Telegram.
+  if (!FORCE && !DRY && fs.existsSync("data/previa.json")) {
+    try {
+      const antiga = JSON.parse(fs.readFileSync("data/previa.json", "utf8"));
+      if (antiga.semana === semana && antiga.temporada === Number(league.season)) {
+        console.log(`A prévia da rodada ${semana} já existe. Nada a fazer.`);
+        return;
+      }
+    } catch { /* arquivo ilegível: segue e regrava */ }
+  }
+
   const matchups = await sleeper(`/league/${LEAGUE_ID}/matchups/${semana}`).catch(() => []);
   const pares = new Set((matchups || []).filter((m) => m.matchup_id).map((m) => m.matchup_id));
   if (!pares.size) { console.log(`A tabela de jogos da rodada ${semana} ainda não saiu.`); return; }

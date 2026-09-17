@@ -71,7 +71,9 @@ jobs:
         run: echo "dia=$(date -u +%u)" >> "$GITHUB_OUTPUT"
 
       - name: Prévia da rodada, às quintas
-        if: steps.hoje.outputs.dia == '4' || inputs.previa
+        # No agendamento só às quintas; no disparo manual só com a flag — um run
+        # manual de quinta sem flags não pode regerar a prévia.
+        if: (github.event_name != 'workflow_dispatch' && steps.hoje.outputs.dia == '4') || inputs.previa
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
