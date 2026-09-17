@@ -231,6 +231,7 @@
   .previa .boletim .rot, .previa .palpites .rot { font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--vermelho); }
   .previa .boletim div, .previa .palpites div { margin-top: 5px; font-size: 14px; line-height: 1.4; }
   .previa .palpites { margin-top: 14px; padding-top: 11px; border-top: 1px solid rgba(28,28,28,.3); }
+  .previa .copiar { margin-top: 16px; margin-bottom: 0; }
   .previa .palpites .rot { color: var(--cinza); }
   .previa .palpite { margin-top: 10px; }
   .previa .palpite .jogo { display: block; font-size: 11.5px; color: var(--cinza); letter-spacing: .02em; margin-bottom: 1px; }
@@ -719,7 +720,10 @@ async function renderLiga(league, rosters, nomes, state, transacoes) {
               <span class="jogo">${esc(g.confronto)}</span>
               <b>${esc(g.favorito)}</b> — ${esc(g.porque)}
             </div>`).join("")}</div>` : ""}
+          <button class="copiar" type="button" data-copiar>${ICONE_COPIA}Copiar para o WhatsApp</button>
         </article>`;
+        $("#previa").querySelector("[data-copiar]").addEventListener("click", (ev) =>
+          copiar(ev.currentTarget, previaParaWhatsApp(pv)));
       }
     }
   } catch { /* sem prévia publicada */ }
@@ -947,6 +951,21 @@ function paraWhatsApp(d) {
     }
   }
   L.push(""); L.push(`Ler no jornal: ${location.origin}${location.pathname}`);
+  return L.join("\n");
+}
+
+function previaParaWhatsApp(pv) {
+  const L = [`*PURURUCA BOWL — A RODADA ${pv.semana} COMEÇA HOJE*`, `_${pv.manchete}_`, ""];
+  L.push(String(pv.coluna || "").trim());
+  if ((pv.boletim || []).length) {
+    L.push(""); L.push(`*NO BOLETIM MÉDICO*`);
+    for (const b of pv.boletim) L.push(`• *${b.time}:* ${b.jogadores.join(", ")}`);
+  }
+  if ((pv.palpites || []).length) {
+    L.push(""); L.push(`*PALPITES DO PORCO*`);
+    for (const g of pv.palpites) L.push(`• *${g.confronto}* — ${g.favorito}. ${g.porque}`);
+  }
+  L.push(""); L.push(`Ver a tabela no jornal: ${location.origin}${location.pathname}`);
   return L.join("\n");
 }
 
