@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 2,
+    "arquivo": "2026-rodada-02.json",
+    "manchete": "Banco lotado, escalação vazia: a rodada em que todo mundo pagou de teimoso",
+    "comentarista": "Seu Barriga",
+    "rotulo": "Rodada 2"
+  },
+  {
+    "temporada": 2026,
     "semana": 1,
     "arquivo": "2026-rodada-01.json",
     "manchete": "Baconators fritam a liga com 180; Denver Bacons nem acendeu o fogão",
