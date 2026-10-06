@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 4,
+    "arquivo": "2026-rodada-04.json",
+    "manchete": "Banco de reservas joga mais que titular e ninguém se envergonha",
+    "comentarista": "Capitão Nascimento",
+    "rotulo": "Rodada 4"
+  },
+  {
+    "temporada": 2026,
     "semana": 3,
     "arquivo": "2026-rodada-03.json",
     "manchete": "Rodada 3: 400 pontos no banco e ninguém pede desculpa",

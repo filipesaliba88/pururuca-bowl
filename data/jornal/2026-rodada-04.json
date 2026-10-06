@@ -1,0 +1,127 @@
+{
+  "temporada": 2026,
+  "semana": 4,
+  "playoffs": false,
+  "comentarista": "Capitão Nascimento",
+  "gerado_em": "2026-10-06T13:08:15.393Z",
+  "manchete": "Banco de reservas joga mais que titular e ninguém se envergonha",
+  "coluna": {
+    "titulo": "Quatro semanas e vocês ainda escalam no chute",
+    "texto": "Quatro rodadas. Quatro. E eu, um porco velho que já viu essa liga inteira errar o mesmo botão desde que ela existe, continuo olhando pra planilha e vendo gente deixar 83,76 pontos no banco. O Philadelphia Roast Pork marcou 106,22 com o time que escalou e tinha quase um time inteiro de reserva — Drake Maye com 27,16 sentado, DK Metcalf com 16,4 sentado, Devaughn Vele com 16,4 sentado. E ainda teve a coragem de botar o Chase McLaughlin pra fazer 2 pontos. Isso não é azar, isso é vocação. Leva o Cemitério de Craques e o Vexame no mesmo pacote, promoção da semana.\n\nO Green Ribs n' Roll fez 170,88 e ganhou o Bola Cheia, o único prêmio decente desta coluna. Parabéns — agora explica por que o Emanuel Wilson, que você mesmo catou no free agent, fez 27,9 no banco junto com mais 71,48 pontos de mobília. Se tivesse escalado direito batia 200 e eu teria que escrever algo gentil, o que seria um transtorno pra todo mundo.\n\nO Choro é Livre vai pro Green Baycon, que perdeu por 7,54 pro Baconators. Pegou o Bryce Young no waiver, o moço fez 21,46 e salvou a lavoura, e mesmo assim deu errado porque o Jalen Hurts ficou de bobeira no banco com 13,52. Trocar Hurts por Young e ainda perder por sete é o tipo de história que se conta no boteco por dez anos. Eu vou contar. Toda semana.\n\nO Várzea é do Contagens Torresmo, 101,80 pontos, menor da rodada, com Chuba Hubbard (25,7) e Quinshon Judkins (20,6) assistindo de camisa limpa e DeVonta Smith titular fazendo um redondo zero. 540 pontos feitos e 1–3 na tabela: é muito ponto pra tão pouca vitória, e é tudo culpa de quem aperta os botões. Lá em cima, Baconators, Toucinho e Bisteca Lombos em 3–1, e nenhum deles me convenceu de nada — só pegaram adversário pior.\n\nO Custelinha fez 158,48 com Tetairoa McMillan de 43,7 e eu nem vou fingir que foi planejamento. Foi um bilhete premiado caindo no colo de quem escalou Dalton Kincaid pra fazer 1,5. Vitória é vitória, mas anota aí: na semana que o McMillan fizer 6, ninguém vai saber onde se esconder.",
+    "vitima": "Philadelphia Roast Pork"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "Green Ribs n' Roll 170,88 x 133,54 Denver Bacons",
+      "resumo": "ATENÇÃO NA COLUNA! O Green Ribs n' Roll despejou 170,88 pontos, maior pontuação da operação, com Nico Collins fuzilando 30,2. Missão dada é missão cumprida — mas eu VI o relatório, soldado! 71,48 pontos abandonados no banco! Emanuel Wilson, que você mesmo recrutou no free agent, fez 27,9 SENTADO! Tony Pollard 12,6 SENTADO! Stafford 11,68 SENTADO! Você ganhou com meio pelotão fora de formação e acha que é herói? É sorte de escala de serviço! Do outro lado, o Denver Bacons, 133,54, lanterna da liga em 10º, 1–3, e com Alvin Kamara — contratado NESTA SEMANA — marcando 21,9 no banco junto com Bo Nix e 13,56. Você foi ao mercado, trouxe reforço e deixou o reforço no alojamento. Isso não é estratégia, é INDISCIPLINA. E ainda escalou Nakobe Dean pra fazer 4,8.",
+      "momento_decisivo": "Nico Collins 30,2 contra Malik Nabers 22,7 e pronto: a margem de 37,34 já estava assinada antes mesmo de o banco do Denver Bacons somar 53,16 pontos de deserção.",
+      "vereditos": [
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "Maior pontuação da rodada e ainda 2–2 na tabela — isso é tropa boa com comandante distraído. Escala o Emanuel Wilson, soldado, antes que eu escale por você!"
+        },
+        {
+          "manager": "Denver Bacons",
+          "texto": "Último lugar, 497 pontos, o pior ataque da liga, e Kamara no banco. Quem não aguenta a cadeia de comando, PEDE PRA SAIR!"
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "Baconators 🥓 139,85 x 132,31 Green Baycon",
+      "resumo": "SETE PONTOS E MEIO, SENHORES! 7,54! Isso aqui não foi partida, foi tiroteio em corredor estreito. O Baconators assumiu a liderança com 139,85, Bijan Robinson metendo 27,5 e o comandante trocando Kyle Hamilton por Tyreek Hill no free agent. Só que eu quero saber de uma coisa: Kyle Monangai, 27,8 NO BANCO! 63,6 pontos de munição guardada no paiol enquanto DJ Moore desfilava com 2,6 em campo! Você venceu por 7,54 com 63,6 esquecidos — se isso fosse operação real, voltava gente no saco! O Green Baycon pegou Bryce Young no mercado, o rapaz respondeu com 21,46 e foi o melhor da tropa. Bonito. O problema é que Jalen Hurts ficou no banco com 13,52 e Juwan Johnson com 11. Trinta e dois pontos de reserva quando faltaram SETE. Faz essa conta e me olha nos olhos.",
+      "momento_decisivo": "Trey Smack chutando 7 pontos pro Green Baycon enquanto Jalen Hurts assistia do banco com 13,52. A diferença final foi 7,54. A partida foi decidida no alojamento, não em campo.",
+      "vereditos": [
+        {
+          "manager": "Baconators 🥓",
+          "texto": "Líder da liga em 3–1 e 571,05 pontos — formação sólida, comando duvidoso. Com Monangai e Waddle no banco, venceu por 7,54 e agradeceu a Deus, não ao próprio planejamento."
+        },
+        {
+          "manager": "Green Baycon",
+          "texto": "Acertou o waiver do Bryce Young e errou tudo depois ao deixar Hurts sentado. Perder por 7,54 com 32,72 no banco é relatório de autossabotagem."
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "Toucinho 🐗 152,13 x 106,22 Philadelphia Roast Pork",
+      "resumo": "ISSO AQUI FOI MASSACRE, E EU NÃO VOU PEDIR DESCULPA POR FALAR! 152,13 a 106,22. O Toucinho chegou organizado: Javonte Williams com 30,3, waiver limpo trazendo Isaiah Likely e Brandon Aubrey, cadeia de comando funcionando, 3–1 e vice-liderança. Até o Emeka Egbuka com 2,9 passou despercebido porque o resto da coluna aguentou a pressão. Agora o Philadelphia Roast Pork. SENTA AÍ E ESCUTA. 83,76 PONTOS NO BANCO! Drake Maye, 27,16, SENTADO. DK Metcalf, 16,4, SENTADO. Devaughn Vele, 16,4, SENTADO. E você largou Bryce Young pra pegar Sam Darnold na mesma semana em que o Young fez 21,46 no time do vizinho! Kenneth Walker fez 30,7 pra você e morreu sozinho em campo como soldado abandonado. Chase McLaughlin fez DOIS pontos. DOIS! A margem foi 45,91 e o seu banco tinha 83,76. Isso não é derrota, é entrega de posição ao inimigo!",
+      "momento_decisivo": "O instante em que o Philadelphia Roast Pork confirmou a escalação com Drake Maye (27,16) no banco. Dali em diante não existia operação possível, só contagem de baixas.",
+      "vereditos": [
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "Disciplina no waiver, Javonte Williams com 30,3 e 3–1 na tabela. Mas ganhou de um time que se derrotou sozinho — não confunda alvo parado com pontaria."
+        },
+        {
+          "manager": "Philadelphia Roast Pork",
+          "texto": "Cemitério de Craques e Vexame na mesma rodada, 9º lugar, 1–3. Largou o Bryce Young na véspera do Bryce Young jogar. PEDE PRA SAIR!"
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "Custelinha 158,48 x 118,57 Bacon Smashers",
+      "resumo": "QUARENTA E TRÊS VÍRGULA SETE! Tetairoa McMillan detonou 43,7 pontos sozinho e carregou o Custelinha nas costas até os 158,48. Eu respeito o resultado, mas não respeito a formação: Dalton Kincaid titular fazendo 1,5 enquanto Mark Andrews olhava do banco com 12,7, mais Jameson Williams com 15,7 e Matthew Golden com 11,2 — 51,6 pontos de tropa em descanso. Você venceu porque UM homem fez o serviço de três. Isso é sorte operacional, não é plano. O Bacon Smashers teve Kyren Williams com 36, o segundo melhor desempenho individual da rodada, e ainda assim só chegou a 118,57 porque deixou Brock Purdy (19,62) e RJ Harvey (17,4) fora da linha de frente. 60,12 pontos no banco, soldado! E escalou Andrew Van Ginkel pra entregar 1,8. Caiu de 2–0 pra 2–2 em duas semanas. Isso se chama perda de controle de área.",
+      "momento_decisivo": "McMillan 43,7 contra o banco do Bacon Smashers somando 60,12. Enquanto um time tinha um monstro em campo, o outro tinha dois reforços de pijama. Margem: 39,91.",
+      "vereditos": [
+        {
+          "manager": "Custelinha",
+          "texto": "Vitória conquistada por um homem só e 51,6 pontos largados para trás. No dia em que o McMillan fizer 6, essa escalação vira estatística de baixa."
+        },
+        {
+          "manager": "Bacon Smashers",
+          "texto": "Kyren Williams fez 36 e morreu em vão. Purdy e Harvey no banco é insubordinação tática — duas derrotas seguidas e caindo na tabela."
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "Bisteca Lombos Patriots 134,90 x 101,80 Contagens Torresmo",
+      "resumo": "OPERAÇÃO LIMPA DO LADO DIREITO, DESASTRE TOTAL DO ESQUERDO! O Bisteca Lombos Patriots fez 134,90, Tee Higgins com 25,5, apenas 31,88 pontos no banco — o menor desperdício da rodada inteira, e isso aqui é o mais próximo de disciplina que eu vi hoje. Três vitórias seguidas, 3–1, terceiro lugar. Agora o Contagens Torresmo: 101,80. MENOR PONTUAÇÃO DA RODADA! Joe Burrow entregou 25,72 e o resto da tropa simplesmente não apareceu pra formatura. DeVonta Smith titular: ZERO. ZERO PONTOS, SOLDADO! E no banco, assistindo de braços cruzados, Chuba Hubbard com 25,7 e Quinshon Judkins com 20,6 — 69,48 pontos de reserva num jogo que você perdeu por 33,1. Você tem 540,44 pontos feitos na temporada, oitavo lugar e campanha de 1–3. Sabe o que isso significa? Que o inimigo não está do outro lado da tabela, está no seu botão de escalação!",
+      "momento_decisivo": "DeVonta Smith registrando 0,0 como titular enquanto Hubbard (25,7) e Judkins (20,6) permaneciam no banco. A missão acabou antes de começar.",
+      "vereditos": [
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Só 31,88 no banco e três vitórias em sequência — a formação mais disciplinada da rodada. Pena que enfrentou a menor pontuação da liga; isso não é vitória, é inspeção de rotina."
+        },
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "Prêmio Várzea, 101,80 pontos, 69,48 no banco e um titular com ZERO. Muito ponto feito na temporada e 1–3 na tabela: o problema é o comando, não a tropa."
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Deixou 83,76 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Green Baycon",
+      "manager": "QueijoMinas",
+      "detalhe": "Perdeu por 7,54 para filipesaliba. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Levou 152,13 a 106,22 de L-Emerick. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Contagens Torresmo",
+      "manager": "Enock87",
+      "detalhe": "Menor pontuação da rodada: 101,80. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "Green Ribs n' Roll",
+      "manager": "talesbrumon",
+      "detalhe": "Maior pontuação da rodada: 170,88. O único prêmio bom daqui."
+    }
+  ]
+}
