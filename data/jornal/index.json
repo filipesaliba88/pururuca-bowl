@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 5,
+    "arquivo": "2026-rodada-05.json",
+    "manchete": "Green Ribs crava 203 e a gentalha assiste; Torresmo some com 103,90",
+    "comentarista": "Dona Florinda",
+    "rotulo": "Rodada 5"
+  },
+  {
+    "temporada": 2026,
     "semana": 4,
     "arquivo": "2026-rodada-04.json",
     "manchete": "Banco de reservas joga mais que titular e ninguém se envergonha",

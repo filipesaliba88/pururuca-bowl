@@ -1,0 +1,127 @@
+{
+  "temporada": 2026,
+  "semana": 5,
+  "playoffs": false,
+  "comentarista": "Dona Florinda",
+  "gerado_em": "2026-10-13T13:21:12.965Z",
+  "manchete": "Green Ribs crava 203 e a gentalha assiste; Torresmo some com 103,90",
+  "coluna": {
+    "titulo": "Cinco semanas e vocês ainda escalam no chute",
+    "texto": "Cheguei no boteco, pedi o de sempre e abri a planilha da rodada 5. Erro meu. O Green Ribs n' Roll fez 203,32 — e antes que alguém se emocione, lembro que o moço ainda deixou 37,30 no banco com Emanuel Wilson e Zack Baun assistindo, e escalou um chutador que entregou 8 pontos. Levou o Bola Cheia, o único prêmio desta edição que não é vergonha pública. Guarde o troféu, porque com 3–2 ninguém está salvo de nada.\n\nO Cemitério de Craques vai pro Toucinho 🐗, que sentou 50,30 pontos no banco — Braelon Allen com 18,4 e Blake Corum com 16 — e perdeu por 22,25 para o Bisteca Lombos Patriots. Quer dizer: perdeu para si mesmo, o Bisteca só assinou a papelada. E olha que o Bisteca teve a cara de pau de ganhar com o chutador Harrison Butker zerando. Líder com 4–1 e quatro vitórias seguidas, sim, mas quem vence com um zero no kicker venceu de carona.\n\nO Choro é Livre fica com o Philadelphia Roast Pork, que tirou 39,46 do Drake Maye, viu David Montgomery entregar 1,1 ponto e perdeu por 13,26 para o Denver Bacons. Um ponto e meio do Montgomery resolveria. Um ponto e meio. É 1–4 e uma coleção de desculpas. Já o Vexame é do Green Baycon, que tomou 203,32 a 129,80 com T.J. Watt zerando e 39 pontos no banco. Christian Watson fez 34,3 sozinho e serviu só para deixar o placar menos ofensivo.\n\nE aí vem o Várzea: Contagens Torresmo, 103,90, a menor pontuação da rodada. O detalhe artístico é que o rapaz dispensou Josh Jacobs para pegar T.J. Hockenson, e o Hockenson devolveu 1,5 ponto. É o tipo de movimentação que a gente emoldura e pendura na parede do boteco para educar as próximas gerações. Travis Kelce zerado no banco, Maxx Crosby com 1,6 — parecia um time em greve.\n\nO meio da tabela tem cinco times com 3–2, o que significa que ninguém é bom, todo mundo só reveza a vez de ser ruim. Vítima da semana é o Torresmo, por unanimidade minha. Quem troca Jacobs por 1,5 ponto merece ler isso duas vezes.",
+    "vitima": "Contagens Torresmo"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "O Green Ribs é um menino bem-educado; o resto é chusma",
+      "resumo": "Olhem só, vizinhança, 203,32 a 129,80! O Green Ribs n' Roll é um time de família decente, com Jaylen Warren fazendo 37,5 pontos como um rapazinho obediente. E o Green Baycon, coitado, veio com T.J. Watt entregando ZERO — zero, minha senhora! — e ainda escondeu 39 pontos no banco, com Jacory Croskey-Merritt (14,2) e Terry McLaurin (11,9) sentados, provavelmente conversando com aquela gentalha do bairro. Christian Watson fez 34,3 e foi o único que teve educação de aparecer.",
+      "momento_decisivo": "O momento em que o Green Baycon decidiu que Terry McLaurin ficaria no banco. Foi aí que a desgraça bateu na porta, e eu avisei: não se convive com essa gente sem se contaminar.",
+      "vereditos": [
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "203,32 pontos e vice-liderança: é o meu predileto da rodada e ninguém me convence do contrário. Só não me venha com Cam Little e seus 8 pontinhos de novo, que até a paciência de uma dama tem limite."
+        },
+        {
+          "manager": "Green Baycon",
+          "texto": "2–3 e três derrotas em quatro, isso é o que dá andar com essa vizinhança. Da próxima vez escale o McLaurin, criatura, em vez de um defensor que fez zero."
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "Treze pontinhos separam duas famílias igualmente desorganizadas",
+      "resumo": "158,12 a 144,86. O Denver Bacons venceu, mas não se iluda: foi sorte de quem mora perto do Seu Madruga. Malik Nabers fez 27,6 e Tyler Shough deu 3,04 pontos de vergonha, enquanto 35,02 pontos dormiam no banco com Denzel Boston (13,2) e Woody Marks (11,8). Do outro lado, o Philadelphia Roast Pork teve Drake Maye com magníficos 39,46 — o único garoto bem-criado do confronto — e foi traído por David Montgomery e seu 1,1 ponto. UM VÍRGULA UM!",
+      "momento_decisivo": "David Montgomery entregando 1,1. Se aquele rapaz tivesse feito o mínimo de esforço, o Roast Pork não estaria em nono lugar chorando como o Chaves no barril.",
+      "vereditos": [
+        {
+          "manager": "Denver Bacons",
+          "texto": "Ganhou por 13,26 e trocou Kendre Miller por um defensor qualquer, como quem troca figurinha na rua. Vitória de sorte é praga de bairro: hoje bate na casa do vizinho, amanhã bate na sua."
+        },
+        {
+          "manager": "Philadelphia Roast Pork",
+          "texto": "1–4, com o melhor jogador da rodada no seu time. Isso não é azar, é falta de pulso: deixar Montgomery em campo depois de tudo é convite para o fracasso."
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "Josh Allen deu aula, e o Baconators mandou 119,94 de lição de casa",
+      "resumo": "164,80 a 119,94. O Bacon Smashers quebrou o tabu de 0 × 2 contra o Baconators 🥓 e, francamente, era o mínimo. Josh Allen fez 31,5 pontos, Ladd McConkey teve a pachorra de zerar, e ainda sobraram 37,56 pontos no banco com Brock Purdy (17,16) e Kyle Pitts (14,4) de braços cruzados. Já o Baconators só teve 5,6 pontos no banco inteiro — o que não é mérito, é pobreza! Trey McBride fez 20, Carnell Tate fez 1,4 e Marvin Harrison zerou. Que gentalha de escalação.",
+      "momento_decisivo": "Quando o Baconators olhou para o próprio banco atrás de socorro e encontrou Marvin Harrison com zero e Brian Thomas com 1,2. Não havia salvação, havia só companhia na miséria.",
+      "vereditos": [
+        {
+          "manager": "Bacon Smashers",
+          "texto": "Venceu, subiu para 3–2 e enfim derrubou o freguês, parabéns. Agora explique por que Kyle Pitts e seus 14,4 pontos ficaram no banco vendo McConkey zerar, porque eu não aceito desculpa esfarrapada."
+        },
+        {
+          "manager": "Baconators 🥓",
+          "texto": "119,94 pontos e terceiro lugar que não se sustenta nem com reza brava. Contratar mais um defensor não resolve quando seus recebedores somam 2,6 pontos entre os três."
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "O líder venceu com o chutador zerado, e o vizinho enterrou 50,30 no banco",
+      "resumo": "166,74 a 144,49. O Bisteca Lombos Patriots está 4–1 e com quatro vitórias seguidas, graças a Jahmyr Gibbs e seus 37 pontos, porque Harrison Butker fez ZERO e o moço ainda escondeu 34,6 pontos no banco. Mas, meu bem, o verdadeiro escândalo mora na casa ao lado: o Toucinho 🐗 deixou 50,30 pontos sentados — Braelon Allen com 18,4, Blake Corum com 16, Dallas Goedert com 8,7 — e perdeu por meros 22,25. Isso não é derrota, é autossabotagem com testemunhas!",
+      "momento_decisivo": "A escalação de Omarion Hampton (4,7) no lugar de qualquer um dos corredores do banco. Foi ali que o Toucinho entregou o jogo de bandeja, e nem o Quico faria algo tão desastrado.",
+      "vereditos": [
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Líder isolado com 4–1 e um reforço chamado Chris Godwin que rendeu 6,6 pontos do banco. Venceu com o chutador zerado: isso se chama sorte de quem mora longe da confusão."
+        },
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "50,30 pontos no banco contra uma margem de 22,25. Não culpe o adversário, criatura, culpe o espelho — e eu nunca digo isso, porque a culpa é sempre do vizinho."
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "Duelo de pobreza: 132,46 contra 103,90, e eu precisei de sais",
+      "resumo": "Que confronto deplorável, vizinhança. O Custelinha venceu com 132,46 — a segunda menor pontuação de quem ganhou — tendo Matthew Golden com modestos 20 pontos como herói e CeeDee Lamb entregando 2,5. Mas o Contagens Torresmo conseguiu ser pior: 103,90, a menor da rodada, com Joe Burrow fazendo 24,6 sozinho e T.J. Hockenson, recém-chegado, devolvendo 1,5 ponto. E o rapaz dispensou Josh Jacobs para isso! Josh Jacobs! Até o Chaves administraria melhor a própria vila.",
+      "momento_decisivo": "A dispensa de Josh Jacobs para abrigar Hockenson. Decisão tomada em casa, com as próprias mãos, sem interferência de gentalha alguma — e por isso mesmo imperdoável.",
+      "vereditos": [
+        {
+          "manager": "Custelinha",
+          "texto": "Três vitórias em quatro e 3–2 na tabela, muito bem. Mas ganhar com 132,46 contra o lanterna não é vitória, é caridade recebida."
+        },
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "1–4, três derrotas seguidas e 103,90 pontos com Travis Kelce zerado no banco. Isso aqui não é um time, é uma reunião de condomínio sem quórum."
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "Toucinho 🐗",
+      "manager": "L-Emerick",
+      "detalhe": "Deixou 50,30 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Perdeu por 13,26 para JrArnaldo13. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Green Baycon",
+      "manager": "QueijoMinas",
+      "detalhe": "Levou 203,32 a 129,80 de talesbrumon. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Contagens Torresmo",
+      "manager": "Enock87",
+      "detalhe": "Menor pontuação da rodada: 103,90. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "Green Ribs n' Roll",
+      "manager": "talesbrumon",
+      "detalhe": "Maior pontuação da rodada: 203,32. O único prêmio bom daqui."
+    }
+  ]
+}
