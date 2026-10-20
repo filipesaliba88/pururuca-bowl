@@ -1,0 +1,127 @@
+{
+  "temporada": 2026,
+  "semana": 6,
+  "playoffs": false,
+  "comentarista": "Darth Vader",
+  "gerado_em": "2026-10-20T13:09:24.672Z",
+  "manchete": "Líder dorme com 58,94 no banco e o Smashers nem desceu do ônibus",
+  "coluna": {
+    "titulo": "Seu Pururuca: seis semanas e ninguém aprendeu a mexer no banco",
+    "texto": "Seis rodadas. Seis. E eu aqui, no mesmo banco de boteco, vendo dez adultos tratarem a aba de escalação como se fosse enfeite. O Bisteca Lombos Patriots lidera a liga com 4–2 e ainda assim conseguiu deixar 58,94 pontos apodrecendo no banco, com Trevor Lawrence fazendo 28,34 de terno e gravata enquanto o titular ia a campo. Levou o Cemitério de Craques com folga e nem precisou se esforçar. Parabéns pela liderança, de verdade — foi sorte de tabela, porque jogando assim você perde pra qualquer um, e perdeu.\n\nO Bola Cheia foi pro Philadelphia Roast Pork, 152,65, maior pontuação da rodada, e mesmo assim o time está em nono lugar com 2–4. Isso é um feito artístico: 816 pontos feitos, mais que o líder, e o calendário cuspindo na cara dele toda semana. Guarde esse troféu com carinho, é o único bonito que vai aparecer por aqui. No outro extremo, o Contagens Torresmo perdeu por 1,18 e ganhou O Choro é Livre. Um ponto e dezoito. Deixou Chuba Hubbard e 18,9 no banco, botou Quinshon Judkins pra fazer zero e ainda largou DeVonta Smith no waiver pra pegar quarterback. Quatro derrotas seguidas, 1–5, e um kicker chamado Matt Gay como plano de salvação.\n\nAgora o prato principal, que é duplo: o Bacon Smashers levou Vexame e Várzea na mesma noite. 76,55 pontos, menor pontuação da rodada, surra de 139,84 a 76,55 do Green Baycon. Teve Brock Purdy com 17,36 e RJ Harvey com 14,2 vendo tudo de camarote, enquanto Cam Skattebo zerava em campo. E, por algum motivo que só a liga explica, dispensou Kyle Pitts pra trazer um linebacker. É o tipo de decisão que a gente conta pros netos.\n\nNo meio da tabela está todo mundo empatado em 3–3 se cutucando: Green Ribs n' Roll fez 90,58 com Tre Tucker e seus 27 pontos sentados; Toucinho perdeu por 7,42 com Brandon Aubrey entregando 1 ponto e Emeka Egbuka de reserva; Denver Bacons venceu o líder e segue setimozinho. O Custelinha ganhou três seguidas e vai dizer que é gestão — é Matthew Golden com 23,2, nada mais. O Baconators ganhou por um ponto e vai se achar time de playoff.\n\nVítima da semana: Bacon Smashers. Não por ter perdido, perder todo mundo perde. É por ter perdido pontuando menos que todo mundo com dois quarterbacks à disposição e escolhendo o errado. Semana que vem tem mais, infelizmente.",
+    "vitima": "Bacon Smashers"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "O poder absoluto do Roast Pork e a rendição do Green Ribs",
+      "resumo": "152,65 a 90,58. Uma margem de 62,07 pontos não é derrota, é demonstração. O Philadelphia Roast Pork liberou a Força: Kenneth Walker com 27,5 abrindo caminho como um sabre no escuro. Do outro lado, o Green Ribs n' Roll apresentou Matthew Stafford e seus 16,88 como herói — fraqueza travestida de liderança. Darren Waller entregou zero. Zero. Um tight end que não existe no placar não existe para mim. E Tre Tucker, 27 pontos, ficou no banco: a liga inteira sentiu essa perturbação na Força.",
+      "momento_decisivo": "Quando o Green Ribs escalou Waller e deixou Tucker sentado, o destino já estava escrito. O resto foram 60 minutos de execução pública.",
+      "vereditos": [
+        {
+          "manager": "Philadelphia Roast Pork",
+          "texto": "Maior pontuação da rodada e ainda assim nono lugar, 2–4. Você tem poder, mas não tem controle — e 44,02 pontos no banco, com DK Metcalf e seus 18,5 ignorados, provam isso."
+        },
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "854 pontos feitos na temporada e 90,58 nesta noite. Você falhou comigo pela última vez, almirante."
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "A execução do Bacon Smashers",
+      "resumo": "139,84 a 76,55. O Green Baycon avançou com Christian McCaffrey e seus 29,1 pontos, e nem precisou do melhor da tropa — T.J. Watt rendeu 1,2 e o resultado nem tremeu. O Bacon Smashers marcou a menor pontuação da rodada com Josh Allen, 18,3, de herói. Cam Skattebo zerou. Enquanto isso, Brock Purdy somava 17,36 e RJ Harvey 14,2 no banco: 34,76 pontos de exército parado assistindo ao próprio império cair.",
+      "momento_decisivo": "Dispensar Kyle Pitts para contratar Tremaine Edmunds. Um erro assim, no meu comando, teria consequências que esta liga não está preparada para discutir.",
+      "vereditos": [
+        {
+          "manager": "Green Baycon",
+          "texto": "Vitória limpa, mas você deixou Dameon Pierce com 14,3 e Rashee Rice com nada no banco — a Força estava forte, a mão esteve preguiçosa."
+        },
+        {
+          "manager": "Bacon Smashers",
+          "texto": "76,55 pontos. Você não foi derrotado, você se rendeu antes do apito. Dois quarterbacks e escolheu o pior."
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "O líder caiu — e caiu sozinho",
+      "resumo": "133,41 a 109,63, margem de 23,78. O Denver Bacons atacou pelos flancos com Malik Nabers, 28,4, e sustentou o avanço mesmo com Pat Freiermuth — contratado nesta mesma semana — entregando míseros 2,7. O Bisteca Lombos Patriots, primeiro colocado, perdeu com 58,94 pontos no banco. Trevor Lawrence, 28,34. Hunter Henry, 15,5. Ambos sentados. Jalen Coker, 15,1, foi o melhor dos titulares. Isso não é azar. É negligência estratégica.",
+      "momento_decisivo": "Lawrence somou 28,34 no banco, mais que a margem de 23,78. O líder da liga perdeu para si mesmo e usou o Denver Bacons apenas como testemunha.",
+      "vereditos": [
+        {
+          "manager": "Denver Bacons",
+          "texto": "Derrubou o primeiro colocado e subiu a... sétimo. Aceite a vitória, mas 30,38 no banco com Alvin Kamara a 14,8 é desperdício de munição."
+        },
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Lidera a liga e pontuou 109,63 com meio time de espectador. Sua falta de fé na própria escalação é perturbadora."
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "1,18 ponto: a crueldade perfeita",
+      "resumo": "103,52 a 102,34. O Baconators 🥓 venceu por 1,18 com Carnell Tate, 18,1, e um kicker, Tyler Loop, que entregou 2,25 e quase derrubou o império inteiro. O Contagens Torresmo teve Jordan Love, 21,24 — contratado largando DeVonta Smith —, viu Quinshon Judkins zerar e deixou 25,1 no banco, com Chuba Hubbard marcando 18,9. Dezoito vírgula nove. A margem foi de um ponto e dezoito.",
+      "momento_decisivo": "Hubbard sentado. Qualquer linha dessa escalação corrigida teria mudado o destino. A Força não perdoa indecisão.",
+      "vereditos": [
+        {
+          "manager": "Baconators 🥓",
+          "texto": "Vice-liderança conquistada por 1,18 ponto e um chute de 2,25. Sobreviveu, não venceu. Não confunda sorte com domínio."
+        },
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "1–5, quatro derrotas seguidas, e a mais dolorosa delas decidida pelo que você mesmo deixou no banco. O círculo está completo."
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "Custelinha resiste, Toucinho se consome",
+      "resumo": "136,62 a 129,20, margem de 7,42. O Custelinha avançou com Matthew Golden e 23,2, carregou Rhamondre Stevenson e seus 3,6 como peso morto e ainda assim segurou a linha. O Toucinho 🐗 teve Isaiah Likely, 23,5, e foi traído por Brandon Aubrey: 1 ponto de um chutador. Um. No banco, Emeka Egbuka com 16,6 dentro de 25,5 desperdiçados. E a semana do Toucinho incluiu dispensar Jayden Daniels por Arvell Reese — e depois dispensar Arvell Reese. Movimento sem propósito é fraqueza em movimento.",
+      "momento_decisivo": "O kicker rendeu 1 ponto numa derrota por 7,42. O Toucinho escolheu o caminho fácil e o caminho fácil leva ao lado sombrio da tabela.",
+      "vereditos": [
+        {
+          "manager": "Custelinha",
+          "texto": "Três vitórias seguidas e apenas 16,9 no banco — disciplina rara nesta liga. Mas vencer por 7,42 com Stevenson a 3,6 não é domínio, é sobrevivência."
+        },
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "Quatro movimentações e uma delas foi desfazer a anterior. Você busca poder nos waivers e esquece de escalar o time."
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "Bisteca Lombos Patriots",
+      "manager": "GaloPatriots13",
+      "detalhe": "Deixou 58,94 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Contagens Torresmo",
+      "manager": "Enock87",
+      "detalhe": "Perdeu por 1,18 para filipesaliba. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Bacon Smashers",
+      "manager": "MarcioRezende",
+      "detalhe": "Levou 139,84 a 76,55 de QueijoMinas. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Bacon Smashers",
+      "manager": "MarcioRezende",
+      "detalhe": "Menor pontuação da rodada: 76,55. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Maior pontuação da rodada: 152,65. O único prêmio bom daqui."
+    }
+  ]
+}
