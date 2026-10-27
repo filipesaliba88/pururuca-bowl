@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 7,
+    "arquivo": "2026-rodada-07.json",
+    "manchete": "Green Ribs deixa 89,30 no banco e perde por 7: a arte de se trair",
+    "comentarista": "Odorico Paraguaçu",
+    "rotulo": "Rodada 7"
+  },
+  {
+    "temporada": 2026,
     "semana": 6,
     "arquivo": "2026-rodada-06.json",
     "manchete": "Líder dorme com 58,94 no banco e o Smashers nem desceu do ônibus",
