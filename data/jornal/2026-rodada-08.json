@@ -1,0 +1,127 @@
+{
+  "temporada": 2026,
+  "semana": 8,
+  "playoffs": false,
+  "comentarista": "Thor",
+  "gerado_em": "2026-11-03T13:15:06.597Z",
+  "manchete": "Torresmo senta 107,93 no banco e ainda pergunta por que perdeu",
+  "coluna": {
+    "titulo": "Oito semanas e vocês ainda não aprenderam a clicar no botão",
+    "texto": "Trinta anos de boteco, uma vida inteira vendo gente fazer besteira, e mesmo assim o Contagens Torresmo consegue me surpreender. Cento e sete vírgula noventa e três pontos no banco. Joe Burrow fazendo 42,48 sentado de braço cruzado enquanto o Jordan Love suava 22,52 no campo para fechar a rodada em 91,12 — a menor pontuação da semana. Levou o Cemitério de Craques e o Várzea na mesma noite, uma dobradinha histórica. Se fosse bicho de boteco, já estaria no espeto.\n\nO Philadelphia Roast Pork perdeu por 1,42. Um vírgula quarenta e dois. Sabe o que custou esse jogo? O Will Reichard chutando para MENOS meio ponto e o Tyler Allgeier marcando 35,3 de bermuda no banco, junto com outros 69,12 pontos de gente bem vestida assistindo. Leva o Choro é Livre com honra ao mérito. É o oitavo colocado com 1.083 pontos feitos — a liga inteira sabe que esse time é bom, menos o dono dele na hora de escalar.\n\nO Bisteca Lombos Patriots fez 160,70 e levou o Bola Cheia, único prêmio decente que sai daqui. Parabéns. Agora explica o Patrick Mahomes marcando 25,44 no banco e o Chris Godwin Jr. tomando zero escalado. Ganhou por 66 de diferença e mesmo assim deu um jeito de me irritar. Do outro lado, o Green Ribs n' Roll levou o Vexame com 94,40 e Tony Pollard fazendo 28,1 sentado — três derrotas seguidas, nono lugar, e ainda foi ao mercado trocar kicker por linebacker. Reforma na cozinha com a casa pegando fogo.\n\nLá em cima, o Custelinha está 6–2 com quatro vitórias seguidas, e não me venham dizer que é mérito: ganhou essa por um ponto e quarenta e dois com Kirk Cousins de herói. KIRK COUSINS. O Green Baycon venceu por 7,28 depois de dispensar Jalen Hurts por um tight end, o que na minha cabeça devia ser crime federal, mas funcionou. E o Denver Bacons venceu com 106,68 e só 9,3 no banco — o time mais honesto da rodada, o que é um jeito elegante de dizer que não tinha de onde tirar mais nada.\n\nVítima da semana é óbvia, mas vou dizer assim mesmo: Contagens Torresmo. Dois e seis, último lugar, 956 pontos feitos e um banco que pontuaria mais que o próprio time titular. Semana que vem, se escalarem o banco e sentarem os titulares, pelo menos vai ser proposital.",
+    "vitima": "Contagens Torresmo"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "O Martelo Caiu Sobre as Costelas",
+      "resumo": "Ouvi-me, mortais! O Bisteca Lombos Patriots marchou sobre o campo e derramou 160,70 pontos como quem derrama hidromel em festa de guerra — a maior colheita de toda a rodada. Tee Higgins empunhou 36,7 e abriu as portas do Valhalla com as próprias mãos. Já o Green Ribs n' Roll, com seus míseros 94,40, pareceu exército que esqueceu as espadas em casa. Puka Nacua lutou sozinho com 23,2, bravo como um berserker cercado, mas bravura solitária não vence batalha, vence apenas elogio póstumo. Sessenta e seis vírgula três de margem! Nos meus tempos isso se chamava massacre, e o derrotado pagava tributo em ouro. Aqui, pelo que me explicaram, paga-se apenas em vergonha, o que me parece um povo muito brando.",
+      "momento_decisivo": "Tony Pollard conquistou 28,1 pontos sentado no banco do Green Ribs n' Roll — um guerreiro de valor deixado atrás das linhas, enquanto Tre Tucker, escalado, retornou do campo com ZERO. Cinquenta e dois vírgula oitenta e oito pontos apodrecendo na retaguarda. Se um jarl fizesse isso, perderia o jarldom.",
+      "vereditos": [
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Vencestes com estrondo e subistes ao segundo trono, mas deixastes Patrick Mahomes e seus 25,44 pontos adormecidos no banco. Valhalla vos espera — na fila de trás."
+        },
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "Três derrotas seguidas e agora 2 a 0 de desvantagem eterna contra este inimigo. Trocastes um chutador por um linebacker como quem reforça o portão enquanto o teto desaba."
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "O Guerreiro Que Dormiu na Tenda",
+      "resumo": "Contemplai a maior desonra destas terras! O Contagens Torresmo arrastou-se ao campo com 91,12 pontos, a menor oferenda de toda a batalha, enquanto o Bacon Smashers cavalgou com 146,13 nas costas de Ja'Marr Chase e seus 31,1. Mas não é o placar que me fere o coração de trovão — é o que soube depois. Joe Burrow, bravo entre os bravos, fez QUARENTA E DOIS VÍRGULA QUARENTA E OITO sem jamais ser chamado à guerra! Chuba Hubbard, 23,7, também na tenda! T.J. Hockenson, 15,4, na tenda! Cento e sete vírgula noventa e três pontos de guerreiros em plena forma assistindo a derrota do alto da colina. Explicaram-me que há um limite de homens que se pode mandar ao campo. Pois bem, mortal: manda os BONS.",
+      "momento_decisivo": "Jordan Love marcou 22,52 e foi chamado de herói do Contagens Torresmo. Herói! Enquanto Burrow fazia quase o dobro de bermuda. Isso não é heroísmo, é o menos pior dos convocados.",
+      "vereditos": [
+        {
+          "manager": "Bacon Smashers",
+          "texto": "Vencestes, vingastes a derrota antiga e tomastes o terceiro trono com três vitórias em quatro batalhas. Mas vencer este adversário nesta noite foi como derrotar um exército que não compareceu."
+        },
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "Último lugar, 2–6, e um banco que sozinho derrotaria vosso próprio time titular. Odin vos vê, e Odin desvia o olhar."
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "A Batalha Decidida por um Suspiro de Trovão",
+      "resumo": "Esta, sim, foi digna das sagas! O Custelinha ergueu 125,53 e o Philadelphia Roast Pork respondeu com 124,11 — um vírgula quarenta e dois de diferença, o espaço de uma lâmina entre a glória e o esquecimento. Kirk Cousins conduziu os vencedores com 28,18, e Bhayshul Tuten lutou pelos derrotados com 30 pontos redondos, mais que qualquer homem do lado vitorioso. Pois eis a crueldade desta liga: o melhor guerreiro do campo pertencia ao exército vencido. E falai-me deste tal 'chutador' — Will Reichard entregou MENOS MEIO PONTO. Menos! Como pode um homem retornar da batalha devendo? No meu reino, quem volta com saldo negativo volta amarrado ao escudo.",
+      "momento_decisivo": "Tyler Allgeier colheu 35,3 pontos no banco do Philadelphia Roast Pork. Trinta e cinco! A margem foi de 1,42. Um único dedo daquele guerreiro teria bastado para virar a guerra, e vós o deixastes dormindo.",
+      "vereditos": [
+        {
+          "manager": "Custelinha",
+          "texto": "Quatro vitórias seguidas, 6–2 e o trono da liga — mas esta vitória foi presente dos deuses, não obra vossa. Guardai 49,7 pontos no banco e chamai isso de estratégia se vos fizer dormir melhor."
+        },
+        {
+          "manager": "Philadelphia Roast Pork",
+          "texto": "Mil e oitenta e três pontos na temporada e apenas o oitavo posto: sois o exército mais forte que jamais venceu uma guerra. Sessenta e nove vírgula doze no banco é o vosso verdadeiro inimigo."
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "O Duelo dos Quatro-e-Quatro",
+      "resumo": "Dois clãs de igual estatura, ambos com quatro triunfos e quatro quedas, cruzaram lâminas por sete vírgula vinte e oito pontos. O Green Baycon prevaleceu com 124,56, D'Andre Swift abrindo caminho com 27,5 como um aríete contra portões. O Toucinho caiu com 117,28, tendo Braelon Allen e seus 23 como único rugido audível. E ouvi dizer que o Green Baycon, antes da batalha, DISPENSOU Jalen Hurts para acolher um tal Brenton Strange. Dispensar um general para contratar um escudeiro! Os deuses deveriam ter punido tal insolência com raios — mas os deuses, ao que parece, estavam distraídos, e o insolente venceu.",
+      "momento_decisivo": "Omar Cooper Jr. foi enviado ao campo pelo Toucinho e retornou com ZERO, enquanto Makai Lemon (10,7) e Jared Goff (10,04) esperavam ordens que nunca vieram. Trinta vírgula trinta e quatro no banco contra uma margem de 7,28. A aritmética é simples e é cruel.",
+      "vereditos": [
+        {
+          "manager": "Green Baycon",
+          "texto": "Apenas 17 pontos no banco — a casa mais arrumada da rodada — e 2 a 0 sobre este rival na história. Mas largar Jalen Hurts e vencer assim é sorte de bêbado, não sabedoria de rei."
+        },
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "Mil e oitenta e nove pontos feitos e apenas 4–4: possuís um exército de elite e um comandante distraído. Caístes do quarto posto para o fundo do pelotão dos medíocres."
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "A Escaramuça dos Exércitos Famintos",
+      "resumo": "Confesso, mortais: esta batalha me entediou. O Denver Bacons venceu com 106,68 e o Baconators caiu com 98,90 — números que nos salões de Asgard seriam considerados jejum, não banquete. Michael Wilson foi o único a brilhar de verdade, com 25,9 pelos vitoriosos. Dak Prescott carregou os vencidos com 19,8, o que basta para abrir uma taverna, não para tomar um reino. Mas honra seja feita ao Denver Bacons: apenas 9,3 pontos deixados no banco, o exército mais inteiro da rodada. Ou isso é disciplina de ferro, ou simplesmente não havia mais ninguém vivo na retaguarda para convocar. Prefiro acreditar na primeira versão; é mais épica.",
+      "momento_decisivo": "Carnell Tate entrou em campo pelo Baconators e trouxe ZERO, enquanto Malik Washington (15,4) e Jaylen Waddle (14,6) aqueciam as mãos na fogueira do banco. A margem foi 7,78. Qualquer um dos dois teria virado a guerra sozinho.",
+      "vereditos": [
+        {
+          "manager": "Denver Bacons",
+          "texto": "Três vitórias nas últimas quatro, vingança consumada sobre antigo algoz e o banco mais limpo da rodada. Pena que 106,68 pontos não assustem absolutamente ninguém nesta liga."
+        },
+        {
+          "manager": "Baconators 🥓",
+          "texto": "Dispensastes guerreiros e não trouxestes nenhum em troca — fostes à feira e voltastes com o cesto vazio. Trinta pontos no banco numa derrota de 7,78 é falha de comando, não azar."
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "Contagens Torresmo",
+      "manager": "Enock87",
+      "detalhe": "Deixou 107,93 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Perdeu por 1,42 para DanielBrankito. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Green Ribs n' Roll",
+      "manager": "talesbrumon",
+      "detalhe": "Levou 160,70 a 94,40 de GaloPatriots13. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Contagens Torresmo",
+      "manager": "Enock87",
+      "detalhe": "Menor pontuação da rodada: 91,12. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "Bisteca Lombos Patriots",
+      "manager": "GaloPatriots13",
+      "detalhe": "Maior pontuação da rodada: 160,70. O único prêmio bom daqui."
+    }
+  ]
+}

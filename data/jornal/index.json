@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 8,
+    "arquivo": "2026-rodada-08.json",
+    "manchete": "Torresmo senta 107,93 no banco e ainda pergunta por que perdeu",
+    "comentarista": "Thor",
+    "rotulo": "Rodada 8"
+  },
+  {
+    "temporada": 2026,
     "semana": 7,
     "arquivo": "2026-rodada-07.json",
     "manchete": "Green Ribs deixa 89,30 no banco e perde por 7: a arte de se trair",
