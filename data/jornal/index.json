@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 9,
+    "arquivo": "2026-rodada-09.json",
+    "manchete": "Custelinha cai por 0,54 e Baconators enterra 73,86 no banco",
+    "comentarista": "O Comissário",
+    "rotulo": "Rodada 9"
+  },
+  {
+    "temporada": 2026,
     "semana": 8,
     "arquivo": "2026-rodada-08.json",
     "manchete": "Torresmo senta 107,93 no banco e ainda pergunta por que perdeu",

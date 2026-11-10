@@ -1,0 +1,127 @@
+{
+  "temporada": 2026,
+  "semana": 9,
+  "playoffs": false,
+  "comentarista": "O Comissário",
+  "gerado_em": "2026-11-10T13:22:32.019Z",
+  "manchete": "Custelinha cai por 0,54 e Baconators enterra 73,86 no banco",
+  "coluna": {
+    "titulo": "Meio ponto, meio time e nenhuma vergonha",
+    "texto": "Nove semanas. Nove. E a liga ainda me obriga a explicar que o banco não pontua. O Baconators 🥓 levou o Cemitério de Craques com 73,86 pontos apodrecendo na reserva, incluindo C.J. Stroud e seus 36,36 — sozinho, o moço ganhava o jogo, já que a derrota pro Philadelphia Roast Pork foi por 8,61. E como se não bastasse, ainda levou o Várzea com a menor pontuação da rodada, 107,60. Dois prêmios numa tacada só. Isso é eficiência, de um jeito muito triste.\n\nO Choro é Livre vai pro Custelinha, que perdeu por 0,54 para o Bisteca Lombos Patriots. Meio ponto. Enquanto isso, 51,90 dormiam no banco, com Courtland Sutton e seus 14,80 de pijama, e Tyler Higbee entregava 2,20 como titular. E ainda trocou kicker na semana. Eu até teria pena, mas pena é sentimento caro e eu economizo.\n\nO Vexame foi do Denver Bacons, 151,74 a 125,06 pro Green Baycon, que levou a Bola Cheia por ser o único que pareceu ter lido a tabela de confrontos. Elogio feito. Agora o detalhe: o Green Baycon fez 151,74 com D'Andre Swift marcando 3,10, ou seja, venceu apesar de si mesmo. E o Denver deixou 57,80 no banco depois de passar a semana inteira mexendo no elenco — trocou Rodgers por Jayden Daniels, dispensou Woody Marks, que foi parar justamente na mão do líder. Generosidade comovente.\n\nNa tabela, Bisteca Lombos Patriots e Custelinha em 6–3, separados por pontuação, e o Toucinho 🐗 em terceiro vencendo com 115,20 e 59,46 no banco, o que na Pururuca Bowl conta como obra-prima tática. Lá embaixo, Contagens Torresmo finalmente ganhou — com 71,03 no banco e Jordan Love fazendo 36,18 de terno — e o Green Ribs n' Roll chegou à quarta derrota seguida com Garrett Wilson zerado. Tem gente aqui que escala por saudade.\n\nA vítima da semana é o Baconators 🥓. Não por perder, que aqui todo mundo perde. É por perder tendo em casa o maior pontuador individual da própria escalação sentado no banco, de braços cruzados, assistindo. Da próxima vez, escala o banco e senta os titulares. Estatisticamente, melhora.",
+    "vitima": "Baconators 🥓"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "Artigo 1º: o último também pode executar",
+      "resumo": "Contagens Torresmo 132,34 × 115,20 Green Ribs n' Roll. Observem bem, porque é raro: o lanterna cumpriu a sentença. Joe Burrow entregou 29,54 e o Torresmo venceu por 17,14, igualando o retrospecto em 1 × 1. Mas não confundam execução com competência. Ficaram 71,03 pontos abandonados no banco, com Jordan Love marcando 36,18 enquanto assistia, e Matt Gay produzindo míseros 7 como titular tendo Evan McPherson e seus 13 ao lado. Vencer assim é desrespeito ao regulamento interno da dignidade. Do outro lado, o Green Ribs n' Roll apresentou Puka Nacua com 34,20 e, logo em seguida, Garrett Wilson com zero absoluto — o zero é uma declaração, e eu a arquivei. Darren Waller fez 22 de reserva. Quarta derrota consecutiva. A sequência DDDD não é azar: é padrão de conduta.",
+      "momento_decisivo": "O instante em que o Contagens Torresmo escalou Burrow e deixou Jordan Love fazer 36,18 no banco — venceu por 17,14 e nunca saberá o tamanho do que poderia ter sido.",
+      "vereditos": [
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "Vitória homologada, com ressalva registrada em ata: 71,03 pontos no banco configuram negligência agravada. Repita isso e eu invento uma cláusula só para o senhor."
+        },
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "Quatro derrotas seguidas e um WR titular zerado. Isso não é má fase, é confissão."
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "Cláusula 0,54 — a menor margem é a maior humilhação",
+      "resumo": "Bisteca Lombos Patriots 140,18 × 139,64 Custelinha. Meio ponto e meio centésimo separando o primeiro do segundo lugar, ambos em 6–3. O Bisteca sobreviveu graças a Bucky Irving e seus 27,80, enquanto Josh Downs entregava 4,80 e Patrick Mahomes assistia do banco com 16,48 — parte dos 38,08 deixados para trás. E, veja, o senhor do Bisteca passou a semana inteira movimentando elenco como quem embaralha cartas na frente de um juiz: entrou Woody Marks, saiu Mike Washington Jr., voltou Mike Washington Jr., chegou Devin Singletary, chegou e saiu Chris Godwin Jr., trocou Hunter Henry por Tyler Bass, dispensou Butker, dispensou Bernard. Oito movimentos para vencer por 0,54. Chamo isso de trabalho forçado. O Custelinha teve CeeDee Lamb com 33,60, Tyler Higbee com 2,20 e 51,90 dormindo no banco — Sutton 14,80, Breece Hall 11,20, Worthy 9,80. Qualquer um deles resolvia. E ainda trocou Chris Boswell por Cairo Santos na véspera. O destino não perdoa quem mexe no kicker.",
+      "momento_decisivo": "Tyler Higbee produzindo 2,20 enquanto 51,90 pontos de reservas observavam. A margem foi 0,54. Faça as contas e depois se recolha.",
+      "vereditos": [
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Lidera a liga por decimal e por insistência. Oito transações para ganhar por meio ponto — o senhor trabalha demais para colher tão pouco."
+        },
+        {
+          "manager": "Custelinha",
+          "texto": "Perder por 0,54 com 51,90 no banco não é tragédia, é sentença autoaplicada. O recurso está indeferido."
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "Dois bancos em julgamento, um sobrevivente",
+      "resumo": "Toucinho 🐗 115,20 × 109,46 Bacon Smashers. Um confronto que o regulamento classificaria como 'mútua desistência'. O Toucinho venceu por 5,74 com Javonte Williams e seus 21,70, enquanto Josh Jacobs assinava 0,5 ponto — meio ponto, titular, em pleno expediente. No banco, 59,46 esquecidos: Caleb Williams 16,76, Isaiah Likely 15,60, Charbonnet 9,40. O Bacon Smashers respondeu com simetria perfeita na incompetência: Ja'Marr Chase brilhou com 31,30, Ladd McConkey zerou, e 54,38 pontos ficaram sentados — Brock Purdy com 26,28 e Quentin Johnston com 16,20 bastavam, cada um sozinho, para inverter o placar. O retrospecto agora é Toucinho 3 × 0, domínio histórico construído sobre o nada. O Toucinho segue em terceiro, o Smashers em quinto, ambos 5–4, ambos em dívida comigo.",
+      "momento_decisivo": "Brock Purdy marcando 26,28 no banco do Bacon Smashers numa derrota por 5,74. A escalação foi o verdadeiro adversário.",
+      "vereditos": [
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "Venceu com Josh Jacobs entregando 0,5 e 59,46 no banco. Chamo de sorte estrutural, e sorte estrutural é passível de revisão."
+        },
+        {
+          "manager": "Bacon Smashers",
+          "texto": "Tinha Purdy e Johnston guardados como relíquia. Perdeu por 5,74 e já é 0 × 3 contra o Toucinho. Padrão, não acaso."
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "O banco que valia mais que o time",
+      "resumo": "Philadelphia Roast Pork 116,21 × 107,60 Baconators 🥓. Kenneth Walker III cravou 35,70 e o Roast Pork fez o mínimo exigido: deixou apenas 17,60 no banco, o único gesto de disciplina da rodada inteira, ainda que Aidan Hutchinson tenha entregado humilhantes 2,30. Já o Baconators 🥓 cometeu a infração mais grave da semana. Cento e sete pontos e sessenta centésimos — a menor pontuação da rodada — enquanto 73,86 apodreciam na reserva. C.J. Stroud: 36,36. Myles Garrett: 20,10. Jake Ferguson: 9,90. A margem foi de 8,61. Stroud sozinho vencia por mais de vinte e sete. Bijan Robinson fez sua parte com 25,80 e Jaylen Waddle entregou 3,20 como titular. A movimentação da semana foi contratar um kicker. Um kicker. Terceira derrota seguida, retrospecto zerado contra o Roast Pork, que agora lidera 1 × 1. Está tudo anotado no processo.",
+      "momento_decisivo": "C.J. Stroud somando 36,36 pontos de reserva numa derrota por 8,61. Não houve jogo: houve abandono de posto.",
+      "vereditos": [
+        {
+          "manager": "Philadelphia Roast Pork",
+          "texto": "Apenas 17,60 no banco — o mais próximo de obediência que vi nesta liga. Hutchinson com 2,30 impede que eu o elogie por completo."
+        },
+        {
+          "manager": "Baconators 🥓",
+          "texto": "Menor pontuação da rodada e 73,86 desperdiçados. O senhor não perdeu o jogo, o senhor renunciou a ele por escrito."
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "Sentença máxima: 151,74",
+      "resumo": "Green Baycon 151,74 × 125,06 Denver Bacons. A maior pontuação da rodada, e sem precisar de favor algum: Christian Watson com 30, apoio generalizado e apenas 33,62 no banco, mesmo com D'Andre Swift cometendo 3,10 pontos como titular. Vencer por 26,68 produzindo tão pouco de um RB titular é quase desaforo. O Green Baycon sobe ao quarto lugar, 5–4, três vitórias nas últimas quatro, e amplia para 2 × 0 o retrospecto. O Denver Bacons, por sua vez, movimentou-se com entusiasmo e nenhum resultado: trocou Aaron Rodgers por Jayden Daniels, dispensou Woody Marks — que foi adotado pelo líder da liga — e trouxe Seth McGowan, que marcou 11 pontos do banco. Aliás, o banco inteiro somou 57,80, com Tyler Shough em 19,70 e Denzel Boston em 15,10, enquanto Ollie Gordon II entregava 7,20 em campo. Jonah Coleman foi o herói com meros 18,10. Oitavo lugar, 4–5. O regulamento prevê punição para isso; estou redigindo o artigo agora.",
+      "momento_decisivo": "O Green Baycon ultrapassar os 150 pontos com Swift fazendo 3,10 — quando o vilão de um lado produz mais que o herói do outro, o jogo já estava decidido no papel.",
+      "vereditos": [
+        {
+          "manager": "Green Baycon",
+          "texto": "151,74, maior pontuação da rodada e o único prêmio honroso da semana. Mas carregar Swift e seus 3,10 por 26 pontos de margem é sorte travestida de mérito."
+        },
+        {
+          "manager": "Denver Bacons",
+          "texto": "Cinco movimentações, 57,80 no banco e um vexame de 26,68. O senhor reformou a casa e esqueceu de morar nela."
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "Baconators 🥓",
+      "manager": "filipesaliba",
+      "detalhe": "Deixou 73,86 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Custelinha",
+      "manager": "DanielBrankito",
+      "detalhe": "Perdeu por 0,54 para GaloPatriots13. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Denver Bacons",
+      "manager": "JrArnaldo13",
+      "detalhe": "Levou 151,74 a 125,06 de QueijoMinas. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Baconators 🥓",
+      "manager": "filipesaliba",
+      "detalhe": "Menor pontuação da rodada: 107,60. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "Green Baycon",
+      "manager": "QueijoMinas",
+      "detalhe": "Maior pontuação da rodada: 151,74. O único prêmio bom daqui."
+    }
+  ]
+}
