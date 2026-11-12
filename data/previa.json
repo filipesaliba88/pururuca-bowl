@@ -1,98 +1,113 @@
 {
   "temporada": 2026,
-  "semana": 9,
-  "gerado_em": "2026-11-05T20:08:28.720Z",
-  "manchete": "Semana 9: líder invicto encara o artilheiro e o lanterna vira batalha de aflitos",
-  "coluna": "Olha eu aqui de novo, no mesmo banquinho, com a mesma cerveja quente, olhando pra mesma liga que insiste em me decepcionar. Custelinha chegou em 6–2 com quatro vitórias seguidas e está lá no topo com 1042,87 pontos feitos — ou seja, lidera a tabela marcando MENOS que cinco times que estão atrás dele. Isso não é time bom, isso é sorte com carteira assinada. E agora pega justamente o Bisteca Lombos Patriots, 5–3, maior pontuação da liga com 1097,77, e que já ganhou o único duelo anterior entre os dois. Vai ser o jogo da rodada, e vai ser decidido por alguém que esqueceu de mexer no banco. Sempre é.\n\nNo outro lado do balcão, o velório: Green Ribs n' Roll (3–5, três derrotas seguidas) contra Contagens Torresmo (2–6, último lugar, 956,41 pontos feitos — o pior ataque da liga). Um dos dois vai sair dessa rodada se sentindo vivo, e vai ser mentira. Green Ribs n' Roll tem Lamar Jackson (QB) marcado como Out e Michael Pittman Jr. (WR) no IR, então talvez seja hora de aceitar que o waiver existe por um motivo. E Contagens Torresmo com Travis Kelce (TE) como Questionable vai, como sempre, escalar e rezar. Rezar não é estratégia, meu filho.\n\nO resto da rodada é um hospital. Green Baycon tem oito nomes no boletim — oito! — incluindo Micah Parsons (LB) no PUP e Terry McLaurin (WR) no IR, e mesmo assim pega Denver Bacons, que vem de 4–4 mas com a pior pontuação feita entre os times de campanha equilibrada (996,77). Baconators 🥓 vem de duas derrotas e enfrenta um Philadelphia Roast Pork que é 3–5 fazendo 1083,02 pontos — o azarado oficial da liga, aquele cara que perde fazendo 120. E Bacon Smashers já perdeu duas vezes pro Toucinho 🐗; terceira é tradição. Agora anota aí, porque é por isso que esse jornal existe: escalação TRAVA quando o jogo começa. Depois não venha chorar no grupo que o jogador pintou como ativo cinco minutos antes do kickoff. Mexe agora, teimoso.",
+  "semana": 10,
+  "gerado_em": "2026-11-12T13:18:26.493Z",
+  "manchete": "Rodada 10: boletim médico maior que a lista de titulares de alguns aí",
+  "coluna": "Chegou a semana 10 e o Seu Pururuca abre o jornal com cara de quem já sabe o enredo. Bisteca Lombos Patriots lidera com 6–3 e 1237.95 pontos feitos — o maior ataque da liga — e mesmo assim passou metade da temporada ouvindo que teve sorte de calendário. Logo atrás, Custelinha com 6–3 vem de VVVD, ou seja, tropeçou na última e agora encara um Green Ribs n' Roll que colecionou quatro derrotas seguidas e tem sete nomes no boletim médico, incluindo Lamar Jackson no IR e Puka Nacua como Out. Se ainda tem alguém esperando um milagre nesse banco, eu sugiro trocar o milagre por um waiver.\n\nNo fundo da tabela, Contagens Torresmo (3–6, 1088.75 pontos, o menor ataque da liga) recebe o Toucinho 🐗, que é terceiro colocado mas chega com Josh Jacobs e DeVonta Smith fora e Jared Goff e Amon-Ra St. Brown pendurados no Questionable. Dito isso, o retrospecto diz Contagens Torresmo 1 × 0 Toucinho 🐗 — e é exatamente nesse tipo de jogo que a liga adora me fazer passar vergonha na terça. Baconators 🥓 vem de três derrotas seguidas, tem Jaylen Waddle e Jake Ferguson fora, e vai enfrentar justamente o líder, com o único consolo de já ter vencido o Bisteca uma vez. Consolo é o que sobra quando a escalação não ajuda.\n\nDenver Bacons × Bacon Smashers é o duelo mais parelho do papel: 1122.43 contra 1124.77 pontos feitos, diferença de um chute curto. Só que o Denver tomou 1223.76 pontos contra, o pior da liga — o cara monta time todo domingo e o adversário resolve virar All-Star. E em Philadelphia Roast Pork × Green Baycon temos dois que vêm empurrando bem, com Micah Parsons ainda no PUP e Terry McLaurin no IR do lado verde. Agora o aviso de sempre, porque aqui ninguém aprende: a escalação TRAVA quando o jogo começa. Depois do apito não adianta chorar no grupo, printar o banco nem jurar que ia mexer. Mexe agora, antes do jogo de hoje à noite.",
   "palpites": [
     {
-      "confronto": "Green Ribs n' Roll × Contagens Torresmo",
-      "favorito": "Green Ribs n' Roll",
-      "porque": "Com Lamar Jackson (QB) Out ainda acho que ganha, e isso diz tudo sobre o ataque de 956 pontos do adversário."
+      "confronto": "Green Ribs n' Roll × Custelinha",
+      "favorito": "Custelinha",
+      "porque": "Quatro derrotas seguidas contra o vice-líder: a única dúvida é a margem."
     },
     {
-      "confronto": "Custelinha × Bisteca Lombos Patriots",
-      "favorito": "Bisteca Lombos Patriots",
-      "porque": "Maior pontuação da liga e já venceu esse confronto uma vez; a sorte do líder tem prazo de validade."
-    },
-    {
-      "confronto": "Bacon Smashers × Toucinho 🐗",
+      "confronto": "Contagens Torresmo × Toucinho 🐗",
       "favorito": "Toucinho 🐗",
-      "porque": "Já ganhou os dois encontros anteriores e pontua mais; vem de DDVD, mas vingança é prato que se come no fantasy."
+      "porque": "Mesmo mancando com Jacobs fora, 1204.71 pontos feitos contra 1088.75 é muita gordura."
     },
     {
-      "confronto": "Baconators 🥓 × Philadelphia Roast Pork",
+      "confronto": "Baconators 🥓 × Bisteca Lombos Patriots",
+      "favorito": "Bisteca Lombos Patriots",
+      "porque": "Líder da liga contra time em queda livre e com meio elenco no boletim."
+    },
+    {
+      "confronto": "Denver Bacons × Bacon Smashers",
+      "favorito": "Bacon Smashers",
+      "porque": "Dois pontos de diferença no ataque, mas o Denver tomou 1223.76 contra — azar também é estatística."
+    },
+    {
+      "confronto": "Philadelphia Roast Pork × Green Baycon",
       "favorito": "Philadelphia Roast Pork",
-      "porque": "3–5 com 1083 pontos feitos é azar puro, e azar uma hora cansa — ainda mais contra quem perdeu duas seguidas."
-    },
-    {
-      "confronto": "Denver Bacons × Green Baycon",
-      "favorito": "Denver Bacons",
-      "porque": "Green Baycon tem oito nomes no boletim médico; isso não é escalação, é escala de plantão."
+      "porque": "Já venceu esse confronto uma vez e vem de VVDV; o Green Baycon ainda espera gente voltar do IR."
     }
   ],
   "boletim": [
     {
       "time": "Green Ribs n' Roll",
       "jogadores": [
-        "Jack Campbell (LB) — Doubtful",
-        "Lamar Jackson (QB) — Out",
+        "Jack Campbell (LB) — IR",
+        "Lamar Jackson (QB) — IR",
         "Michael Pittman Jr. (WR) — IR",
-        "Garrett Wilson (WR) — Questionable"
-      ]
-    },
-    {
-      "time": "Contagens Torresmo",
-      "jogadores": [
-        "Jeremiyah Love (RB) — IR",
-        "Travis Kelce (TE) — Questionable"
+        "Garrett Wilson (WR) — Questionable",
+        "Kyle Hamilton (DB) — Questionable",
+        "Puka Nacua (WR) — Out",
+        "Tank Dell (WR) — Questionable"
       ]
     },
     {
       "time": "Custelinha",
       "jogadores": [
         "Edgerrin Cooper (LB) — IR",
-        "Saquon Barkley (RB) — Questionable",
-        "Breece Hall (RB) — Questionable"
+        "Rhamondre Stevenson (RB) — Doubtful"
       ]
     },
     {
-      "time": "Bisteca Lombos Patriots",
+      "time": "Contagens Torresmo",
       "jogadores": [
-        "TreVeyon Henderson (RB) — Questionable",
-        "Mike Evans (WR) — Questionable",
-        "Hunter Henry (TE) — Questionable",
-        "A.J. Brown (WR) — Questionable",
-        "Deebo Samuel Sr. (WR) — Questionable"
-      ]
-    },
-    {
-      "time": "Bacon Smashers",
-      "jogadores": [
-        "Cam Skattebo (RB) — Questionable",
-        "RJ Harvey (RB) — IR",
-        "Tremaine Edmunds (LB) — IR",
-        "Kenny Gainwell (RB) — Questionable"
+        "Luther Burden III (WR) — Questionable",
+        "Jeremiyah Love (RB) — IR",
+        "T.J. Hockenson (TE) — Questionable"
       ]
     },
     {
       "time": "Toucinho 🐗",
       "jogadores": [
-        "Emeka Egbuka (WR) — Questionable",
-        "Jordyn Tyson (WR) — IR",
-        "DeVonta Smith (WR) — Questionable",
+        "Harold Fannin Jr. (TE) — Questionable",
+        "Omar Cooper Jr. (WR) — Questionable",
+        "Jared Goff (QB) — Questionable",
+        "Josh Jacobs (RB) — Out",
+        "Blake Cashman (LB) — Questionable",
+        "DeVonta Smith (WR) — Out",
         "Amon-Ra St. Brown (WR) — Questionable"
       ]
     },
     {
       "time": "Baconators 🥓",
       "jogadores": [
-        "Kyle Monangai (RB) — Questionable",
+        "Marvin Harrison Jr. (WR) — Questionable",
+        "Kyle Monangai (RB) — Out",
         "Tyler Loop (K) — IR",
-        "Carnell Tate (WR) — Out",
-        "Myles Garrett (DE) — IR",
-        "DJ Moore (WR) — Questionable",
-        "Jake Ferguson (TE) — Questionable"
+        "Carnell Tate (WR) — Questionable",
+        "Myles Garrett (DE) — Questionable",
+        "Jaylen Waddle (WR) — Out",
+        "Jake Ferguson (TE) — Out"
+      ]
+    },
+    {
+      "time": "Bisteca Lombos Patriots",
+      "jogadores": [
+        "Woody Marks (RB) — Questionable",
+        "TreVeyon Henderson (RB) — Out",
+        "Mike Evans (WR) — Questionable",
+        "A.J. Brown (WR) — Questionable",
+        "Deebo Samuel Sr. (WR) — Questionable"
+      ]
+    },
+    {
+      "time": "Denver Bacons",
+      "jogadores": [
+        "Michael Wilson (WR) — IR",
+        "Denzel Boston (WR) — Questionable",
+        "Davante Adams (WR) — IR",
+        "Travis Etienne Jr. (RB) — IR"
+      ]
+    },
+    {
+      "time": "Bacon Smashers",
+      "jogadores": [
+        "Ladd McConkey (WR) — Questionable",
+        "RJ Harvey (RB) — IR",
+        "Tremaine Edmunds (LB) — IR"
       ]
     },
     {
@@ -100,33 +115,18 @@
       "jogadores": [
         "Tyrone Tracy Jr. (RB) — IR",
         "Bhayshul Tuten (RB) — Questionable",
-        "Sam Darnold (QB) — Out",
-        "David Montgomery (RB) — Out",
+        "David Montgomery (RB) — Questionable",
         "George Pickens (WR) — Questionable"
-      ]
-    },
-    {
-      "time": "Denver Bacons",
-      "jogadores": [
-        "Michael Wilson (WR) — Questionable",
-        "Malik Nabers (WR) — Questionable",
-        "Denzel Boston (WR) — Questionable",
-        "Davante Adams (WR) — IR",
-        "Alvin Kamara (RB) — Questionable",
-        "Travis Etienne Jr. (RB) — IR"
       ]
     },
     {
       "time": "Green Baycon",
       "jogadores": [
-        "Rashee Rice (WR) — Questionable",
-        "Will Shipley (RB) — IR",
         "Carson Schwesinger (LB) — Questionable",
-        "Christian McCaffrey (RB) — Questionable",
         "Terry McLaurin (WR) — IR",
         "Micah Parsons (LB) — PUP",
         "Alec Pierce (WR) — IR",
-        "Christian Watson (WR) — Questionable"
+        "Malik Willis (QB) — IR"
       ]
     }
   ]
