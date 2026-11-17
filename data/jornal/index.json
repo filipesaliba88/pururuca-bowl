@@ -1,6 +1,14 @@
 [
   {
     "temporada": 2026,
+    "semana": 10,
+    "arquivo": "2026-rodada-10.json",
+    "manchete": "Roast Pork deixa 57,6 no banco e vira churrasco alheio",
+    "comentarista": "Gollum",
+    "rotulo": "Rodada 10"
+  },
+  {
+    "temporada": 2026,
     "semana": 9,
     "arquivo": "2026-rodada-09.json",
     "manchete": "Custelinha cai por 0,54 e Baconators enterra 73,86 no banco",

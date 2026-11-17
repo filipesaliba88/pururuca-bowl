@@ -1,0 +1,127 @@
+{
+  "temporada": 2026,
+  "semana": 10,
+  "playoffs": false,
+  "comentarista": "Gollum",
+  "gerado_em": "2026-11-17T13:19:33.896Z",
+  "manchete": "Roast Pork deixa 57,6 no banco e vira churrasco alheio",
+  "coluna": {
+    "titulo": "Banco de reservas, o verdadeiro campeão da rodada 10",
+    "texto": "Dez anos de boteco e eu ainda não vi gente tão criativa para perder. A rodada 10 teve 164,34 do Bacon Smashers — a maior pontuação da semana, e o único prêmio decente que saiu daqui — mas até esse veio com Brock Purdy fazendo 31,66 de terno, sentado, assistindo. Parabéns, Smashers: você ganhou a rodada com uma mão amarrada nas costas porque amarrou você mesmo.\n\nO Philadelphia Roast Pork fez o impossível: levou três prêmios de uma vez. Cemitério de Craques com 57,60 pontos apodrecendo no banco, Vexame por tomar 155,60 a 110,82 do Green Baycon, e Várzea pela menor pontuação da rodada. George Pickens marcou 42,10 de reserva, DK Metcalf mais 15,50, e na escalação titular tinha Greg Rousseau entregando 1 ponto redondo. Isso não é azar, isso é projeto arquitetônico. Enquanto isso o Green Baycon só precisou deixar o McCaffrey correr 49,40 e ir tomar café.\n\nO Choro é Livre vai pro Baconators, que perdeu por 9,53 para o Bisteca Lombos Patriots com Dak Prescott fazendo 35,42 no banco. Trinta e cinco. Margem de nove e meio. Quarta derrota seguida. Eu até teria pena, mas o Bisteca também deixou Mahomes com os mesmos 35,42 no banco e ainda assim é o líder com 7–3 — ou seja, lá em cima o critério é quem erra com mais sorte. Gibbs fez 43,40 e perdoou tudo.\n\nNa tabela, cinco times empatados em 4–6 brigando por uma vaga que nenhum deles merece. O Contagens Torresmo venceu, emplacou duas seguidas, deixou 50,30 no banco (Maxx Crosby, Judkins e Jordan Love tomando sol) e continua em décimo — é a lanterna mais barulhenta da liga. O Custelinha caiu de novo, segunda derrota seguida, e o Green Ribs n' Roll quebrou três derrotas seguidas dispensando o Puka Nacua antes de ganhar, o que é muito a cara desta liga.\n\nVítima da semana: Philadelphia Roast Pork. Três prêmios, 110,82 pontos e um banco que teria vencido quatro dos cinco confrontos. Da próxima vez escale o banco e mande os titulares pro bar comigo — pelo menos lá eles pagam a conta.",
+    "vitima": "Philadelphia Roast Pork"
+  },
+  "confrontos": [
+    {
+      "id": "confronto-1",
+      "titulo": "Sméagol viu o Custelinha soltar o precioso",
+      "resumo": "Sssim, sim, o Green Ribs n' Roll fez 140,36 e o Custelinha só 115,68, gollum! Nico Collins trouxe 23,20 para o magro, e o Custelinha confiou em Tetairoa McMillan, que devolveu 6,10 migalhas — migalhas secas, nós odeia migalhas! E o gordo mexeu, mexeu, mexeu: trocou chuteiro, trocou linebacker, trocou o defensor, e no fim o CeeDee Lamb com 19,20 carregou o caixão sozinho. Duas derrotas seguidas para quem era terceiro na tabela, meu precioso.",
+      "momento_decisivo": "Quando o Green Ribs n' Roll dispensou Puka Nacua e mesmo assim venceu por 24,68 — Sméagol jogou o anel fora e ganhou a guerra, gollum!",
+      "vereditos": [
+        {
+          "manager": "Green Ribs n' Roll",
+          "texto": "Bom Green Ribs, Green Ribs esperto, quebrou três derrotas seguidas, sssim! Mas deixou 33,30 no banco, com Jadarian Price e seus 11,20 sentadinhos — esperto não, só com sorte, criatura."
+        },
+        {
+          "manager": "Custelinha",
+          "texto": "Mentiroso! O Custelinha trocou kicker, linebacker e safety e esqueceu de trocar a cabeça. Nós vimos, nós vimos: 115,68 pontinhos e o terceiro lugar escorregando entre os dedos."
+        }
+      ]
+    },
+    {
+      "id": "confronto-2",
+      "titulo": "O lanterna que morde: Torresmo devora o Toucinho",
+      "resumo": "Gollum, gollum! O lanterna mordeu o porquinho! Contagens Torresmo 157,76, Toucinho 136,52. Chuba Hubbard correu 33,70 como se fugisse de Sméagol, e o velho Travis Kelce fez só 4,80 — velho, cansado, murcho, mas ainda jogando. O Toucinho teve Isaiah Likely com 28 pontos lindos, lindos, e jogou tudo fora com Jacob Rodriguez e seus 1,20, uma criatura contratada na semana para não fazer nada.",
+      "momento_decisivo": "Omarion Hampton fazendo 17,30 no banco do Toucinho, numa derrota por 21,24 — e Caleb Williams, zero, também assistindo. Dois peixes crus, nós odeia!",
+      "vereditos": [
+        {
+          "manager": "Contagens Torresmo",
+          "texto": "Preciosssso Torresmo, duas vitórias seguidas, sssim! E 50,30 pontos no banco — Maxx Crosby, Judkins e Jordan Love dormindo. Em décimo lugar e ainda joga com meio time, criatura tola."
+        },
+        {
+          "manager": "Toucinho 🐗",
+          "texto": "Mexeu cinco vezes, pegou Puka Nacua, dispensou Omar Cooper, pegou de novo, largou outra vez — e perdeu para o último! 5–5, o Toucinho anda em círculos como nós no escuro."
+        }
+      ]
+    },
+    {
+      "id": "confronto-3",
+      "titulo": "Dois tesouros enterrados, um só chorou",
+      "resumo": "Sssss! Bisteca Lombos Patriots 140,78, Baconators 131,25, nove pontinhos e meio, gollum! Jahmyr Gibbs fez 43,40 sozinho e salvou o líder de si mesmo, porque o líder deixou 55,12 no banco — Patrick Mahomes, 35,42, sentado! O Baconators também deixou Dak Prescott com exatamente 35,42 no banco. Os mesmos números, preciosso, os mesmos! Mas só um deles perdeu por 9,53. O mundo é cruel com os Baconators, sssim.",
+      "momento_decisivo": "Devin Singletary entregando 0,30 ponto ao líder e mesmo assim ninguém conseguiu punir — Trey McBride fez 7,90 e Marvin Harrison Jr. fez zero no banco.",
+      "vereditos": [
+        {
+          "manager": "Bisteca Lombos Patriots",
+          "texto": "Lindo Bisteca, 7–3, três vitórias seguidas, o mais forte de todos! E venceu com Mahomes no banco e Singletary dando 0,30 — forte não, sortudo, gollum, muito sortudo."
+        },
+        {
+          "manager": "Baconators 🥓",
+          "texto": "Quatro derrotas seguidas e a última por 9,53 com o QB reserva fazendo 35,42. Sméagol até chora, mas chora rindo: a única contratação da semana foi um kicker."
+        }
+      ]
+    },
+    {
+      "id": "confronto-4",
+      "titulo": "O Denver mexeu dez vezes e sentou nos melhores",
+      "resumo": "Dez movimentações, dez! Pat Bryant, Caleb Douglas, Dylan Sampson, Kaleb Johnson, saiu, voltou, saiu de novo — o Denver Bacons remexeu o elenco inteiro como nós remexe pedra de rio. E achou Emmett Johnson, 34,30 pontos, um peixe gordo de verdade! Mas o Bacon Smashers fez 164,34, a maior da rodada, com Ja'Marr Chase cravando 33,70, e passou por cima: 36,98 de margem, gollum.",
+      "momento_decisivo": "Jordyn Tyson fazendo 17,20 no banco do Denver, somando 41,58 pontos engavetados — mais que a margem inteira, preciossso.",
+      "vereditos": [
+        {
+          "manager": "Bacon Smashers",
+          "texto": "Maior pontuação da rodada, 6–4, o Smashers brilha! Brilha com Brock Purdy e seus 31,66 no banco e Jason Myers entregando 1,25 de titular. Brilho sujo, sssim."
+        },
+        {
+          "manager": "Denver Bacons",
+          "texto": "Garimpou o elenco inteiro, achou o ouro e deixou metade dele na prateleira. Tyler Warren com 2 pontos de titular enquanto Tyson fazia 17,20 — nós odeia, odeia!"
+        }
+      ]
+    },
+    {
+      "id": "confronto-5",
+      "titulo": "O banco do Roast Pork era melhor que o Roast Pork",
+      "resumo": "Olha, olha o banco! George Pickens, 42,10! DK Metcalf, 15,50! Sentados, guardados, enterrados, gollum! O Philadelphia Roast Pork fez 110,82 — a menor pontuação da rodada — enquanto 57,60 pontos apodreciam ao lado. E o Green Baycon nem precisou suar: Christian McCaffrey despejou 49,40 pontos e fechou em 155,60. Jaxon Smith-Njigba fez 32,10 para o porquinho e ainda assim morreu por 44,78.",
+      "momento_decisivo": "Greg Rousseau titular com 1 ponto enquanto Pickens fazia 42,10 no banco. Sméagol viu, Sméagol não esquece, sssim.",
+      "vereditos": [
+        {
+          "manager": "Green Baycon",
+          "texto": "Três vitórias seguidas, 6–4, segundo lugar — bonito, bonito! Mas venceu o time que menos pontuou na liga com T.J. Watt dando 2,20. Qualquer um ganharia, até nós."
+        },
+        {
+          "manager": "Philadelphia Roast Pork",
+          "texto": "Três prêmios numa rodada só: Cemitério, Vexame e Várzea. O precioso estava no banco o tempo todo e o Roast Pork preferiu abraçar a pedra."
+        }
+      ]
+    }
+  ],
+  "premios": [
+    {
+      "premio": "Cemitério de Craques",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Deixou 57,60 pontos apodrecendo no banco."
+    },
+    {
+      "premio": "O Choro é Livre",
+      "time": "Baconators 🥓",
+      "manager": "filipesaliba",
+      "detalhe": "Perdeu por 9,53 para GaloPatriots13. Ninguém merece."
+    },
+    {
+      "premio": "Vexame",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Levou 155,60 a 110,82 de QueijoMinas. Placar de amistoso contra escolinha."
+    },
+    {
+      "premio": "Várzea",
+      "time": "Philadelphia Roast Pork",
+      "manager": "lucasrbtsantos",
+      "detalhe": "Menor pontuação da rodada: 110,82. Estava jogando?"
+    },
+    {
+      "premio": "Bola Cheia",
+      "time": "Bacon Smashers",
+      "manager": "MarcioRezende",
+      "detalhe": "Maior pontuação da rodada: 164,34. O único prêmio bom daqui."
+    }
+  ]
+}
